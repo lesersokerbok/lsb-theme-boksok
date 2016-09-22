@@ -82,7 +82,11 @@
 <script type="text/html" id="tmpl-autocomplete-term-suggestion">
 	<a class="suggestion-link" href="{{ data.permalink }}"  title="{{ data.name }}">
 		<span class="suggestion-post-title">
-			<span class="glyphicon glyphicon-tag" aria-hidden="true" style="font-size: 90%; coloe: black; opacity: 0.3"></span>
+			<# if ( data.hasOwnProperty('taxonomy') &&  ( data.taxonomy === 'lsb_tax_author' || data.taxonomy === 'lsb_tax_illustrator') ) { #>
+    		<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span>
+  		<# } else { #>
+			<span class="glyphicon glyphicon-tag" aria-hidden="true" style="color: black; opacity: 0.3"></span>
+			<# } #>
 			{{{ data._highlightResult.name.value }}}
 		</span>
 	</a>
