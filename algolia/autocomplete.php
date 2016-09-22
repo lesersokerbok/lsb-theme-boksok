@@ -5,6 +5,53 @@
 	</div>
 </script>
 
+<script type="text/html" id="tmpl-autocomplete-lsb_book-suggestion">
+	<a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
+		<# if ( data.images.thumbnail ) { #>
+		<img class="suggestion-post-thumbnail" src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}">
+		<# } #>
+		<div class="suggestion-post-attributes">
+			<span class="suggestion-post-title">{{{ data._highlightResult.post_title.value }}}</span>
+
+			<#
+
+			var taxonomies = [];
+			var attribute_name;
+			var relevant_content = '';
+			
+			var creators = [];
+			var relevant_creators = [];
+			var relevant_taxonomies = [];
+
+			for ( var tax_key in data._highlightResult.taxonomies ) {	
+				var terms = data._highlightResult.taxonomies[tax_key];
+				for ( var term_index in terms ) {
+					var term = terms[term_index];					
+					if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator') {
+						creators.push(term.value);
+						if ( term.matchedWords.length > 0 ) {
+							relevant_creators.push(term.value);
+						} 
+					} else if ( term.matchedWords.length > 0 ) {
+						relevant_taxonomies.push(term.value);
+					}
+				}
+			}; 
+
+			if ( data._highlightResult.post_title.matchedWords.length > 0 || relevant_creators.length > 0 ) {
+				creators = jQuery.unique(creators);
+				relevant_content = '<span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 90%; coloe: black; opacity: 0.3"></span> ' + creators.join(", ");
+			} else {
+				relevant_taxonomies = jQuery.unique(relevant_taxonomies);
+				relevant_content = '<span class="glyphicon glyphicon-tag" aria-hidden="true" style="font-size: 90%; coloe: black; opacity: 0.3"></span> ' + relevant_taxonomies.join(", ");
+			}
+
+			#>
+			<span class="suggestion-post-content">{{{ relevant_content }}}</span>
+		</div>
+	</a>
+</script>
+
 <script type="text/html" id="tmpl-autocomplete-post-suggestion">
 	<a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.post_title }}">
 		<# if ( data.images.thumbnail ) { #>
@@ -18,13 +65,13 @@
 			var attribute_name;
 			var relevant_content = '';
 			for ( var index in attributes ) {
-			attribute_name = attributes[ index ];
-			if ( data._highlightResult[ attribute_name ].matchedWords.length > 0 ) {
-			relevant_content = data._snippetResult[ attribute_name ].value;
-			break;
-			} else if( data._snippetResult[ attribute_name ].value !== '' ) {
-			relevant_content = data._snippetResult[ attribute_name ].value;
-			}
+				attribute_name = attributes[ index ];
+				if ( data._highlightResult[ attribute_name ].matchedWords.length > 0 ) {
+					relevant_content = data._snippetResult[ attribute_name ].value;
+					break;
+				} else if( data._snippetResult[ attribute_name ].value !== '' ) {
+					relevant_content = data._snippetResult[ attribute_name ].value;
+				}
 			}
 			#>
 			<span class="suggestion-post-content">{{{ relevant_content }}}</span>
@@ -34,8 +81,10 @@
 
 <script type="text/html" id="tmpl-autocomplete-term-suggestion">
 	<a class="suggestion-link" href="{{ data.permalink }}"  title="{{ data.name }}">
-		<svg viewBox="0 0 21 21" width="21" height="21"><svg width="21" height="21" viewBox="0 0 21 21"><path d="M4.662 8.72l-1.23 1.23c-.682.682-.68 1.792.004 2.477l5.135 5.135c.7.693 1.8.688 2.48.005l1.23-1.23 5.35-5.346c.31-.31.54-.92.51-1.36l-.32-4.29c-.09-1.09-1.05-2.06-2.15-2.14l-4.3-.33c-.43-.03-1.05.2-1.36.51l-.79.8-2.27 2.28-2.28 2.27zm9.826-.98c.69 0 1.25-.56 1.25-1.25s-.56-1.25-1.25-1.25-1.25.56-1.25 1.25.56 1.25 1.25 1.25z" fill-rule="evenodd"></path></svg></svg>
-		<span class="suggestion-post-title">{{{ data._highlightResult.name.value }}}</span>
+		<span class="suggestion-post-title">
+			<span class="glyphicon glyphicon-tag" aria-hidden="true" style="font-size: 90%; coloe: black; opacity: 0.3"></span>
+			{{{ data._highlightResult.name.value }}}
+		</span>
 	</a>
 </script>
 
@@ -94,7 +143,13 @@
 							label: config['label']
 						});
 					},
-					suggestion: wp.template(config['tmpl_suggestion'])
+					suggestion: function(suggestion) {
+						var template = wp.template(config['tmpl_suggestion']);
+						if(suggestion.hasOwnProperty('post_type') && suggestion['post_type'] === 'lsb_book') {
+							template = wp.template("autocomplete-" + suggestion['post_type'] + "-suggestion");
+						} 
+            return template(suggestion);
+          }
 				}
 			});
 
