@@ -40,6 +40,7 @@ function lsb_book_posts_index_settings( array $settings ) {
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_author)';
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_illustrator)';
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_translator)';
+    $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_cat)';
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_series)';
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_list)';
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_topic)';
