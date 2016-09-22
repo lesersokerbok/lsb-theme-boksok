@@ -97,6 +97,18 @@
 			<# } #>
 			{{{ data._highlightResult.name.value }}}
 		</span>
+		<#
+		var relevant_content = '';
+		for ( var snippet_index in data._snippetResult ) {
+			var snippet = data._snippetResult[snippet_index];
+			if( snippet.matchLevel !== 'none') {
+				relevant_content = snippet.value;
+				break;
+			}
+		}
+		#>
+		<span class="suggestion-post-content">{{{ relevant_content }}}</span>
+
 	</a>
 </script>
 
@@ -141,7 +153,8 @@
 					hitsPerPage: config['max_suggestions'],
 					attributesToSnippet: [
 						'lsb_review:10',
-						'lsb_quote:10'
+						'lsb_quote:10',
+						'description: 10'
 					]
 				}),
 				templates: {
