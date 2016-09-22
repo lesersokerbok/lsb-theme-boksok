@@ -15,8 +15,6 @@
 
 			<#
 
-			var taxonomies = [];
-			var attribute_name;
 			var relevant_content = '';
 			
 			var creators = [];
@@ -27,7 +25,7 @@
 				var terms = data._highlightResult.taxonomies[tax_key];
 				for ( var term_index in terms ) {
 					var term = terms[term_index];					
-					if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator') {
+					if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator' || tax_key === 'lsb_tax_translator') {
 						creators.push(term.value);
 						if ( term.matchedWords.length > 0 ) {
 							relevant_creators.push(term.value);
@@ -36,14 +34,24 @@
 						relevant_taxonomies.push(term.value);
 					}
 				}
-			}; 
+			}
 
 			if ( data._highlightResult.post_title.matchedWords.length > 0 || relevant_creators.length > 0 ) {
 				creators = jQuery.unique(creators);
 				relevant_content = '<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
-			} else {
+			} else if ( relevant_taxonomies.length > 0 ) {
 				relevant_taxonomies = jQuery.unique(relevant_taxonomies);
 				relevant_content = '<span class="glyphicon glyphicon-tag" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + relevant_taxonomies.join(", ");
+			} else if ( data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) {
+				relevant_content = '<span class="glyphicon glyphicon-barcode" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + data._highlightResult.lsb_isbn.value;
+			} else {
+				for ( var snippet_index in data._snippetResult ) {
+					var snippet = data._snippetResult[snippet_index];
+					if( snippet.matchLevel !== 'none') {
+						relevant_content = snippet.value;
+						break;
+					}
+				}
 			}
 
 			#>
@@ -132,13 +140,8 @@
 				source: autocomplete.sources.hits(client.initIndex(config['index_name']), {
 					hitsPerPage: config['max_suggestions'],
 					attributesToSnippet: [
-						'content:10',
-						'title1:10',
-						'title2:10',
-						'title3:10',
-						'title4:10',
-						'title5:10',
-						'title6:10'
+						'lsb_review:10',
+						'lsb_quote:10'
 					]
 				}),
 				templates: {
