@@ -183,7 +183,8 @@
 				debug: algolia.debug,
 				hint: false,
 				openOnFocus: true,
-				templates: {}
+				templates: {},
+				keyboardShortcuts: ['s']
 			};
 			//Todo: Add empty template when we fixed https://github.com/algolia/autocomplete.js/issues/109
 
