@@ -40,10 +40,10 @@
 
 			if ( data._highlightResult.post_title.matchedWords.length > 0 || relevant_creators.length > 0 ) {
 				creators = jQuery.unique(creators);
-				relevant_content = '<span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 90%; coloe: black; opacity: 0.3"></span> ' + creators.join(", ");
+				relevant_content = '<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
 			} else {
 				relevant_taxonomies = jQuery.unique(relevant_taxonomies);
-				relevant_content = '<span class="glyphicon glyphicon-tag" aria-hidden="true" style="font-size: 90%; coloe: black; opacity: 0.3"></span> ' + relevant_taxonomies.join(", ");
+				relevant_content = '<span class="glyphicon glyphicon-tag" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + relevant_taxonomies.join(", ");
 			}
 
 			#>
