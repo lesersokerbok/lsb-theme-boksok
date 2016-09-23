@@ -54,6 +54,10 @@
 				}
 			}
 
+			if (relevant_content === '') {
+				relevant_content = '<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
+			}
+
 			#>
 			<span class="suggestion-post-content">{{{ relevant_content }}}</span>
 		</div>
