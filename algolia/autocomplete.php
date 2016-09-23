@@ -153,10 +153,12 @@
 		var sources = [];
 		jQuery.each(algolia.autocomplete.sources, function(i, config) {
 			var filters = '';
+			var label_extra = '';
 			if(config['index_name'].indexOf('lsb_book') > -1) {
 				var tax_filter = jQuery("#algolia-tax-filter");
 				if( tax_filter.val() ) {
 					filters = "taxonomies." + tax_filter.attr('name') + ":'" + tax_filter.attr('value') + "'";
+					label_extra = " i " + tax_filter.attr('value');
 				}
 			}
 			console.log("Filter", filters);
@@ -173,7 +175,7 @@
 				templates: {
 					header: function() {
 						return wp.template('autocomplete-header')({
-							label: config['label']
+							label: config['label'] + label_extra
 						});
 					},
 					suggestion: function(suggestion) {
