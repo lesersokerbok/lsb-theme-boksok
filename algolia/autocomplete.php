@@ -152,9 +152,18 @@
 		// setup default sources
 		var sources = [];
 		jQuery.each(algolia.autocomplete.sources, function(i, config) {
+			var filters = '';
+			if(config['index_name'].indexOf('lsb_book') > -1) {
+				var tax_filter = jQuery("#algolia-tax-filter");
+				if( tax_filter.val() ) {
+					filters = "taxonomies." + tax_filter.attr('name') + ":'" + tax_filter.attr('value') + "'";
+				}
+			}
+			console.log("Filter", filters);
 			sources.push({
 				source: autocomplete.sources.hits(client.initIndex(config['index_name']), {
 					hitsPerPage: config['max_suggestions'],
+					filters: filters,
 					attributesToSnippet: [
 						'lsb_review:10',
 						'lsb_quote:10',
