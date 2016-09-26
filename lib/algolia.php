@@ -53,4 +53,5 @@ function lsb_book_posts_index_settings( array $settings ) {
     return $settings;
 }
 
+add_filter( 'algolia_searchable_posts_index_settings', 'lsb_book_posts_index_settings' );
 add_filter( 'algolia_posts_lsb_book_index_settings', 'lsb_book_posts_index_settings' );
