@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+
 
 	<div id="ais-wrapper">
 		<main id="ais-main">
@@ -254,5 +254,3 @@
 			}
 		});
 	</script>
-
-<?php get_footer(); ?>
