@@ -13,10 +13,6 @@ add_filter( 'algolia_post_types_blacklist', 'mb_blacklist_custom_post_type' );
 
 function lsb_book_post_attributes( array $attributes, WP_Post $post ) {
 
-    if ( 'lsb_book' !== $post->post_type ) {
-        return $attributes;
-    }
-
     $attributes['lsb_review'] = get_field( 'lsb_acf_review', $post->ID );
     $attributes['lsb_quote'] = get_field( 'lsb_acf_quote', $post->ID );
     $attributes['lsb_isbn'] = get_field( 'lsb_acf_isbn', $post->ID );
@@ -27,8 +23,8 @@ function lsb_book_post_attributes( array $attributes, WP_Post $post ) {
     return $attributes;
 }
 
-add_filter( 'algolia_post_shared_attributes', 'lsb_book_post_attributes', 10, 2 );
-add_filter( 'algolia_searchable_post_shared_attributes', 'lsb_book_post_attributes', 10, 2 );
+add_filter( 'algolia_post_lsb_book_shared_attributes', 'lsb_book_post_attributes', 10, 2 );
+add_filter( 'algolia_searchable_post_lsb_book_shared_attributes', 'lsb_book_post_attributes', 10, 2 );
 
 function lsb_book_posts_index_settings( array $settings ) {
 
