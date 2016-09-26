@@ -17,7 +17,7 @@
 		</aside>
 	</div>
 
-	<script type="text/html" id="tmpl-instantsearch-hit">
+<script type="text/html" id="tmpl-instantsearch-hit">
 		<article itemtype="http://schema.org/Article">
 			<# if ( data.images.thumbnail ) { #>
 			<div class="ais-hits--thumbnail">
@@ -36,21 +36,81 @@
 				</div>
 				<div class="excerpt">
 					<p>
-						<#
-						var attributes = ['content', 'title6', 'title5', 'title4', 'title3', 'title2', 'title1'];
-						var attribute_name;
-						var relevant_content = '';
-						for ( var index in attributes ) {
-							attribute_name = attributes[ index ];
-							if ( data._highlightResult[ attribute_name ].matchedWords.length > 0 ) {
-								relevant_content = data._snippetResult[ attribute_name ].value;
+						
+					</p>
+				</div>
+			</div>
+			<div class="ais-clearfix"></div>
+		</article>
+	</script>
+
+	<script type="text/html" id="tmpl-instantsearch-lsb_book-hit">
+		<article itemtype="http://schema.org/Article">
+			<# if ( data.images.thumbnail ) { #>
+			<div class="ais-hits--thumbnail">
+				<a href="{{ data.permalink }}" title="{{ data.post_title }}">
+					<img src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}" title="{{ data.post_title }}" itemprop="image" />
+				</a>
+			</div>
+			<# } #>
+
+			<div class="ais-hits--content">
+				<h2 itemprop="name headline" style="margin-bottom: 0.3em"><a href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a></h2>
+				<div class="ais-hits--tags">
+					<#
+					
+						var creators = [];
+						var terms = [];
+
+						for ( var tax_key in data._highlightResult.taxonomies ) {	
+							var tax_terms = data._highlightResult.taxonomies[tax_key];
+							for ( var term_index in tax_terms ) {
+								var tax_term = tax_terms[term_index];					
+								if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator' || tax_key === 'lsb_tax_translator') {
+									creators.push(tax_term.value);
+								} else {
+									terms.push(tax_term.value);
+								}
 							}
 						}
 
-						relevant_content = data._snippetResult[ attributes[ 0 ] ].value;
-						#>
-						{{{ relevant_content }}}
-					</p>
+						creators = jQuery.unique(creators);
+						terms = jQuery.unique(terms);
+
+					#>
+
+					<# for ( var creator_index in creators ) { #>
+						<span class="ais-hits--tag">
+							<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3; font-size: 90%"></span>
+							{{{ creators[creator_index] }}}
+						</span>
+					<# } #>
+					<# for ( var term_index in terms ) { #>
+						<span class="ais-hits--tag">
+							<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3; font-size: 90%"></span>
+							{{{ terms[term_index] }}}
+						</span>
+					<# } #>
+				</div>
+				<div class="excerpt">
+					<#
+
+						var relevant_content = '';
+
+						for ( var snippet_index in data._snippetResult ) {
+							var snippet = data._snippetResult[snippet_index];
+							if( snippet.matchLevel !== 'none') {
+								relevant_content = snippet.value;
+								break;
+							}
+						}
+
+						if( relevant_content === '' && data._snippetResult.lsb_review ) {
+							relevant_content = data._snippetResult.lsb_review.value;
+						}
+
+					#>
+					<p>{{{ relevant_content }}}</p>
 				</div>
 			</div>
 			<div class="ais-clearfix"></div>
@@ -61,11 +121,7 @@
 	<script type="text/javascript">
 		jQuery(function() {
 			if(jQuery('#algolia-search-box').length > 0) {
-
-				if (algolia.indices.searchable_posts === undefined && jQuery('.admin-bar').length > 0) {
-					alert('It looks like you haven\'t indexed the searchable posts index. Please head to the Indexing page of the Algolia Search plugin and index it.');
-				}
-
+				console.log(algolia.indices);
 				// Instantiate instantsearch.js
 				var search = instantsearch({
 					appId: algolia.application_id,
@@ -76,7 +132,11 @@
 						trackedParameters: ['query']
 					},
 					searchParameters: {
-						facetingAfterDistinct: true
+						facetingAfterDistinct: true,
+						attributesToSnippet: [
+							'lsb_review:40',
+							'lsb_quote:40'
+						]
 					},
 					searchFunction: function(helper) {
 						if (search.helper.state.query === '') {
@@ -115,7 +175,14 @@
 						hitsPerPage: 10,
 						templates: {
 							empty: 'No results were found for "<strong>{{query}}</strong>".',
-							item: wp.template('instantsearch-hit')
+							item: function(item) {
+								console.log(item);
+								var template = wp.template('instantsearch-hit');
+								if(item.hasOwnProperty('post_type') && item['post_type'] === 'lsb_book') {
+									template = wp.template("instantsearch-" + item['post_type'] + "-hit");
+								} 
+            		return template(item);
+         			}
 						}
 					})
 				);
