@@ -161,7 +161,6 @@
 					label_extra = " i " + tax_filter.attr('value');
 				}
 			}
-			console.log("Filter", filters);
 			sources.push({
 				source: autocomplete.sources.hits(client.initIndex(config['index_name']), {
 					hitsPerPage: config['max_suggestions'],
