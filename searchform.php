@@ -8,10 +8,11 @@
       <?php
         $queried_object = get_queried_object();
         $taxonomy = $queried_object->taxonomy;
+        $term_slug = $queried_object->slug;
         $term_name = $queried_object->name;
         $taxonomy_rewrite_slug = TaxonomyUtil::get_tax_rewrite_slug($taxonomy);
       ?>
-      <input id="algolia-tax-filter" type="hidden" value="<?= $term_name; ?>" name="<?= $taxonomy ?>" />
+      <input type="hidden" value="<?= $term_slug; ?>" name="<?= $taxonomy_rewrite_slug ?>" />
 
     <?php endif; ?>
 
@@ -33,3 +34,5 @@
     </span>
   </div>
 </form>
+
+<input id="algolia-tax-filter" type="hidden" value="<?= $term_name; ?>" name="<?= $taxonomy ?>" />

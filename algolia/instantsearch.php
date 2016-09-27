@@ -1,4 +1,11 @@
+<?php 
 
+$lsb_cat_refinement = get_query_var('hovedkategori');
+$lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement, 'lsb_tax_lsb_cat');
+
+echo $lsb_cat_refinement; 
+
+?>
 
 	<div id="ais-wrapper">
 		<main id="ais-main">
@@ -111,7 +118,9 @@
 					apiKey: algolia.search_api_key,
 					indexName: algolia.indices.posts_lsb_book.name,
 					urlSync: {
-						mapping: {'q': 's'},
+						mapping: {
+							'q': 's'
+						},
 						trackedParameters: ['query']
 					},
 					searchParameters: {
@@ -119,7 +128,14 @@
 						attributesToSnippet: [
 							'lsb_review:40',
 							'lsb_quote:40'
-						]
+						],
+						hierarchicalFacetsRefinements: {
+							<?php 
+								if ($lsb_cat_refinement) {
+									echo "'taxonomies_hierarchical.lsb_tax_lsb_cat.lvl0': ['".$lsb_cat_refinement."']";
+								}
+							?>
+    				}
 					},
 					searchFunction: function(helper) {
 						if (search.helper.state.query === '') {
