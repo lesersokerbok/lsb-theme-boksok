@@ -19,31 +19,8 @@
 		</aside>
 	</div>
 
-<script type="text/html" id="tmpl-instantsearch-hit">
-		<article itemtype="http://schema.org/Article">
-			<# if ( data.images.thumbnail ) { #>
-			<div class="ais-hits--thumbnail">
-				<a href="{{ data.permalink }}" title="{{ data.post_title }}">
-					<img src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}" title="{{ data.post_title }}" itemprop="image" />
-				</a>
-			</div>
-			<# } #>
-
-			<div class="ais-hits--content">
-				<h2 itemprop="name headline"><a href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a></h2>
-				<div class="ais-hits--tags">
-					<# for (var index in data.taxonomies.post_tag) { #>
-					<span class="ais-hits--tag">{{{ data._highlightResult.taxonomies.post_tag[index].value }}}</span>
-					<# } #>
-				</div>
-				<div class="excerpt">
-					<p>
-						
-					</p>
-				</div>
-			</div>
-			<div class="ais-clearfix"></div>
-		</article>
+	<script type="text/html" id="tmpl-instantsearch-hit">
+		<!-- Should not be used, but if it does it will not fail -->	
 	</script>
 
 	<script type="text/html" id="tmpl-instantsearch-lsb_book-hit">
@@ -122,12 +99,11 @@
 	<script type="text/javascript">
 		jQuery(function() {
 			if(jQuery('#algolia-search-box').length > 0) {
-				console.log(algolia.indices);
 				// Instantiate instantsearch.js
 				var search = instantsearch({
 					appId: algolia.application_id,
 					apiKey: algolia.search_api_key,
-					indexName: algolia.indices.searchable_posts.name,
+					indexName: algolia.indices.posts_lsb_book.name,
 					urlSync: {
 						mapping: {'q': 's'},
 						trackedParameters: ['query']
@@ -170,7 +146,6 @@
 						templates: {
 							empty: 'No results were found for "<strong>{{query}}</strong>".',
 							item: function(item) {
-								console.log(item);
 								var template = wp.template('instantsearch-hit');
 								if(item.hasOwnProperty('post_type') && item['post_type'] === 'lsb_book') {
 									template = wp.template("instantsearch-" + item['post_type'] + "-hit");
