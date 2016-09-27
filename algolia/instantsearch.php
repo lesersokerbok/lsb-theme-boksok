@@ -64,6 +64,12 @@
 							{{{ creators[creator_index] }}}
 						</span>
 					<# } #>
+					<# if (  data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) { #>
+						<span class="ais-hits--tag">
+							<span class="glyphicon glyphicon-barcode" aria-hidden="true" style="color: black; opacity: 0.3; font-size: 90%"></span>
+							{{{ data._highlightResult.lsb_isbn.value }}}
+						</span>
+					<# } #>
 					<# for ( var term_index in terms ) { #>
 						<span class="ais-hits--tag">
 							{{{ terms[term_index] }}}
