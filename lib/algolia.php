@@ -52,6 +52,9 @@ function lsb_book_posts_index_settings( array $settings ) {
 
     $settings['attributesToSnippet'] = [];
 
+    $settings['disableTypoToleranceOnAttributes'] = [];
+    $settings['disableTypoToleranceOnAttributes'][] = 'lsb_isbn';
+
     $settings['customRanking'] = [];
     $settings['customRanking'][] = 'desc(lsb_supported)';
     $settings['customRanking'][] = 'desc(lsb_favorite)';
