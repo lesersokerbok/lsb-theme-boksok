@@ -1,6 +1,6 @@
 <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
   <div class="input-group">
-    <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php echo __('Søk etter en forfatter, en tittel eller et tema!', 'lsb_boksok'); ?>">
+    <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php echo __('Søk etter forfatter, tittel, tema, isbn ...', 'lsb_boksok'); ?>">
     <label class="hide"><?php echo __('Søk etter', 'lsb_boksok'); ?></label>
 
     <?php if ( is_tax() ): ?>

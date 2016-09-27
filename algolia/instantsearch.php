@@ -138,7 +138,7 @@
 				search.addWidget(
 					instantsearch.widgets.searchBox({
 						container: '#algolia-search-box',
-						placeholder: 'Search for...',
+						placeholder: 'Søk etter forfatter, tittel, tema, isbn ...',
 						wrapInput: false,
 						poweredBy: algolia.powered_by_enabled
 					})
