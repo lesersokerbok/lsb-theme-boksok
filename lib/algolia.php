@@ -18,6 +18,12 @@ function lsb_book_post_attributes( array $attributes, WP_Post $post ) {
     $attributes['lsb_isbn'] = get_field( 'lsb_acf_isbn', $post->ID );
 
     $attributes['lsb_supported'] = get_field( 'lsb_acf_supported', $post->ID );
+    if( has_term( '100-lista', 'lsb_tax_list', $post ) ) {
+        echo "is 100 lista";
+        $attributes['lsb_favorite'] = true;
+    } else {
+        $attributes['lsb_favorite'] = false;
+    }
     $attributes['lsb_published_year'] = intval(get_field( 'lsb_acf_published_year', $post->ID ));
 
     return $attributes;
@@ -48,6 +54,7 @@ function lsb_book_posts_index_settings( array $settings ) {
 
     $settings['customRanking'] = [];
     $settings['customRanking'][] = 'desc(lsb_supported)';
+    $settings['customRanking'][] = 'desc(lsb_favorite)';
     $settings['customRanking'][] = 'desc(lsb_published_year)';
 
     return $settings;
