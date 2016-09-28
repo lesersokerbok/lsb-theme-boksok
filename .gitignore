@@ -2,8 +2,6 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
 npm-debug.log
-assets/vendor/*
-!assets/vendor/glyphicons
-assets/css/main.css
-assets/css/main.css.map
-assets/js/scripts.js
+dist/*
+!dist/main.min.css
+!dist/main.min.js
