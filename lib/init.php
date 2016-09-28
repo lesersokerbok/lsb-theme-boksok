@@ -17,6 +17,10 @@ function roots_setup() {
     'social_links_menu' => 'Social Links Menu'
   ));
 
+  register_nav_menus(array(
+    'frontpage_sections' => 'Forsideseksjoner'
+  ));
+
   // Add post thumbnails
   // http://codex.wordpress.org/Post_Thumbnails
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size

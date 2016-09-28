@@ -16,217 +16,25 @@
   </div>
 </div>
 
-<div class="block block-lsb-cat lsb-purple">
-  <div class="container">
-    <div class="row app-align-center">
+<?php 
 
-      <div class="col-sm-5">
-        <div class="cover-grid" data-grid="images">
-          <a href="bok.html"><img data-width="239" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/boflyttarut-239x300.jpg"></a>
-          <a href="bok.html"><img data-width="212" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/Hjemmelagde-groenne-smoothier-212x300.jpg"></a>  
-          <a href="bok.html"><img data-width="206" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/9788202494056-206x300.jpg"></a>
-          <a href="bok.html"><img data-width="192" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/414f5249ff6da053b8ce1ce586d3721279cce9420692a298da706181-192x300.jpg"></a>
-        </div>
-      </div>
+  $menu_locations = get_nav_menu_locations(); 
+  $frontpage_sections_menu_id = $menu_locations[ 'frontpage_sections' ]; 
+  $frontpage_sections = wp_get_nav_menu_items( $frontpage_sections_menu_id ); 
 
-      <div class="col-sm-1">
-      </div>
+  foreach ($frontpage_sections as $frontpage_section) { 
+    if($frontpage_section->type === "taxonomy") {
+      $lsb_cat = get_term( $frontpage_section->object_id, $frontpage_section->object );
+      $lsb_cat->url = $frontpage_section->url;
+      include(locate_template('templates/lsb-cat-block.php'));
+    }
+  }
 
-      <div class="col-sm-6">
-        <h1 class="block-lsb-heading"><a href="#">Litt å lese</a></h1>
-        <div href="#" class="block-lsb-description">
-          <p>Litt å lese er bøker uten vanskelig språk.</p>
-          <p>Bøkene har et utseende og innhold som gjør dem mer tilgjengelige enn andre bøker.</p>
-       
-          <h2>Målgruppe</h2>
-          <p>Litt å lese passer for uvante lesere, folk med dysleksi, ADHD og konsentrasjonsvansker eller et annet morsmål enn norsk.</p>
-        </div>
+  wp_reset_postdata();
 
-        <a href="cat.html" class="btn btn-lg m-t-md">
-          Velg Litt å lese
-        </a>
-      </div>
-    </div>
+?> 
 
-  </div>
-</div>
-
-<div class="block block-lsb-cat lsb-green">
-  <div class="container">
-    <div class="row app-align-center">
-
-      <div class="col-sm-5">
-        <div class="cover-grid" data-grid="images">
-          <a href="bok.html"><img data-width="239" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/boflyttarut-239x300.jpg"></a>
-          <a href="bok.html"><img data-width="212" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/Hjemmelagde-groenne-smoothier-212x300.jpg"></a>  
-          <a href="bok.html"><img data-width="206" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/9788202494056-206x300.jpg"></a>
-          <a href="bok.html"><img data-width="192" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/414f5249ff6da053b8ce1ce586d3721279cce9420692a298da706181-192x300.jpg"></a>
-        </div>
-      </div>
-
-      <div class="col-sm-1">
-      </div>
-
-      <div class="col-sm-6">
-        <h1 class="block-lsb-heading"><a href="#">Litt å lese</a></h1>
-        <div href="#" class="block-lsb-description">
-          <p>Litt å lese er bøker uten vanskelig språk.</p>
-          <p>Bøkene har et utseende og innhold som gjør dem mer tilgjengelige enn andre bøker.</p>
-       
-          <h2>Målgruppe</h2>
-          <p>Litt å lese passer for uvante lesere, folk med dysleksi, ADHD og konsentrasjonsvansker eller et annet morsmål enn norsk.</p>
-        </div>
-
-        <a href="cat.html" class="btn btn-lg m-t-md">
-          Velg Litt å lese
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="block block-lsb-cat lsb-yellow">
-  <div class="container">
-    <div class="row app-align-center">
-
-      <div class="col-sm-5">
-        <div class="cover-grid" data-grid="images">
-          <a href="bok.html"><img data-width="239" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/boflyttarut-239x300.jpg"></a>
-          <a href="bok.html"><img data-width="212" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/Hjemmelagde-groenne-smoothier-212x300.jpg"></a>  
-          <a href="bok.html"><img data-width="206" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/9788202494056-206x300.jpg"></a>
-          <a href="bok.html"><img data-width="192" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/414f5249ff6da053b8ce1ce586d3721279cce9420692a298da706181-192x300.jpg"></a>
-        </div>
-      </div>
-
-      <div class="col-sm-1">
-      </div>
-
-      <div class="col-sm-6">
-        <h1 class="block-lsb-heading"><a href="#">Litt å lese</a></h1>
-        <div href="#" class="block-lsb-description">
-          <p>Litt å lese er bøker uten vanskelig språk.</p>
-          <p>Bøkene har et utseende og innhold som gjør dem mer tilgjengelige enn andre bøker.</p>
-       
-          <h2>Målgruppe</h2>
-          <p>Litt å lese passer for uvante lesere, folk med dysleksi, ADHD og konsentrasjonsvansker eller et annet morsmål enn norsk.</p>
-        </div>
-
-        <a href="cat.html" class="btn btn-lg m-t-md">
-          Velg Litt å lese
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="block block-lsb-cat lsb-orange">
-  <div class="container">
-    <div class="row app-align-center">
-
-      <div class="col-sm-5">
-        <div class="cover-grid" data-grid="images">
-          <a href="bok.html"><img data-width="239" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/boflyttarut-239x300.jpg"></a>
-          <a href="bok.html"><img data-width="212" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/Hjemmelagde-groenne-smoothier-212x300.jpg"></a>  
-          <a href="bok.html"><img data-width="206" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/9788202494056-206x300.jpg"></a>
-          <a href="bok.html"><img data-width="192" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/414f5249ff6da053b8ce1ce586d3721279cce9420692a298da706181-192x300.jpg"></a>
-        </div>
-      </div>
-
-      <div class="col-sm-1">
-      </div>
-
-      <div class="col-sm-6">
-        <h1 class="block-lsb-heading"><a href="#">Litt å lese</a></h1>
-        <div href="#" class="block-lsb-description">
-          <p>Litt å lese er bøker uten vanskelig språk.</p>
-          <p>Bøkene har et utseende og innhold som gjør dem mer tilgjengelige enn andre bøker.</p>
-       
-          <h2>Målgruppe</h2>
-          <p>Litt å lese passer for uvante lesere, folk med dysleksi, ADHD og konsentrasjonsvansker eller et annet morsmål enn norsk.</p>
-        </div>
-
-        <a href="cat.html" class="btn btn-lg m-t-md">
-          Velg Litt å lese
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="block block-lsb-cat lsb-red">
-  <div class="container">
-    <div class="row app-align-center">
-
-      <div class="col-sm-5">
-        <div class="cover-grid" data-grid="images">
-          <a href="bok.html"><img data-width="239" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/boflyttarut-239x300.jpg"></a>
-          <a href="bok.html"><img data-width="212" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/Hjemmelagde-groenne-smoothier-212x300.jpg"></a>  
-          <a href="bok.html"><img data-width="206" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/9788202494056-206x300.jpg"></a>
-          <a href="bok.html"><img data-width="192" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/414f5249ff6da053b8ce1ce586d3721279cce9420692a298da706181-192x300.jpg"></a>
-        </div>
-      </div>
-
-      <div class="col-sm-1">
-      </div>
-
-      <div class="col-sm-6">
-        <h1 class="block-lsb-heading"><a href="#">Litt å lese</a></h1>
-        <div href="#" class="block-lsb-description">
-          <p>Litt å lese er bøker uten vanskelig språk.</p>
-          <p>Bøkene har et utseende og innhold som gjør dem mer tilgjengelige enn andre bøker.</p>
-       
-          <h2>Målgruppe</h2>
-          <p>Litt å lese passer for uvante lesere, folk med dysleksi, ADHD og konsentrasjonsvansker eller et annet morsmål enn norsk.</p>
-        </div>
-
-        <a href="cat.html" class="btn btn-lg m-t-md">
-          Velg Litt å lese
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="block block-lsb-cat lsb-blue">
-  <div class="container">
-    <div class="row app-align-center">
-
-      <div class="col-sm-5">
-        <div class="cover-grid" data-grid="images">
-          <a href="bok.html"><img data-width="239" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/boflyttarut-239x300.jpg"></a>
-          <a href="bok.html"><img data-width="212" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/Hjemmelagde-groenne-smoothier-212x300.jpg"></a>  
-          <a href="bok.html"><img data-width="206" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/9788202494056-206x300.jpg"></a>
-          <a href="bok.html"><img data-width="192" data-height="300" src="http://boksokbeta.lesersokerbok.no/wp-content/uploads/sites/2/2016/09/414f5249ff6da053b8ce1ce586d3721279cce9420692a298da706181-192x300.jpg"></a>
-        </div>
-      </div>
-
-      <div class="col-sm-1">
-      </div>
-
-      <div class="col-sm-6">
-        <h1 class="block-lsb-heading"><a href="#">Litt å lese</a></h1>
-        <div href="#" class="block-lsb-description">
-          <p>Litt å lese er bøker uten vanskelig språk.</p>
-          <p>Bøkene har et utseende og innhold som gjør dem mer tilgjengelige enn andre bøker.</p>
-       
-          <h2>Målgruppe</h2>
-          <p>Litt å lese passer for uvante lesere, folk med dysleksi, ADHD og konsentrasjonsvansker eller et annet morsmål enn norsk.</p>
-        </div>
-
-        <a href="cat.html" class="btn btn-lg m-t-md">
-          Velg Litt å lese
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="block block-lsb-cat lsb-brand">
+<div class="block block-lsb-footer lsb-cat-boksok">
   <div class="container">
     <div class="row app-align-center">
 
