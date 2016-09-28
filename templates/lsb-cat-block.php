@@ -1,7 +1,7 @@
 <?php
   $books = get_posts(
     array(
-        'posts_per_page' => 4,
+        'posts_per_page' => 6,
         'post_type' => 'lsb_book',
         'orderby' => 'date',
 	      'order' => 'ASC',
@@ -43,7 +43,11 @@
       <div class="col-sm-6">
         <h1 class="block-lsb-heading"><a href="<?php echo $lsb_cat->url ?>"><?php echo $lsb_cat->name ?></a></h1>
         <div href="#" class="block-lsb-description">
-          <?php echo $lsb_cat->description ?>
+          <?php if( !empty(get_field('lsb_acf_tax_full_description', $lsb_cat)) ) : ?>
+            <?php echo get_field('lsb_acf_tax_full_description', $lsb_cat ); ?>
+          <?php else : ?>
+            <p><?php echo $lsb_cat->description ?></p>
+          <?php endif; ?>
         </div>
 
         <a href="<?php echo $lsb_cat->url ?>" class="btn btn-lg m-t-md">
