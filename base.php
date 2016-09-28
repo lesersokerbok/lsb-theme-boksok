@@ -1,26 +1,24 @@
+<!doctype html>
+<html <?php language_attributes(); ?>>
+
 <?php get_template_part('templates/head'); ?>
+
 <body <?php body_class(); ?>>
+  <div class="stage" id="stage">
 
-  <?php
-    do_action('get_header');
-    get_template_part('templates/header');
-  ?>
+    <?php
+      do_action('get_header');
+      get_template_part('templates/site-header');
+    ?>
+        
+    <main role="main">
+      <?php include roots_template_path(); ?>
+    </main><!-- /.main -->
 
-  <div class="wrap container-fluid" role="document">
-    <div class="content row">
-      
-      <main class="main <?php echo roots_main_class(); ?>" role="main">
-        <?php include roots_template_path(); ?>
-      </main><!-- /.main -->
-      <?php if (roots_display_sidebar()) : ?>
-        <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-          <?php include roots_sidebar_path(); ?>
-        </aside><!-- /.sidebar -->
-      <?php endif; ?>
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
+    <!-- <?php get_template_part('templates/site-footer'); ?> -->
+  </div><!-- /#stage -->
 
-  <?php get_template_part('templates/footer'); ?>
+  <?php wp_footer(); ?>
 
 </body>
 </html>

@@ -1,0 +1,187 @@
+.block-lsb-heading {
+
+  .h6;
+  .header-uppercase;
+
+  a {
+    color: inherit;
+  }
+}
+
+.block-lsb-description {
+
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+
+  p:first-child {
+    .h3;
+    .m-t-0;
+  }
+
+  p:not(:first-child):not(:last-child) {
+    .lead;
+  }
+
+  p:last-child {
+    width: 50%;
+  }
+
+  h2, h3, h4, h5, h6 {
+    .h5;
+    .m-t-md;
+  }
+}
+
+.block-lsb-search {
+
+  .block-inverse;
+  .p-t-lg;
+  .p-b-lg;
+}
+
+.block-lsb-cat {
+
+  padding-bottom: @spacer*3;
+
+  .row {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .cover-grid {
+    margin-top: -@spacer * 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0
+  }
+}
+
+.block-lsb-cat:nth-child(even) {
+
+  .block-lsb-heading {
+    opacity: 0.6;
+  }
+
+  &.lsb-brand {
+    .block-inverse;
+    background-color: @brand-primary;
+    .btn {
+      .button-variant(@brand-primary; white; transparent);
+    }
+  }
+ 
+  &.lsb-purple {
+    .block-inverse;
+    background-color: @lsb-purple;
+    .btn {
+      .button-variant(@lsb-purple; white; transparent);
+    }
+  }
+
+  &.lsb-green {
+    .block-inverse;
+    background-color: @lsb-green;
+    .btn {
+      .button-variant(@lsb-green; white; transparent);
+    }
+  }
+
+  &.lsb-yellow {
+    background-color: @lsb-yellow ;
+    .btn {
+      .button-variant(@text-color; white; transparent);
+    }
+  }
+
+  &.lsb-orange {
+    background-color: @lsb-orange;
+    .btn {
+      .button-variant(@lsb-orange; white; transparent);
+    }
+  }
+
+  &.lsb-red {
+    .block-inverse;
+    background-color: @lsb-red;
+    .btn {
+      .button-variant(@lsb-red; white; transparent);
+    }
+  }
+
+  &.lsb-blue {
+    background-color: @lsb-blue;
+    .btn {
+      .button-variant(@lsb-blue; white; transparent);
+    }
+  }
+}
+
+.block-lsb-cat:nth-child(odd) {
+
+  .col-sm-5 {
+    order: 3;
+  }
+
+  .col-sm-1 {
+    order: 2;
+  }
+
+  .col-sm-6 {
+    order: 1;
+  }
+
+  &.lsb-purple {
+    .block-lsb-heading {
+      color: @lsb-purple;
+    }
+    .btn {
+      .button-variant(white; @lsb-purple; transparent);
+    }
+  }
+  &.lsb-green {
+    .block-lsb-heading {
+      color: @lsb-green;
+    }
+    .btn {
+      .button-variant(white; @lsb-green; transparent);
+    }
+  }
+  &.lsb-yellow {
+    .block-lsb-heading {
+      opacity: 0.6;
+    }
+    .btn {
+      .button-variant(@text-color; @lsb-yellow; transparent);
+    }
+  }
+  &.lsb-orange {
+    .block-lsb-heading {
+      color: @lsb-orange;
+    }
+    .btn {
+      .button-variant(white; @lsb-orange; transparent);
+    }
+  }
+  &.lsb-red {
+    .block-lsb-heading {
+      color: @lsb-red;
+    }
+    .btn {
+      .button-variant(white; @lsb-red; transparent);
+    }
+  }
+  &.lsb-blue {
+    .block-lsb-heading {
+      color: @lsb-blue;
+    }
+    .btn {
+      .button-variant(white; @lsb-blue; transparent);
+    }
+  }
+}
+

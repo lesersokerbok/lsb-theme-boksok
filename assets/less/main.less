@@ -1,3 +1,23 @@
 @import "./variables.less";
-
 @import "./components.less";
+
+.header-uppercase {
+  .text-uppercase;
+  letter-spacing: .15em;
+}
+
+/* general btn overrides */
+.btn-lg {
+  font-size: 18px;
+}
+.btn-lg:not(.btn-block) {
+  padding: 12px 50px;
+}
+@media (min-width: 768px) {
+  .btn-lg:not(.btn-block) {
+    width: auto;
+  }
+}
+
+@import "./lsb-boksok/navbar.less";
+@import "./lsb-boksok/blocks.less";

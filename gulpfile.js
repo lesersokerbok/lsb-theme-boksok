@@ -13,9 +13,20 @@ var Paths = {
   DIST                 : 'dist',
   DIST_JS              : 'main.js',
   LESS_SOURCE          : 'assets/less/main.less',
-  LESS_WATCH           : 'assets/less/*',
+  LESS_WATCH           : 'assets/less/**/**',
   JS_SOURCES           : [
-      'node_modules/bootstrap/js/*',
+      'node_modules/bootstrap/transition.js',
+      'node_modules/bootstrap/alert.js',
+      'node_modules/bootstrap/affix.js',
+      'node_modules/bootstrap/button.js',
+      'node_modules/bootstrap/carousel.js',
+      'node_modules/bootstrap/collapse.js',
+      'node_modules/bootstrap/dropdown.js',
+      'node_modules/bootstrap/modal.js',
+      'node_modules/bootstrap/tooltip.js',
+      'node_modules/bootstrap/popover.js',
+      'node_modules/bootstrap/scrollspy.js',
+      'node_modules/bootstrap/tab.js',
       'assets/js/**/**'
     ],
   JS_WATCH             : 'assets/js/*'
