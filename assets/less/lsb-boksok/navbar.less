@@ -1,3 +1,188 @@
+// Transparent navbar
+.navbar-lsb-colored(@navbar-bg-color:@brand-primary, @navbar-color:white) {
+  background-color: @navbar-bg-color;
+  border-color: @navbar-bg-color;
+
+  .navbar-brand {
+    color: @navbar-color;
+    svg {
+      height: 50px;
+      margin-top: -15px;
+      .fill {
+        fill: @navbar-color;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      color: @navbar-color;
+      opacity: 0.6;
+      background-color: transparent;
+    }
+
+
+  }
+
+  .navbar-text {
+    color: @navbar-color;
+    opacity: 0.8;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-color;
+        opacity: 0.6;
+        background-color: transparent;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-color;
+        opacity: 0.6;
+        background-color: transparent;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-color;
+        opacity: 0.6;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: @navbar-color;
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      opacity: 0.6;
+    }
+    .icon-bar {
+      background-color: transparent;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: transparent;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        color: @navbar-color;
+        opacity: 0.6;
+      }
+    }
+
+    @media (max-width: @grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: @navbar-color;
+          &:hover,
+          &:focus {
+            color: @navbar-color;
+            background-color: transparent;
+            opacity: 0.6;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-color;
+            background-color: transparent;
+            opacity: 0.6;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-color;
+            background-color: transparent;
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: @navbar-color;
+    &:hover {
+      color: @navbar-color;
+      opacity: 0.6;
+    }
+  }
+
+  .btn-link {
+    color: @navbar-color;
+    &:hover,
+    &:focus {
+      color: @navbar-color;
+      opacity: 0.6;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: @navbar-color;
+      }
+    }
+  }
+}
+
+// Colored clean navbars
+
+.navbar-primary {
+  .navbar-lsb-colored();
+}
+
+.navbar-purple {
+  .navbar-lsb-colored(@brand-purple);
+}
+
+.navbar-green {
+  .navbar-lsb-colored(@brand-green);
+}
+
+.navbar-yellow {
+  .navbar-lsb-colored(@brand-yellow, @text-color);
+}
+
+.navbar-orange {
+  .navbar-lsb-colored(@brand-orange, @text-color);
+}
+
+.navbar-red {
+  .navbar-lsb-colored(@brand-red);
+}
+
+.navbar-blue {
+  .navbar-lsb-colored(@brand-blue);
+}
+
 .navbar {
   font-weight: 500;
   letter-spacing: .05em;
@@ -6,9 +191,6 @@
 
   padding-top: @spacer-y;
   padding-bottom: @spacer-y;
-
-  .navbar-transparent;
-  background-color: @brand-primary;
 
   .navbar-header {
   .navbar-nav li {

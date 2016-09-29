@@ -1,12 +1,18 @@
-<div class="page-header">
-  <div>
-    <header>
-      <h1>
-        <?php TaxonomyUtil::the_single_term_icon(get_queried_object())?><?php echo roots_title(); ?>
-      </h1>
-      <?php echo category_description(); ?>
-    </header>
-    <?php get_search_form(); ?>
+ <div class="block block-lsb-search">
+  <div class="container">
+      <div class="row app-align-center">
+        <div class="col-sm-12 col-md-8 col-md-offset-2">
+          <form>
+            <div class="input-group input-group-lg">
+              <input type="text" class="form-control" placeholder="Søk etter tittel, forfatter, tema ...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Søk</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
