@@ -61,6 +61,7 @@
 
   .navbar-toggle {
     border-color: @navbar-color;
+    color: @navbar-color;
     &:hover,
     &:focus {
       background-color: transparent;
@@ -76,16 +77,30 @@
     border-color: transparent;
   }
 
-  // Dropdown menu items
+  // Dropdown menu itemss
   .navbar-nav {
     // Remove background color from open dropdown
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        color: @navbar-color;
-        opacity: 0.6;
+    > .open {
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          color: @navbar-color;
+          opacity: 0.6;
+        }
+      }
+      .dropdown-menu {
+        border-radius: @border-radius-base;
+        > li > a {
+          color: @text-color;
+          &:hover,
+          &:focus {
+            background-color: transparent;
+            opacity: 0.6;
+            text-decoration: underline;
+          }
+        }
       }
     }
 
@@ -193,11 +208,13 @@
   padding-bottom: @spacer-y;
 
   .navbar-header {
-  .navbar-nav li {
-    display: inline-block;
-      a {
+    .navbar-nav > li {
+      display: inline-block;
+      > a, > span {
         .p-l-0;
-        .p-r-0; 
+        .p-r-0;
+        .m-l-0;
+        .m-r-0; 
       }
     }
   }
