@@ -48,10 +48,11 @@ kan være tunge å lese. Boksøk hjelper deg å finne en bok som passer.
 I den store jungelen av bøker på markedet,
 har vi valgt ut titler som på en eller annen måte
 er mer tilgjengelige enn vanlig.</p>
+        
+          <a href="#" class="btn btn-lg m-t-md">
+            Les mer om <strong>Boksøk</strong>
+          </a>
         </div>
-        <a href="#" class="btn btn-lg m-t-md">
-          Les mer om <strong>Boksøk</strong>
-        </a>
       </div>
 
       <div class="col-sm-1 hidden-xs"></div>

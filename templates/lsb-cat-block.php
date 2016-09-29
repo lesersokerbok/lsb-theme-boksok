@@ -48,11 +48,11 @@
           <?php else : ?>
             <p><?php echo $lsb_cat->description ?></p>
           <?php endif; ?>
-        </div>
 
-        <a href="<?php echo $lsb_cat->url ?>" class="btn btn-lg m-t-md">
-          Velg <strong><?php echo $lsb_cat->name ?></strong>
-        </a>
+          <a href="<?php echo $lsb_cat->url ?>" class="btn btn-lg m-t-md">
+            Velg <strong><?php echo $lsb_cat->name ?></strong>
+          </a>
+        </div>
       </div>
     </div>
 
