@@ -5,8 +5,16 @@
   .h6;
   .header-uppercase;
 
+  .m-t-0;
+
   a {
     color: inherit;
+  }
+
+  .subtitle {
+    opacity: 0.6;
+    font-size: 90%;
+    text-transform: none;
   }
 }
 
@@ -166,7 +174,8 @@
   }
 }
 
-.block-lsb-cat:nth-child(even) {
+.block-lsb-cat:nth-child(even),
+.block-lsb-cat:last-child {
 
   &.lsb-cat-litt-a-lese {
     .block-lsb-solid-purple;
@@ -194,7 +203,7 @@
  
 }
 
-.block-lsb-cat:nth-child(odd) {
+.block-lsb-cat:nth-child(odd):not(:last-child) {
 
   .col-sm-5 {
     order: 3;
@@ -230,6 +239,26 @@
 
   &.lsb-cat-bliss-piktogram {
     .block-lsb-blue;
+  }
+}
+
+.block-lsb-book-shelf {
+
+  padding: @spacer*3;
+  
+  &:nth-child(even) {
+    background: @gray-lighter;
+  }
+
+  .cover-grid {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+
+    img {
+      height: 200px;
+      width: auto;
+    }
   }
 }
 
