@@ -15,7 +15,7 @@
       <?php include roots_template_path(); ?>
     </main><!-- /.main -->
 
-    <!-- <?php get_template_part('templates/site-footer'); ?> -->
+    <?php get_template_part('templates/site-footer'); ?>
   </div><!-- /#stage -->
 
   <?php wp_footer(); ?>

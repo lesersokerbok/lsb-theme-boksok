@@ -34,7 +34,7 @@
 
 ?> 
 
-<div class="block block-lsb-footer lsb-cat-boksok">
+<aside class="block block-lsb-cat-footer lsb-cat-boksok">
   <div class="container">
     <div class="row app-align-center">
 
@@ -48,10 +48,21 @@ kan være tunge å lese. Boksøk hjelper deg å finne en bok som passer.
 I den store jungelen av bøker på markedet,
 har vi valgt ut titler som på en eller annen måte
 er mer tilgjengelige enn vanlig.</p>
-       
+        </div>
+        <a href="#" class="btn btn-lg m-t-md">
+          Les mer om <strong>Boksøk</strong>
+        </a>
+      </div>
+
+      <div class="col-sm-1 hidden-xs"></div>
+
+      <div class="col-sm-5 hidden-xs">
+        <!-- 16:9 aspect ratio -->
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/EpqRZR8t3z8" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
 
+    </div><!-- .row -->
   </div>
-</div>
+</aside>

@@ -29,7 +29,7 @@
   <div class="container">
     <div class="row app-align-center">
 
-      <div class="col-sm-5">
+      <div class="col-sm-5 hidden-xs">
         <div class="cover-grid" data-grid="images">
           <?php foreach($books as $book): ?>
             <a href="<?php echo $book->permalink ?>"><?php echo $book->thumbnail ?></a>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="col-sm-1">
+      <div class="col-sm-1 hidden-xs">
       </div>
 
       <div class="col-sm-6">
