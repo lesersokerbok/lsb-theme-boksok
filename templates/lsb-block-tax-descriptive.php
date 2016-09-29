@@ -1,7 +1,7 @@
 <?php
   $books = get_posts(
     array(
-        'posts_per_page' => 9,
+        'posts_per_page' => 6,
         'post_type' => 'lsb_book',
         'orderby' => 'date',
 	      'order' => 'ASC',
@@ -29,12 +29,15 @@
   <div class="container">
     <div class="row app-align-center">
 
-      <div class="col-sm-6 hidden-xs">
+      <div class="col-sm-5 hidden-xs">
         <div class="cover-grid" data-grid="images">
           <?php foreach($books as $book): ?>
             <a href="<?php echo $book->permalink ?>"><?php echo $book->thumbnail ?></a>
           <?php endforeach ?>
         </div>
+      </div>
+
+      <div class="col-sm-1 hidden-xs">
       </div>
 
       <div class="col-sm-6">
@@ -51,7 +54,7 @@
           </a>
         </div>
       </div>
+    </div>
 
-    </div><!-- .row -->
-  </div><!-- .container -->
-</div><!-- .block -->
+  </div>
+</div>

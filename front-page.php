@@ -26,7 +26,7 @@
     if($frontpage_section->type === "taxonomy") {
       $lsb_cat = get_term( $frontpage_section->object_id, $frontpage_section->object );
       $lsb_cat->url = $frontpage_section->url;
-      include(locate_template('templates/lsb-cat-block.php'));
+      include(locate_template('templates/lsb-block-tax-descriptive.php'));
     }
   }
 
