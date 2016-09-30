@@ -12,11 +12,13 @@
 
       <ul class="nav navbar-nav">
         <li class="text-uppercase">
-          <a class="p-l-0 p-r-0" href="<?php echo home_url(); ?>">Boksøk:</span></a>
+          <a class="p-l-0 p-r-0" href="<?php echo home_url(); ?>">Boksøk</span></a>
         </li>
+        <?php if(is_tax( 'lsb_tax_lsb_cat')) : ?>
         <li>
-          <a class="p-l-0" href="#">&nbsp;alle bøker</span></a>
+          <a href="#"><?php single_cat_title() ?></span></a>
         </li>
+        <?php endif; ?>
       </ul>
     </div>
 
