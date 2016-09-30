@@ -25,7 +25,8 @@ $roots_includes = array(
   'lib/pagination.php',     // Boostrap pagination
   'lib/lsb-mime-types.php', // Custom upload mime types
   'lib/rewrite.php',        // Custom rewrite rules
-  'lib/feed-util.php',            // Custom rss rules
+  'lib/feed-util.php',      // Custom rss rules
+  'lib/algolia.php'         // Algolia customization
 );
 
 foreach ($roots_includes as $file) {
