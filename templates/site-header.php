@@ -16,7 +16,7 @@
         </li>
         <?php if(is_tax( 'lsb_tax_lsb_cat')) : ?>
         <li>
-          <a href="#"><?php single_cat_title() ?></span></a>
+          <a href="<? echo get_term_link(get_queried_object()) ?>"><?php single_cat_title() ?></span></a>
         </li>
         <?php endif; ?>
       </ul>
