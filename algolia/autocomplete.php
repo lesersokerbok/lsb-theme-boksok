@@ -155,10 +155,10 @@
 			var filters = '';
 			var label_extra = '';
 			if(config['index_name'].indexOf('lsb_book') > -1) {
-				var tax_filter = jQuery("#algolia-tax-filter");
-				if( tax_filter.val() ) {
-					filters = "taxonomies." + tax_filter.attr('name') + ":'" + tax_filter.attr('value') + "'";
-					label_extra = " i " + tax_filter.attr('value');
+				var tax_filter = jQuery("#algolia-lsb_tax_lsb_cat");
+				if( tax_filter.data('algolia-taxonomy') ) {
+					filters = "taxonomies." + tax_filter.data('algolia-taxonomy') + ":'" + tax_filter.data('algolia-term') + "'";
+					label_extra = " i " + tax_filter.data('algolia-term');
 				}
 			}
 			sources.push({

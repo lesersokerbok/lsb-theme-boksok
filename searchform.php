@@ -1,38 +1,42 @@
+<?php 
+  $input_placeholder =  __('Søk etter forfatter, tittel, tema, isbn ...', 'lsb_boksok');
+  $input_value = get_search_query(); 
+  $submit_text = __('Søk', 'lsb_boksok');
+  $filter = [];
+  if ( is_tax( 'lsb_tax_lsb_cat' ) ) {
+    $filter['algolia_taxonomy'] =  'lsb_tax_lsb_cat';
+    $filter['algolia_term'] = get_queried_object()->name;
+    $filter['name'] = 'hovedkategori';
+    $filter['value'] = get_queried_object()->slug;
+  }
+?>
+
 <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
-  <div class="input-group">
-    <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php echo __('Søk etter forfatter, tittel, tema, isbn ...', 'lsb_boksok'); ?>">
-    <label class="hide"><?php echo __('Søk etter', 'lsb_boksok'); ?></label>
-
-    <?php if ( is_tax() ): ?>
-
-      <?php
-        $queried_object = get_queried_object();
-        $taxonomy = $queried_object->taxonomy;
-        $term_slug = $queried_object->slug;
-        $term_name = $queried_object->name;
-        $taxonomy_rewrite_slug = TaxonomyUtil::get_tax_rewrite_slug($taxonomy);
-      ?>
-      <input type="hidden" value="<?= $term_slug; ?>" name="<?= $taxonomy_rewrite_slug ?>" />
-
-    <?php endif; ?>
-
-    <?php if ( is_search()): ?>
-
-      <?php foreach (LsbFilterQueryUtil::possible_query_vars_for_lsb_book() as $query_var) : ?>
-        <?php if(get_query_var($query_var)): ?>
-          <input type="hidden"
-            value="<?= get_query_var($query_var) ?>"
-            name="<?= $query_var ?>"
-          />
-        <?php endif; ?>
-      <?php endforeach; ?>
-
-    <?php endif; ?>
-
+  <div class="input-group input-group-lg">
+    <?php if (! is_tax('lsb_tax_lsb_cat')) : ?>
     <span class="input-group-btn">
-      <button type="submit" class="search-submit btn btn-default"><?php echo __('Søk', 'lsb_boksok'); ?></button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span>Alle kategorier</span>
+        <span class="caret"></span>
+      </button>
+      <?php 
+        $args = array(
+          "menu_class" => "dropdown-menu",
+          "theme_location" => "frontpage_sections",
+        );
+        wp_nav_menu( $args );
+      ?>
+    </span>
+    <?php endif; ?>
+    <input type="search" class="form-control" name="s" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="submit"><?php echo $submit_text ?></button>
     </span>
   </div>
-</form>
 
-<input id="algolia-tax-filter" type="hidden" value="<?= $term_name; ?>" name="<?= $taxonomy ?>" />
+  <input id="algolia-lsb_tax_lsb_cat" type="hidden" 
+          data-algolia-taxonomy="<?php echo $filter['algolia_taxonomy']; ?>" 
+          data-algolia-term="<?php echo $filter['algolia_term']; ?>" 
+          value="<?php echo $filter['value']; ?>" 
+          name="<?php echo $filter['name']; ?>" />
+</form>

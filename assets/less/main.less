@@ -23,6 +23,18 @@
 @import "./lsb-boksok/blocks.less";
 @import "./lsb-boksok/cover.less";
 
+.algolia-autocomplete {
+  .form-control {
+    .input-lg();
+  }
+
+  &:not(:first-child):not(:last-child) {
+    .form-control {
+      border-radius: 0;
+    }
+  }
+}
+
 .navbar {
 
   body:not(.tax-lsb_tax_lsb_cat) & {

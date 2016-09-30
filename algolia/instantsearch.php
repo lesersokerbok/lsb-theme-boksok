@@ -3,9 +3,9 @@
 $lsb_cat_refinement = get_query_var('hovedkategori');
 $lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement, 'lsb_tax_lsb_cat');
 
-echo $lsb_cat_refinement; 
-
 ?>
+
+<div class="container">
 
 	<div id="ais-wrapper">
 		<main id="ais-main">
@@ -25,6 +25,8 @@ echo $lsb_cat_refinement;
 			<section class="ais-facets" id="facet-topic"></section>
 		</aside>
 	</div>
+
+</div>
 
 	<script type="text/html" id="tmpl-instantsearch-hit">
 		<!-- Should not be used, but if it does it will not fail -->	
