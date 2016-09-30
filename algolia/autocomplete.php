@@ -211,7 +211,7 @@
 		});
 
 		// Setup dropdown menus
-		jQuery("input[name='s']").each(function(i) {
+		jQuery("#algolia-auto-search").each(function(i) {
 			var $searchInput = jQuery(this);
 
 			var config = {
