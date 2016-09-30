@@ -23,7 +23,7 @@
 
   if(is_tax( 'lsb_tax_lsb_cat')) {
     $lsb_cat = get_queried_object();
-    include(locate_template('templates/lsb-cat-block.php'));
+    include(locate_template('templates/lsb-block-tax-descriptive.php'));
   }
 ?>
 
