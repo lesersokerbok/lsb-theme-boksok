@@ -5,16 +5,28 @@ $lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement,
 
 ?>
 
+<div class="block block-lsb-search">
+  <div class="container">
+      <div class="row app-align-center">
+        <div class="col-sm-12 col-md-8 col-md-offset-2">
+					<div class="input-group input-group-lg">
+						<input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+						<span class="input-group-btn">
+      				<button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
+    				</span>
+					</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
 
 	<div id="ais-wrapper">
 		<main id="ais-main">
-			<div id="algolia-search-box">
-				<svg class="search-icon" width="25" height="25" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M24.828 31.657a16.76 16.76 0 0 1-7.992 2.015C7.538 33.672 0 26.134 0 16.836 0 7.538 7.538 0 16.836 0c9.298 0 16.836 7.538 16.836 16.836 0 3.22-.905 6.23-2.475 8.79.288.18.56.395.81.645l5.985 5.986A4.54 4.54 0 0 1 38 38.673a4.535 4.535 0 0 1-6.417-.007l-5.986-5.986a4.545 4.545 0 0 1-.77-1.023zm-7.992-4.046c5.95 0 10.775-4.823 10.775-10.774 0-5.95-4.823-10.775-10.774-10.775-5.95 0-10.775 4.825-10.775 10.776 0 5.95 4.825 10.775 10.776 10.775z" fill-rule="evenodd"></path></svg>
-			</div>
 			<div id="algolia-refined-values"></div>
 			<div id="algolia-hits" style="margin-top: 5rem"></div>
-			<div id="algolia-pagination"></div>
 		</main>
 		<aside id="ais-facets">
 			<section class="ais-facets" id="facet-category"></section>
@@ -24,6 +36,12 @@ $lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement,
 			<section class="ais-facets" id="facet-illustrators"></section>
 			<section class="ais-facets" id="facet-topic"></section>
 		</aside>
+	</div>
+
+	<div class="row">
+		<div class="col-12 text-align-center">
+			<div id="algolia-pagination" class="text-xs-center"></div>
+		</div>
 	</div>
 
 </div>
@@ -113,7 +131,7 @@ $lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement,
 
 	<script type="text/javascript">
 		jQuery(function() {
-			if(jQuery('#algolia-search-box').length > 0) {
+			if(jQuery('#algolia-insta-search').length > 0) {
 				// Instantiate instantsearch.js
 				var search = instantsearch({
 					appId: algolia.application_id,
@@ -155,10 +173,9 @@ $lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement,
 				// Search box widget
 				search.addWidget(
 					instantsearch.widgets.searchBox({
-						container: '#algolia-search-box',
-						placeholder: 'Søk etter forfatter, tittel, tema, isbn ...',
+						container: '#algolia-insta-search',
+						placeholder: jQuery('#algolia-insta-search').attr('placeholder'),
 						wrapInput: false,
-						poweredBy: algolia.powered_by_enabled
 					})
 				);
 
@@ -183,7 +200,10 @@ $lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement,
 				// Pagination widget
 				search.addWidget(
 					instantsearch.widgets.pagination({
-						container: '#algolia-pagination'
+						container: '#algolia-pagination',
+						cssClasses: {
+							root: 'pagination' 
+						}
 					})
 				);
 
