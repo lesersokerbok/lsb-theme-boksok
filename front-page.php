@@ -2,8 +2,21 @@
   <div class="container">
       <div class="row app-align-center">
         <div class="col-sm-12 col-md-8 col-md-offset-2">
-          <form>
+          <form class="search-form">
             <div class="input-group input-group-lg">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span>Alle kategorier</span>
+                  <span class="caret"></span>
+                </button>
+                <?php 
+                  $args = array(
+                      "menu_class" => "dropdown-menu",
+                      "theme_location" => "frontpage_sections",
+                  );
+                  wp_nav_menu( $args );
+                ?>
+              </span>
               <input type="text" class="form-control" placeholder="Søk etter tittel, forfatter, tema ...">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Søk</button>
