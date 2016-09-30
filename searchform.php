@@ -40,7 +40,7 @@
 
 ?>
 
-<form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
+<form role="search" method="get" class="search-form">
   <div class="input-group input-group-lg">
     <?php if ( !empty($filter_options) ) : ?>
     <span class="input-group-btn">
@@ -59,7 +59,7 @@
       </ul>
     </span>
     <?php endif; ?>
-    <input type="search" class="form-control" name="s" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+    <input id="algolia-auto-search" class="form-control" name="s" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
     <span class="input-group-btn">
       <button class="btn btn-default" type="submit"><?php echo $submit_text ?></button>
     </span>

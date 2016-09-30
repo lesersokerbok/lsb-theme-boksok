@@ -45,6 +45,7 @@ var Roots = {
             $button_text.html(filter.term_label);
             $search_filter.val(filter.term_slug);
             $search_filter.attr('name', filter.taxonomy_name);  
+            $search_form.attr('action', filter.url);
           } else {
             $button_text.html($(this).html());
           }
