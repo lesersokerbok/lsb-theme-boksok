@@ -68,5 +68,5 @@
   <input id="algolia-filter" class="search-filter" type="hidden" 
           data-tax-term='<?php echo json_encode($filter_selection); ?>' 
           value="<?php echo $filter_selection['slug']; ?>" 
-          name="<?php echo $filter_selection['taxonomy']; ?>" />
+          name="<?php echo $filter_selection['taxonomy_name']; ?>" />
 </form>

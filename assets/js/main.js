@@ -35,14 +35,20 @@ var Roots = {
         var $button_text = $search_form.find('.dropdown-toggle').first().find('span').first();
         var $dropdown_menu = $search_form.find('.dropdown-menu').first();
         var $search_filter = $search_form.find('.search-filter').first();
+        algolia.autocomplete.filter = $search_filter.data('tax-term');
 
         $dropdown_menu.find('a').attr("href", "#");
         $dropdown_menu.find('a').click(function() {
           var filter = $(this).data('tax-term')
           algolia.autocomplete.filter = filter;
-          $search_filter.val(filter.term_slug);
-          $search_filter.attr('name', filter.taxonomy_name);
-          $button_text.html(filter.term_label);
+          if(filter) {
+            $button_text.html(filter.term_label);
+            $search_filter.val(filter.term_slug);
+            $search_filter.attr('name', filter.taxonomy_name);  
+          } else {
+            $button_text.html($(this).html());
+          }
+          
         });
       });
 

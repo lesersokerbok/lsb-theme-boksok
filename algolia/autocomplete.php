@@ -158,33 +158,54 @@
 		// init Algolia client
 		var client = algoliasearch(algolia.application_id, algolia.search_api_key);
 
+		var getFilter = function(index_name) {
+			if(index_name.indexOf('lsb_book') > -1 && algolia.autocomplete.filter && algolia.autocomplete.filter.hasOwnProperty('taxonomy')) {
+				return algolia.autocomplete.filter;
+			}
+		}
+
+		var filterString = function(index_name) {
+			var filter = getFilter(index_name);
+
+			if(filter) {
+				return "taxonomies." + filter.taxonomy + ":'" + filter.term_name + "'";
+			} else {
+				return "";
+			}
+		}
+
+		var filterLabelAddOn = function(index_name) {
+			var filter = getFilter(index_name);
+
+			if(filter) {
+				return " " + filter.term_name;
+			} else {
+				return "";
+			}
+		}
+
 		// setup default sources
 		var sources = [];
 		jQuery.each(algolia.autocomplete.sources, function(i, config) {
-			var filters = '';
-			var label_extra = '';
-			if(config['index_name'].indexOf('lsb_book') > -1) {
-				var tax_filter = jQuery("#algolia-filter").data('tax-term');
-				if( tax_filter.hasOwnProperty('taxonomy')) {
-					console.log(tax_filter);
-					filters = "taxonomies." + tax_filter.taxonomy + ":'" + tax_filter.term_name + "'";
-					label_extra = " i " + tax_filter.term_label;
-				}
-			}
 			sources.push({
-				source: autocomplete.sources.hits(client.initIndex(config['index_name']), {
-					hitsPerPage: config['max_suggestions'],
-					filters: filters,
-					attributesToSnippet: [
-						'lsb_review:10',
-						'lsb_quote:10',
-						'description: 10'
-					]
-				}),
+				source: function(query, callback) {
+					var hitsSource = autocomplete.sources.hits(client.initIndex(config['index_name']), {
+						hitsPerPage: config['max_suggestions'],
+						filters: filterString(config['index_name']),
+						attributesToSnippet: [
+							'lsb_review:10',
+							'lsb_quote:10',
+							'description: 10'
+						]
+					});
+					hitsSource(query, function(suggestions) {
+    				callback(suggestions);
+  				});
+				},
 				templates: {
 					header: function() {
 						return wp.template('autocomplete-header')({
-							label: config['label'] + label_extra
+							label: config['label'] + filterLabelAddOn(config['index_name'])
 						});
 					},
 					suggestion: function(suggestion) {
@@ -215,7 +236,7 @@
 			//Todo: Add empty template when we fixed https://github.com/algolia/autocomplete.js/issues/109
 
 			// Instantiate autocomplete.js
-			autocomplete($searchInput[0], config, sources)
+			var auto = autocomplete($searchInput[0], config, sources)
 			.on('autocomplete:selected', function(e, suggestion, datasetName) {
 				// Redirect the user when we detect a suggestion selection.
 				window.location.href = suggestion.permalink;
