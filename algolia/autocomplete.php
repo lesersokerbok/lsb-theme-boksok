@@ -1,3 +1,12 @@
+<script type="text/html" id="tmpl-autocomplete-empty">
+	<div class="autocomplete-header">
+		<div class="autocomplete-header-title">Ingen treff</div>
+		<div class="clear"></div>
+		<span class="suggestion-post-title">Ingen treff for {{{ data.query }}}</span>
+	</div>
+</script>
+
+
 <script type="text/html" id="tmpl-autocomplete-header">
 	<div class="autocomplete-header">
 		<div class="autocomplete-header-title">{{ data.label }}</div>
@@ -198,14 +207,12 @@
 				debug: algolia.debug,
 				hint: false,
 				openOnFocus: true,
-				templates: {},
+				templates: {
+					empty: wp.template('autocomplete-empty')
+				},
 				keyboardShortcuts: ['s']
 			};
 			//Todo: Add empty template when we fixed https://github.com/algolia/autocomplete.js/issues/109
-
-			if(algolia.powered_by_enabled) {
-				config.templates.footer = wp.template('autocomplete-footer');
-			}
 
 			// Instantiate autocomplete.js
 			autocomplete($searchInput[0], config, sources)
