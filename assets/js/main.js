@@ -30,26 +30,19 @@ var Roots = {
       });
 
       $('.search-form').each(function() {
+        
         var $search_form = $(this);
-        var $selection_text = $search_form.find('.dropdown-toggle').first().find('span').first();
+        var $button_text = $search_form.find('.dropdown-toggle').first().find('span').first();
         var $dropdown_menu = $search_form.find('.dropdown-menu').first();
-        $dropdown_menu.append($('<li>').addClass('divider').attr('role', 'separator'));
-        $dropdown_menu.append(
-          $('<li>').append(
-            $('<a>').attr('href','/user/messages').append(
-              $selection_text.html()
-          )));      
+        var $search_filter = $search_form.find('.search-filter').first();
 
-        $dropdown_menu.find('a').removeAttr("href");
-        $dropdown_menu.find('li').css("cursor","pointer");
-        $dropdown_menu.find('li').click(function() {
-          var lsb_cat_slug = $(this).attr('class');
-          if(lsb_cat_slug) {
-            lsb_cat_slug = lsb_cat_slug.replace('menu-', '');
-          }
-          var lsb_cat_name = $(this).find('a').first().html();
-          $selection_text.html(lsb_cat_name);
-          // Add slug to filter
+        $dropdown_menu.find('a').attr("href", "#");
+        $dropdown_menu.find('a').click(function() {
+          var filter = $(this).data('tax-term')
+          algolia.autocomplete.filter = filter;
+          $search_filter.val(filter.term_slug);
+          $search_filter.attr('name', filter.taxonomy_name);
+          $button_text.html(filter.term_label);
         });
       });
 
