@@ -1,12 +1,3 @@
-<script type="text/html" id="tmpl-autocomplete-empty">
-	<div class="autocomplete-header">
-		<div class="autocomplete-header-title">Ingen treff</div>
-		<div class="clear"></div>
-		<span class="suggestion-post-title">Ingen treff for {{{ data.query }}}</span>
-	</div>
-</script>
-
-
 <script type="text/html" id="tmpl-autocomplete-header">
 	<div class="autocomplete-header">
 		<div class="autocomplete-header-title">{{ data.label }}</div>
@@ -47,12 +38,16 @@
 
 			if ( data._highlightResult.post_title.matchedWords.length > 0 || relevant_creators.length > 0 ) {
 				creators = jQuery.unique(creators);
-				relevant_content = '<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
+				if(creators.length > 1) {
+					relevant_content = '<span class="icon icon-users" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
+				} else {
+					relevant_content = '<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
+				}
 			} else if ( relevant_taxonomies.length > 0 ) {
 				relevant_taxonomies = jQuery.unique(relevant_taxonomies);
-				relevant_content = '<span class="glyphicon glyphicon-tag" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + relevant_taxonomies.join(", ");
+				relevant_content = '<span style="color: black; opacity: 0.3">tema</span> ' + relevant_taxonomies.join(", ");
 			} else if ( data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) {
-				relevant_content = '<span class="glyphicon glyphicon-barcode" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + data._highlightResult.lsb_isbn.value;
+				relevant_content = '<span style="color: black; opacity: 0.3">isbn</span> ' + data._highlightResult.lsb_isbn.value;
 			} else {
 				for ( var snippet_index in data._snippetResult ) {
 					var snippet = data._snippetResult[snippet_index];
@@ -64,7 +59,7 @@
 			}
 
 			if (relevant_content === '') {
-				relevant_content = '<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
+				relevant_content = '<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
 			}
 
 			#>
@@ -137,18 +132,13 @@
 
 <script type="text/html" id="tmpl-autocomplete-footer">
 	<div class="autocomplete-footer">
-		<div class="autocomplete-footer-branding">
-			<?php esc_html_e( 'Powered by', 'algolia' ); ?>
-			<a href="#" class="algolia-powered-by-link" title="Algolia">
-				<img class="algolia-logo" src="https://www.algolia.com/assets/algolia128x40.png" alt="Algolia" />
-			</a>
-		</div>
+		&nbsp;
 	</div>
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-empty">
 	<div class="autocomplete-empty">
-		<?php esc_html_e( 'No results matched your query ', 'algolia' ); ?>
+		<?php _e( 'Ingen treff for ', 'algolia' ); ?>
 		<span class="empty-query">{{ data.query }}"</span>
 	</div>
 </script>
@@ -229,7 +219,8 @@
 				hint: false,
 				openOnFocus: true,
 				templates: {
-					empty: wp.template('autocomplete-empty')
+					empty: wp.template('autocomplete-empty'),
+					footer: wp.template('autocomplete-footer')
 				},
 				keyboardShortcuts: ['s']
 			};
