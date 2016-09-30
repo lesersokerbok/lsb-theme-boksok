@@ -69,13 +69,13 @@ $lsb_cat_refinement = TaxonomyUtil::get_term_name_from_slug($lsb_cat_refinement,
 
 					<# for ( var creator_index in creators ) { #>
 						<span class="ais-hits--tag">
-							<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: black; opacity: 0.3; font-size: 90%"></span>
+							<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span>
 							{{{ creators[creator_index] }}}
 						</span>
 					<# } #>
 					<# if (  data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) { #>
 						<span class="ais-hits--tag">
-							<span class="glyphicon glyphicon-barcode" aria-hidden="true" style="color: black; opacity: 0.3; font-size: 90%"></span>
+							<span style="color: black; opacity: 0.3; font-size: 90%">isbn</span>
 							{{{ data._highlightResult.lsb_isbn.value }}}
 						</span>
 					<# } #>
