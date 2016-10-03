@@ -1,0 +1,42 @@
+.algolia-autocomplete {
+  .form-control {
+    .input-lg();
+  }
+
+  &:not(:first-child):not(:last-child) {
+    .form-control {
+      border-radius: 0;
+    }
+  }
+}
+
+.block-lsb-search {
+
+  body:not(.tax-lsb_tax_lsb_cat) & {
+    .block-lsb-solid-primary;
+  }
+
+  body.term-litt-a-lese & {
+    .block-lsb-solid-purple;
+  }
+
+  body.term-enkelt-innhold & {
+    .block-lsb-solid-green;
+  }
+
+  body.term-storskrift & {
+    .block-lsb-solid-yellow;
+  }
+
+  body.term-punktskrift-folebilder & {
+    .block-lsb-solid-orange;
+  }
+
+  body.term-tegnsprak-nmt & {
+    .block-lsb-solid-red;
+  }
+
+  body.term-bliss-piktogram & {
+    .block-lsb-solid-blue;
+  }
+}

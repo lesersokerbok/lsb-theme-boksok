@@ -11,7 +11,7 @@
       get_template_part('templates/site-header');
     ?>
         
-    <main role="main">
+    <main class="main" role="main">
       <?php include roots_template_path(); ?>
     </main><!-- /.main -->
 
@@ -21,9 +21,8 @@
         if(is_tax( 'lsb_tax_lsb_cat')) {
           $lsb_cat = get_queried_object();
           include(locate_template('templates/lsb-block-tax-descriptive.php'));
-        } else {
-          include(locate_template('templates/boksok-description.php'));
         }
+        include(locate_template('templates/boksok-description.php'));
       ?>
 
     </aside>

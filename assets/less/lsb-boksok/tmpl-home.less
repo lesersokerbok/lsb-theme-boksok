@@ -1,0 +1,88 @@
+// Overrides
+aside .block-lsb-cat.lsb-cat-boksok {
+    .row {
+      min-height: 0;
+    }
+  }
+
+// COLOR
+body.home .main .block-lsb-cat:nth-child(even),
+aside .block-lsb-cat {
+
+  &.lsb-cat-boksok {
+    .block-lsb-solid-primary;
+    .row {
+      align-items: center;
+    }
+  }
+
+  &.lsb-cat-litt-a-lese {
+    .block-lsb-solid-purple;
+  }
+
+  &.lsb-cat-enkelt-innhold {
+    .block-lsb-solid-green;
+  }
+
+  &.lsb-cat-storskrift {
+    .block-lsb-solid-yellow;
+  }
+
+  &.lsb-cat-punktskrift-folebilder {
+    .block-lsb-solid-orange;
+  }
+
+  &.lsb-cat-tegnsprak-nmt {
+    .block-lsb-solid-red;
+  }
+
+  &.lsb-cat-bliss-piktogram {
+    .block-lsb-solid-blue;
+  }
+ 
+}
+
+// Rules for regular blocks
+
+body.home .main .block-lsb-cat:nth-child(odd) {
+
+  &.lsb-cat-litt-a-lese {
+    .block-lsb-purple;
+  }
+
+  &.lsb-cat-enkelt-innhold {
+    .block-lsb-green;
+  }
+
+  &.lsb-cat-storskrift {
+    .block-lsb-yellow;
+  }
+
+  &.lsb-cat-punktskrift-folebilder {
+    .block-lsb-orange;
+  }
+
+  &.lsb-cat-tegnsprak-nmt {
+    .block-lsb-red;
+  }
+
+  &.lsb-cat-bliss-piktogram {
+    .block-lsb-blue;
+  }
+}
+
+// ORDER
+body.home .main .block-lsb-cat:nth-child(odd) {
+
+  .col-sm-5 {
+    order: 3;
+  }
+
+  .col-sm-1 {
+    order: 2;
+  }
+
+  .col-sm-6 {
+    order: 1;
+  }
+}

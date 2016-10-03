@@ -1,9 +1,8 @@
  <div class="block block-lsb-search">
   <div class="container">
-      <div class="row app-align-center">
-        <div class="col-sm-12 col-md-8 col-md-offset-2">
-          <?php get_search_form() ?>
-        </div>
+    <div class="row app-align-center">
+      <div class="col-sm-12 col-md-8 col-md-offset-2">
+        <?php get_search_form() ?>
       </div>
     </div>
   </div>

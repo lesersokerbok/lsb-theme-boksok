@@ -6,8 +6,12 @@
   letter-spacing: .15em;
 }
 
-/* general btn overrides */
 .btn-lg {
+  font-size: 18px;
+}
+
+/* general btn overrides */
+/* .btn-lg {
   font-size: 18px;
 }
 .btn-lg:not(.btn-block) {
@@ -17,82 +21,17 @@
   .btn-lg:not(.btn-block) {
     width: auto;
   }
-}
+} */
 
 @import "./lsb-boksok/navbar.less";
 @import "./lsb-boksok/blocks.less";
 @import "./lsb-boksok/cover.less";
+@import "./lsb-boksok/search.less";
 
-.algolia-autocomplete {
-  .form-control {
-    .input-lg();
-  }
+@import "./lsb-boksok/tmpl-home.less";
+@import "./lsb-boksok/tmpl-taxonomy.less";
 
-  &:not(:first-child):not(:last-child) {
-    .form-control {
-      border-radius: 0;
-    }
-  }
-}
-
-.navbar {
-
-  body:not(.tax-lsb_tax_lsb_cat) & {
-    .navbar-primary;
-  }
-
-  body.term-litt-a-lese & {
-    .navbar-purple;
-  }
-
-  body.term-enkelt-innhold & {
-    .navbar-green;
-  }
-
-  body.term-storskrift & {
-    .navbar-yellow;
-  }
-
-  body.term-punktskrift-folebilder & {
-    .navbar-orange;
-  }
-
-  body.term-tegnsprak-nmt & {
-    .navbar-red;
-  }
-
-  body.term-bliss-piktogram & {
-    .navbar-blue;
-  }
-}
-
-.block-lsb-search {
-
-  body:not(.tax-lsb_tax_lsb_cat) & {
-    .block-lsb-solid-primary;
-  }
-
-  body.term-litt-a-lese & {
-    .block-lsb-solid-purple;
-  }
-
-  body.term-enkelt-innhold & {
-    .block-lsb-solid-green;
-  }
-
-  body.term-storskrift & {
-    .block-lsb-solid-yellow;
-  }
-
-  body.term-punktskrift-folebilder & {
-    .block-lsb-solid-orange;
-  }
-
-  body.term-tegnsprak-nmt & {
-    .block-lsb-solid-red;
-  }
-
-  body.term-bliss-piktogram & {
-    .block-lsb-solid-blue;
-  }
+.block-site-footer {
+  padding-top: @spacer*3;
+  padding-bottom: @spacer;
 }

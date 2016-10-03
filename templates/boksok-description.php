@@ -1,4 +1,4 @@
-<section class="block block-lsb-cat-footer lsb-cat-boksok">
+<section class="block block-lsb-cat lsb-cat-boksok">
   <div class="container">
     <div class="row app-align-center">
 
@@ -21,7 +21,7 @@ er mer tilgjengelige enn vanlig.</p>
 
       <div class="col-sm-1 hidden-xs"></div>
 
-      <div class="col-sm-5 hidden-xs">
+      <div class="col-sm-5 lsb-col-center hidden-xs">
         <!-- 16:9 aspect ratio -->
         <div class="embed-responsive embed-responsive-16by9">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/EpqRZR8t3z8" frameborder="0" allowfullscreen></iframe>

@@ -48,6 +48,41 @@
       width: 50%;
     }
   }
+
+  .btn {
+    padding: 12px 50px;
+  }
+}
+
+.block-lsb-cover-grid {
+  position: absolute;
+  left: @grid-gutter-width/2;
+  right: @grid-gutter-width/2;
+
+  img {
+    height: 0;
+    width: 0;
+  }
+}
+
+.block-lsb-selection {
+  margin: 0 -0.5rem;
+  .btn {
+    margin: 0.25em;
+    float: left;
+    .btn-lg;
+  }
+}
+
+// Blcok Modifiers
+.block {
+  .lsb-col-center {
+    align-self: center;
+  }
+
+  .lsb-col-move-up {
+    margin-top: -40px;
+  }
 }
 
 // Solid blocks
@@ -157,154 +192,6 @@
   .row {
     display: flex;
     align-items: stretch;
+    min-height: 250px;
   }
-
-  .cover-grid {
-    margin-top: -@spacer * 2;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: @grid-gutter-width/2;
-    right: @grid-gutter-width/2;
-
-    img {
-      height: 0;
-      width: 0;
-    }
-  }
-}
-
-.block-lsb-cat:nth-child(even),
-.block-lsb-cat:last-child {
-
-  &.lsb-cat-litt-a-lese {
-    .block-lsb-solid-purple;
-  }
-
-  &.lsb-cat-enkelt-innhold {
-    .block-lsb-solid-green;
-  }
-
-  &.lsb-cat-storskrift {
-    .block-lsb-solid-yellow;
-  }
-
-  &.lsb-cat-punktskrift-folebilder {
-    .block-lsb-solid-orange;
-  }
-
-  &.lsb-cat-tegnsprak-nmt {
-    .block-lsb-solid-red;
-  }
-
-  &.lsb-cat-bliss-piktogram {
-    .block-lsb-solid-blue;
-  }
- 
-}
-
-.block-lsb-cat:nth-child(odd):not(:last-child) {
-
-  .col-sm-5 {
-    order: 3;
-  }
-
-  .col-sm-1 {
-    order: 2;
-  }
-
-  .col-sm-6 {
-    order: 1;
-  }
-
-  &.lsb-cat-litt-a-lese {
-    .block-lsb-purple;
-  }
-
-  &.lsb-cat-enkelt-innhold {
-    .block-lsb-green;
-  }
-
-  &.lsb-cat-storskrift {
-    .block-lsb-yellow;
-  }
-
-  &.lsb-cat-punktskrift-folebilder {
-    .block-lsb-orange;
-  }
-
-  &.lsb-cat-tegnsprak-nmt {
-    .block-lsb-red;
-  }
-
-  &.lsb-cat-bliss-piktogram {
-    .block-lsb-blue;
-  }
-}
-
-.block-lsb-book-shelf {
-
-  padding: @spacer*3;
-  
-  &:nth-child(even) {
-    background: @gray-lighter;
-  }
-
-  .cover-grid {
-    overflow-y: hidden;
-    overflow-x: scroll;
-    white-space: nowrap;
-
-    img {
-      height: 200px;
-      width: auto;
-    }
-  }
-}
-
-
-// Footer
-
-.block-lsb-cat-footer {
-
-  padding-bottom: @spacer*3;
-
-  .row {
-    display: flex;
-    align-items: center; 
-  }
-
-  &.lsb-cat-boksok {
-    .block-lsb-solid-primary;
-  }
-
-  &.lsb-cat-litt-a-lese {
-    .block-lsb-solid-purple;
-  }
-
-  &.lsb-cat-enkelt-innhold {
-    .block-lsb-solid-green;
-  }
-
-  &.lsb-cat-storskrift {
-    .block-lsb-solid-yellow;
-  }
-
-  &.lsb-cat-punktskrift-folebilder {
-    .block-lsb-solid-orange;
-  }
-
-  &.lsb-cat-tegnsprak-nmt {
-    .block-lsb-solid-red;
-  }
-
-  &.lsb-cat-bliss-piktogram {
-    .block-lsb-solid-blue;
-  }
- 
-}
-
-.block-site-footer {
-  padding-top: @spacer*3;
-  padding-bottom: @spacer;
 }
