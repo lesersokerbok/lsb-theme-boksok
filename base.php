@@ -19,7 +19,9 @@
 
       <?php 
         if(is_tax( 'lsb_tax_lsb_cat')) {
-          $lsb_cat = get_queried_object();
+          $lsb_block_args = [
+            'block_tax_term' => get_queried_object()
+          ];
           include(locate_template('templates/lsb-block-tax-descriptive.php'));
         }
         include(locate_template('templates/boksok-description.php'));

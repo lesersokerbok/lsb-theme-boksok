@@ -1,4 +1,4 @@
- <div class="block block-lsb-search">
+ <div class="block block-lsb-header">
   <div class="container">
     <div class="row app-align-center">
       <div class="col-sm-12 col-md-8 col-md-offset-2">
@@ -16,8 +16,9 @@
 
   foreach ($frontpage_sections as $frontpage_section) { 
     if($frontpage_section->type === "taxonomy") {
-      $lsb_cat = get_term( $frontpage_section->object_id, $frontpage_section->object );
-      $lsb_cat->url = $frontpage_section->url;
+      $lsb_block_args = [
+        'block_tax_term' => get_term( $frontpage_section->object_id, $frontpage_section->object )
+      ];
       include(locate_template('templates/lsb-block-tax-descriptive.php'));
     }
   }
