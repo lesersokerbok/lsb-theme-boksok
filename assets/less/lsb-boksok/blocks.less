@@ -38,15 +38,6 @@
     }
   }
 
-  p:first-child {
-    .h3;
-    .m-t-0;
-  }
-
-  p:not(:first-child) {
-    .lead;
-  }
-
   h2, h3, h4, h5, h6 {
     .h5;
     .m-t-md;
@@ -201,8 +192,14 @@
 .block-lsb-books {
   padding: 50px 0;
 
-  .row >div {
-    .m-b-md;
+  .block-lsb-description {
+    background: @gray-lighter;
+  }
+
+  .row {
+    >div {
+      .m-b-md;
+    }
   }
 }
 
@@ -226,6 +223,17 @@
 
   .block-lsb-heading {
     .m-t-0;
+  }
+
+  .block-lsb-description {
+    p:first-child {
+      .h3;
+      .m-t-0;
+    }
+
+    p:not(:first-child) {
+      .lead;
+    }
   }
 
   .block-lsb-selection {
