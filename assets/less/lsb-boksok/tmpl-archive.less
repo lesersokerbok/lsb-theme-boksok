@@ -1,0 +1,44 @@
+// COLOR
+
+body.tax-lsb_tax_lsb_cat .main .block-lsb-cat:nth-child(even) {
+  background: @gray-lighter;
+}
+
+body.archive .block-lsb-header {
+  padding: 20px 0;
+}
+
+.lsb-tags {
+  display: flex;
+  margin: 0 -2px;
+  overflow: hidden;
+  font-size: 12px;
+
+  .lsb-tag {
+    margin: 2px;
+    display: inline-block;
+    white-space: nowrap;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .lsb-tag-label {
+    opacity: 0.6;
+  }
+
+  &.lsb-tags-bold {
+    .lsb-tag {
+      background: @gray-lighter;
+      padding: 5px 10px;
+      border-radius: @btn-border-radius-small;
+
+      .icon {
+        margin-right: 2px;
+        margin-left: -3px;
+      }
+    }
+  }
+}
+

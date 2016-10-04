@@ -14,9 +14,9 @@
         <li class="text-uppercase">
           <a class="p-l-0 p-r-0" href="<?php echo home_url(); ?>">Boksøk</span></a>
         </li>
-        <?php if(is_tax( 'lsb_tax_lsb_cat')) : ?>
+        <?php if(is_tax()) : ?>
         <li>
-          <a href="<? echo get_term_link(get_queried_object()) ?>"><?php single_cat_title() ?></span></a>
+          <a href="<? echo get_term_link(get_queried_object()) ?>"><?php single_term_title() ?></span></a>
         </li>
         <?php endif; ?>
       </ul>
@@ -24,7 +24,7 @@
 
     <nav class="navbar-collapse collapse text-uppercase">
       <ul class="nav navbar-nav navbar-right">
-        <li >
+        <li>
           <a href="/index.html">Ressurser</a>
         </li>
         <li >

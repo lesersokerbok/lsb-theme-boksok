@@ -1,3 +1,13 @@
+// Override
+
+.block {
+  .row {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+}
+
 // Block content
 
 .block-lsb-heading {
@@ -5,17 +15,14 @@
   .h6;
   .header-uppercase;
 
-  .m-t-0;
-
   a {
     color: inherit;
-    border-bottom: 1px solid @text-color;
+    text-decoration: underline;
 
     &:hover,
     &:active,
     &:focus {    
       text-decoration: none;
-      border: none;
     }
   }
 }
@@ -72,10 +79,11 @@
 
 .block-lsb-selection {
   margin: 0 -0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+
   .btn {
     margin: 0.25em;
-    float: left;
-    .btn-lg;
   }
 }
 
@@ -94,12 +102,7 @@
 
 .block-lsb-solid(@color) {
   .block-lsb-heading {
-
     opacity: 0.6;
-
-    a {
-      border-color: white;
-    }
   }
   background-color: @color;
 
@@ -125,9 +128,6 @@
 
 .block-lsb-solid-yellow {
   .block-lsb-solid(@brand-yellow);
-  .block-lsb-heading a {
-    border-color: @text-color;
-  }
   .block-lsb-description .btn {
     color: @text-color;
   }
@@ -153,7 +153,6 @@
     color: @color;
 
     a {
-      border-color: @color;
       opacity: 1.0;
     }
   }
@@ -193,6 +192,45 @@
   .block-lsb(@brand-blue);
 }
 
+// Header blocks 
+.block-lsb-header {
+  padding: 20 0;
+  text-align: center;
+  .block-lsb-selection {
+    justify-content: center;
+  }
+}
+
+// Books blocks 
+.block-lsb-books {
+  padding: 50px 0;
+
+  .block-lsb-heading {
+    .m-t-0;
+    .m-b-0;
+  }
+
+  .lsb-book {
+    .m-b-md;
+
+    .lsb-tags {
+      margin-top: 7px;
+      margin-bottom: 5px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  img {
+    .pull-right;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 // Search block
 
 .block-lsb-search {
@@ -208,8 +246,16 @@
   overflow: hidden;
 
   .row {
-    display: flex;
-    align-items: stretch;
     min-height: 250px;
+  }
+
+  .block-lsb-heading {
+    .m-t-0;
+  }
+
+  .block-lsb-selection {
+    .btn {
+      .btn-lg;
+    }
   }
 }
