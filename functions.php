@@ -26,7 +26,8 @@ $roots_includes = array(
   'lib/lsb-mime-types.php', // Custom upload mime types
   'lib/rewrite.php',        // Custom rewrite rules
   'lib/feed-util.php',      // Custom rss rules
-  'lib/algolia.php'         // Algolia customization
+  'lib/algolia.php',         // Algolia customization
+  'lib/book.php'         // Algolia customization
 );
 
 foreach ($roots_includes as $file) {

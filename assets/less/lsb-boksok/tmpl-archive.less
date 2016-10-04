@@ -73,11 +73,15 @@ body.archive .block-lsb-header {
   overflow: hidden;
   font-size: 12px;
   width: 100%;
-  white-space: nowrap;
+
+  +.lsb-tags {
+    margin-top: -10.5px;
+  }
 
   .lsb-tag {
-    display: inline-block;
-    white-space: nowrap;
+    &:not(:last-child):after {
+      content: ",";
+    }
 
     a {
       color: inherit;
@@ -89,14 +93,23 @@ body.archive .block-lsb-header {
   }
 
   &.lsb-tags-bold {
+    white-space: nowrap;
+
     .lsb-tag {
+      display: inline-block;
       background: white;
       padding: 5px 10px;
       border-radius: @btn-border-radius-small;
+      white-space: nowrap;
+
+      &:after {
+        content: "";
+      }
 
       .icon {
         margin-right: 2px;
         margin-left: -3px;
+        opacity: 0.3;
       }
     }
   }
