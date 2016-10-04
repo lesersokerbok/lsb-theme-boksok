@@ -10,6 +10,12 @@
   font-size: 18px;
 }
 
+@media (max-width: @container-lg) {
+  .row >div {
+    width: 100%;
+  }
+}
+
 /* general btn overrides */
 /* .btn-lg {
   font-size: 18px;
@@ -30,6 +36,12 @@
 
 @import "./lsb-boksok/tmpl-home.less";
 @import "./lsb-boksok/tmpl-archive.less";
+
+img {
+  &:hover {
+    opacity: 0.8;
+  }
+}
 
 .navbar {
 

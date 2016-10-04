@@ -27,7 +27,7 @@
   <div class="container">
     <div class="row">
       <?php  $i = 0; while (have_posts()) : the_post(); ?>
-        <div class="col-sm-6 col-md-5 <?= ($i % 2 != 0) ? 'col-md-offset-2' : ''; ?> lsb-book">
+        <div class="col-md-6">
           <?php
             include(locate_template('templates/block-parts/book.php'));
           ?> 
