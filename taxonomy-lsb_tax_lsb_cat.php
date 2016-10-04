@@ -46,8 +46,8 @@
     <div class="row">
       <div class="col-sm-<?= $section_blocks[0]['col_count'] ?> <?= $section_blocks[0]['classes']; ?> hidden-xs">
         <?php
-          $lsb_block_part_args = $section_blocks[0];
-          include(locate_template('templates/block-parts/' . $section_blocks[0]['template'] .'.php')); 
+          $lsb_partials_args = $section_blocks[0];
+          include(locate_template('templates/partials/' . $section_blocks[0]['template'] .'.php')); 
         ?>
       </div>
 
@@ -56,8 +56,8 @@
 
       <div class="col-sm-<?= $section_blocks[1]['col_count'] ?> <?= $section_blocks[1]['classes']; ?> hidden-xs">
         <?php
-          $lsb_block_part_args = $section_blocks[1];
-          include(locate_template('templates/block-parts/' . $section_blocks[1]['template'] .'.php')); 
+          $lsb_partials_args = $section_blocks[1];
+          include(locate_template('templates/partials/' . $section_blocks[1]['template'] .'.php')); 
         ?>
       </div>
     </div>

@@ -1,8 +1,8 @@
 <?php 
 
-  $buttons_title = $lsb_block_part_args['title'];
-  $buttons_description = $lsb_block_part_args['description'];
-  $buttons_terms = $lsb_block_part_args['button_terms'];
+  $buttons_title = $lsb_partials_args['title'];
+  $buttons_description = $lsb_partials_args['description'];
+  $buttons_terms = $lsb_partials_args['button_terms'];
 
 ?>
 

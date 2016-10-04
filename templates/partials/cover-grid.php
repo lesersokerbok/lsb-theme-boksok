@@ -1,7 +1,7 @@
 <?php
 
-  $cover_grid_title = $lsb_block_part_args['title'];
-  $cover_grid_tax_term = $lsb_block_part_args['cover_grid_tax_term'];
+  $cover_grid_title = $lsb_partials_args['title'];
+  $cover_grid_tax_term = $lsb_partials_args['cover_grid_tax_term'];
 
   $args = array(
     'posts_per_page' => 6,

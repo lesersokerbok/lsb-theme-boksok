@@ -10,10 +10,10 @@ $block_tax_term = $lsb_block_args['block_tax_term'];
 
       <div class="col-sm-5 lsb-col-move-up hidden-xs">
           <?php
-            $lsb_block_part_args = [
+            $lsb_partials_args = [
               'cover_grid_tax_term' => $block_tax_term
             ];
-            include(locate_template('templates/block-parts/cover-grid.php')); 
+            include(locate_template('templates/partials/cover-grid.php')); 
           ?>
       </div>
 
