@@ -55,4 +55,14 @@
     </div>
   </section>
 
+  <aside class="block block-lsb-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <?php get_template_part('templates/partials/library-status'); ?>
+        </div>
+      </div>
+    </div>
+  </aside>
+
 </article>
