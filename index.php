@@ -1,8 +1,8 @@
 <div class="block block-lsb-header">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 lsb-col-center lsb-tax-header">
-        <h1 class="block-lsb-heading"><?= roots_title() ?></h1>
+      <div class="col-sm-12 lsb-col-center text-xs-center">
+        <h1 class="lsb-heading"><?= roots_title() ?></h1>
       </div>
     </div>
   </div>

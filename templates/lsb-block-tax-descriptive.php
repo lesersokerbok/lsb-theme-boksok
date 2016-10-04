@@ -21,7 +21,7 @@ $block_tax_term = $lsb_block_args['block_tax_term'];
       </div>
 
       <div class="col-sm-6">
-        <h1 class="block-lsb-heading"><a href="<?= get_term_link($block_tax_term) ?>"><?php echo $block_tax_term->name ?></a></h1>
+        <h1 class="lsb-heading-small"><a href="<?= get_term_link($block_tax_term) ?>"><?php echo $block_tax_term->name ?></a></h1>
         <div class="block-lsb-description">
           <?php if( !empty(get_field('lsb_acf_tax_full_description', $block_tax_term)) ) : ?>
             <?= get_field('lsb_acf_tax_full_description', $block_tax_term ); ?>

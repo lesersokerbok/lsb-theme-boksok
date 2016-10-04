@@ -7,7 +7,7 @@
 ?>
 
 <?php if( $buttons_title ) : ?>
-<h1 class="block-lsb-heading"><?= $buttons_title ?></h1>
+<h1 class="lsb-heading-small"><?= $buttons_title ?></h1>
 <?php endif ?>
 <?= $buttons_description ?>
 <div class="block-lsb-selection">

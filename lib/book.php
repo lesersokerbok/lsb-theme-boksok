@@ -1,19 +1,19 @@
 <?php
 
-function make_tags($terms, $before, $container_class) {
+function make_tags($terms, $args) {
   if(empty($terms)) {
     return;
   }
 
   $tags = [];
 
-  if(!empty($before)) {
-    $tags[] = '<span class="lsb-tag-label">' . $before . '</span>';
+  if(!empty($args['label'])) {
+    $tags[] = '<span class="lsb-tag lsb-tag-label">' . $args['label'] . '</span>';
   }
 
   foreach ( $terms as $term ) {
     $link = get_term_link( $term, $term->taxonomy );
-    $tag = '<span class="lsb-tag">';
+    $tag = '<span class="lsb-tag ' . $args['tag_class'] . '">';
     if($term->taxonomy == 'lsb_tax_author' || $term->taxonomy == 'lsb_tax_illustrator' || $term->taxonomy == 'lsb_tax_translator') {
       $tag .= '<span class="icon icon-user"></span>';
     }
@@ -22,7 +22,7 @@ function make_tags($terms, $before, $container_class) {
     $tags[] = $tag;
   }
 
-  return '<p class="lsb-tags ' . $container_class . '">' . join( ' ', $tags ) . '</p>';
+  return '<span class="' . $args['container_class'] . '">' . join( ' ', $tags ) . '</span>' . $args['after'];
 } 
 
 function get_lsb_book_creators($book) {
@@ -79,4 +79,27 @@ function get_the_lsb_book_thumbnail($book) {
   $book_thumbnail_url = $book_thumbnail_data[0];
   $book_tumbnail_dimension = ( $book_thumbnail_data[1] > $book_thumbnail_data[2] ) ? 'landscape' : 'portrait';
   return get_the_post_thumbnail($book, 'thumbnail', ['class' => $book_tumbnail_dimension]);
+}
+
+function get_the_lsb_book_cover($book) {
+  $book_thumbnail_data = wp_get_attachment_image_src( get_post_thumbnail_id( $book->ID ), 'large');
+  $book_thumbnail_url = $book_thumbnail_data[0];
+  $book_tumbnail_dimension = ( $book_thumbnail_data[1] > $book_thumbnail_data[2] ) ? 'landscape' : 'portrait';
+  return get_the_post_thumbnail($book, 'large', ['class' => $book_tumbnail_dimension]);
+}
+
+function has_lsb_book_review($book) {
+  return !empty( get_the_lsb_book_review($book) );
+} 
+
+function get_the_lsb_book_review($book) {
+  return get_field('lsb_review', $book);
+}
+
+function has_lsb_book_quote($book) {
+  return !empty( get_the_lsb_book_quote($book) );
+} 
+
+function get_the_lsb_book_quote($book) {
+  return get_field('lsb_quote', $book);
 }

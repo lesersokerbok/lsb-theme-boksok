@@ -40,7 +40,7 @@
 ?>
 
 <?php if( $cover_grid_title ) : ?>
-<h1 class="block-lsb-heading"><a href="<?= get_term_link($cover_grid_tax_term) ?>"><?= $cover_grid_title ?></a></h1>
+<h1 class="lsb-heading-small"><a href="<?= get_term_link($cover_grid_tax_term) ?>"><?= $cover_grid_title ?></a></h1>
 <?php endif ?>
 <div class="block-lsb-cover-grid" data-grid="images">
   <?php foreach($books as $book): ?>

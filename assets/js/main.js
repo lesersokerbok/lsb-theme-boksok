@@ -110,6 +110,25 @@ var Roots = {
     init: function() {
       // JavaScript to be fired on a book page
 
+      $('.read-more').each(function() {
+        var $read_more= $(this);
+        var $parent = $read_more.parent();
+        var $button = $read_more.find('.btn').first();
+        var $closed_text = $button.html();
+        var $opned_text = $button.data('open-text');
+        $button.click(function() {
+          $parent.toggleClass('open');
+          $read_more.toggleClass('open');
+          $button.blur();
+
+          if($parent.hasClass('open')) {
+            $button.html($opned_text);
+          } else {
+            $button.html($closed_text);
+          }
+        });
+      });
+
       $('.library-status select').change(function() {
         var selectedCounty = $(this).val();
 

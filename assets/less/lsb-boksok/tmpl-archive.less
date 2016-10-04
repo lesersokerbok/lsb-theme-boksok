@@ -4,20 +4,60 @@ body.tax-lsb_tax_lsb_cat .main .block-lsb-cat:nth-child(even) {
   background: @gray-lighter;
 }
 
-body.archive .block-lsb-header {
+body.archive .block-lsb-header,
+body.single .block-lsb-header {
   padding: 20px 0;
+}
+
+.read-more {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: white;
+  .p-t-lg;
+  background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,1));
+  &.open {
+    position: relative;
+    .p-t-md;
+  }
 }
 
 .lsb-tax-description {
   padding: 0 2rem;
 }
 
-.lsb-book {
+.lsb_book.full {
+
+  .lsb-book-cover {
+    margin-top: -200px;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .lsb-book-content {
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    &.open {
+      position: relative;
+    }
+  }
+}
+
+.lsb_book.summary {
   background: @gray-lighter;
   border-radius: @btn-border-radius-large;
   padding: 2rem;
   height: 100%;
   display: flex;
+
+  .lsb-tags-bold {
+    white-space: nowrap;
+  }
 
   .lsb-book-thumbnail {
     width: 34%;
@@ -68,50 +108,3 @@ body.archive .block-lsb-header {
     overflow: hidden;
   }
 }
-
-.lsb-tags {
-  overflow: hidden;
-  font-size: 12px;
-  width: 100%;
-
-  +.lsb-tags {
-    margin-top: -10.5px;
-  }
-
-  .lsb-tag {
-    &:not(:last-child):after {
-      content: ",";
-    }
-
-    a {
-      color: inherit;
-    }
-  }
-
-  .lsb-tag-label {
-    opacity: 0.6;
-  }
-
-  &.lsb-tags-bold {
-    white-space: nowrap;
-
-    .lsb-tag {
-      display: inline-block;
-      background: white;
-      padding: 5px 10px;
-      border-radius: @btn-border-radius-small;
-      white-space: nowrap;
-
-      &:after {
-        content: "";
-      }
-
-      .icon {
-        margin-right: 2px;
-        margin-left: -3px;
-        opacity: 0.3;
-      }
-    }
-  }
-}
-
