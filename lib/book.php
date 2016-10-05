@@ -25,6 +25,21 @@ function make_tags($terms, $args) {
   return '<span class="' . $args['container_class'] . '">' . join( ' ', $tags ) . '</span>' . $args['after'];
 } 
 
+function make_meta($meta, $args) {
+  if(empty($meta)) {
+    return;
+  }
+
+  $tags = [];
+
+  if(!empty($args['label'])) {
+    $tags[] = '<span class="lsb-tag lsb-tag-label">' . $args['label'] . '</span>';
+  }
+  $tags[] = '<span class="lsb-tag">' . $meta . '</span>';
+
+  return '<span class="' . $args['container_class'] . '">' . join( ' ', $tags ) . '</span>' . $args['after'];
+}
+
 function get_lsb_book_creators($book) {
   $terms = [];
   if(get_the_terms($book, 'lsb_tax_author')) {
@@ -67,6 +82,50 @@ function get_lsb_book_audience($book) {
     $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_audience'));
   }
   return $terms;
+}
+
+function get_lsb_book_publishers($book) {
+  $terms = [];
+  if(get_the_terms($book, 'lsb_tax_publisher')) {
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_publisher'));
+  }
+  return $terms;
+}
+
+function get_lsb_book_genres($book) {
+  $terms = [];
+  if(get_the_terms($book, 'lsb_tax_genre')) {
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_genre'));
+  }
+  return $terms;
+}
+
+function get_lsb_book_categories($book) {
+  $terms = [];
+  if(get_the_terms($book, 'lsb_tax_lsb_cat')) {
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_lsb_cat'));
+  }
+  return $terms;
+}
+
+function get_lsb_book_language($book) {
+  $terms = [];
+  if(get_the_terms($book, 'lsb_tax_language')) {
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_language'));
+  }
+  return $terms;
+}
+
+function get_lsb_book_isbn($book) {
+  return get_field('lsb_isbn', $book);
+}
+
+function get_lsb_book_pages($book) {
+  return get_field('lsb_pages', $book);
+}
+
+function get_lsb_book_year($book) {
+  return get_field('lsb_published_year', $book);
 }
 
 function get_the_lsb_book_thumbnail_url() {
