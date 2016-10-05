@@ -7,10 +7,14 @@
   <header class="block block-lsb-header">
     <div class="container">
       <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-12">
           <h1 class="lsb-heading">
             <?php echo roots_title(); ?>
           </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
           <p class="m-t">
             <?= make_tags(get_lsb_book_creators($book), [ 'tag_class' => 'lsb-tag-bold' ]) ?>
           </p>
@@ -49,9 +53,10 @@
           </div>
         </div>
         <div class="col-sm-6 col-sm-offset-1">
-          <div class="lsb-book-cover">
+          <div class="lsb-book-cover m-b-md">
             <?= get_the_lsb_book_cover($book) ?>
           </div>
+          <?php get_template_part('templates/partials/library-status'); ?>
         </div>
       </div>
     </div>
@@ -76,7 +81,7 @@
           </div>
         </div>
         <div class="col-sm-6 lsb-col-center">
-          <?php get_template_part('templates/partials/library-status'); ?>
+          
         </div>
       </div>
     </div>
