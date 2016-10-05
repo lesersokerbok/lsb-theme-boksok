@@ -129,7 +129,7 @@ var Roots = {
         });
       });
 
-      $('.library-status').each(function() {
+      $('.lsb-library-status').each(function() {
         $library_status = $(this);
         $library_select = $library_status.find('select').first();
 
@@ -138,11 +138,11 @@ var Roots = {
           console.log("Selected", selectedCounty);
           if(selectedCounty == 'none') {
             $library_status.removeClass('open');
-            $library_status.find('.county').removeClass('selected');
+            $library_status.find('.lsb-county').removeClass('selected');
           } else {
             $library_status.addClass('open');
-            $library_status.find('.county').removeClass('selected');
-            $library_status.find('.county.' + selectedCounty).addClass('selected');
+            $library_status.find('.lsb-county').removeClass('selected');
+            $library_status.find('.lsb-county.' + selectedCounty).addClass('selected');
           }
         }); 
 

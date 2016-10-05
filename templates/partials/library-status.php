@@ -10,7 +10,7 @@ $counties = get_post_meta($book->ID, 'lsb_library_status', true);
 ?>
 
 <?php if( $counties ) : ?>
-  <table class="table library-status">
+  <table class="table lsb-library-status">
     <thead>
       <tr>
         <th colspan="2" class="text-xs-center">
@@ -30,7 +30,7 @@ $counties = get_post_meta($book->ID, 'lsb_library_status', true);
     </thead>
 
   <?php foreach( $counties as $key => $county_libraries ) : ?>
-    <tbody class="county <?php echo sanitize_title( $key ); ?>">
+    <tbody class="lsb-county <?php echo sanitize_title( $key ); ?>">
     <?php foreach( $county_libraries as $library ) : ?>
       <tr>
         <td>

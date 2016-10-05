@@ -18,12 +18,22 @@
 .lsb-xs-row-valign-center {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.lsb-sm-row-align-center {
-  @media (max-width: @container-sm) {
+.lsb-sm-row-valign-center {
+  @media (min-width: @container-sm) {
     display: flex;
     align-items: center; 
+    flex-wrap: wrap;
+  }
+}
+
+.lsb-sm-row-valign-stretch {
+  @media (min-width: @container-sm) {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
   }
 }
 

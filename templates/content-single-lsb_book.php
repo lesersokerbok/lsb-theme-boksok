@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-6 col-sm-5">
           <p class="m-t">
             <?= make_tags(get_lsb_book_creators($book), [ 'tag_class' => 'lsb-tag-bold' ]) ?>
           </p>
@@ -30,8 +30,11 @@
 
   <section class="block p-b-md p-t-md">
     <div class="container">
-      <div class="row">
+      <div class="row lsb-sm-row-valign-stretch">
         <div class="col-sm-5">
+          <div class="visible-xs-block lsb-book-cover m-b-md">
+            <?= get_the_lsb_book_cover($book) ?>
+          </div>
           <div class="lsb-book-content">
             <?php if( has_lsb_book_review( $book ) ) : ?>
               <h2 class="lsb-heading-small">
@@ -52,11 +55,10 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-sm-offset-1">
-          <div class="lsb-book-cover m-b-md">
+        <div class="hidden-xs col-sm-6 col-sm-offset-1">
+          <div class="lsb-book-cover">
             <?= get_the_lsb_book_cover($book) ?>
           </div>
-          <?php get_template_part('templates/partials/library-status'); ?>
         </div>
       </div>
     </div>
@@ -65,7 +67,7 @@
   <aside class="block p-b-md p-t-md">
     <div class="container">
       <div class="row">
-        <div class="col-sm-3 lsb-col-center">
+        <div class="col-xs-6 col-sm-3">
           <div class="small">
           <?= make_tags(get_lsb_book_publishers($book), [ 'label' => __('forlag', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
           <?= make_tags(get_lsb_book_genres($book), [ 'label' => __('sjanger', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
@@ -73,15 +75,15 @@
           <?= make_tags(get_lsb_book_language($book), [ 'label' => __('språk', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
           </div>
         </div>
-        <div class="col-sm-3 lsb-col-center">
+        <div class="col-xs-6 col-sm-3">
           <div class="small">
             <?= make_meta(get_lsb_book_isbn($book), [ 'label' => __('isbn: ', 'lsb-theme-boksok'), 'after' => '<br/>' ]) ?>
             <?= make_meta(get_lsb_book_pages($book), [ 'label' => __('antall sider: ', 'lsb-theme-boksok'), 'after' => '<br/>' ]) ?>
             <?= make_meta(get_lsb_book_year($book), [ 'label' => __('utgitt: ', 'lsb-theme-boksok'), 'after' => '<br/>' ]) ?>
           </div>
         </div>
-        <div class="col-sm-6 lsb-col-center">
-          
+        <div class="col-xs-12 col-sm-6">
+          <?php get_template_part('templates/partials/library-status'); ?>
         </div>
       </div>
     </div>
