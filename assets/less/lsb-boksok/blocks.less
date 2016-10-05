@@ -10,32 +10,6 @@
 
 // Block content
 
-.block-lsb-description {
-
-  a {
-    color: inherit;
-    font-weight: 400;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  h2, h3, h4, h5, h6 {
-    .h5;
-    .m-t-md;
-
-    +p {
-      font-size: @font-size-base !important;
-      width: 50%;
-    }
-  }
-
-  .btn {
-    padding: 12px 50px;
-  }
-}
-
 .block-lsb-cover-grid {
   position: absolute;
   left: @grid-gutter-width/2;
@@ -71,12 +45,12 @@
 // Solid blocks
 
 .block-lsb-solid(@color) {
-  .block-lsb-heading {
+  .lsb-heading-small {
     opacity: 0.6;
   }
   background-color: @color;
 
-  .block-lsb-description .btn {
+  .btn {
     .button-variant(@color; white; transparent);
   }
 }
@@ -98,7 +72,7 @@
 
 .block-lsb-solid-yellow {
   .block-lsb-solid(@brand-yellow);
-  .block-lsb-description .btn {
+  .btn {
     color: @text-color;
   }
 }
@@ -119,14 +93,14 @@
 // Blocks with color details
 
 .block-lsb(@color) {
-  .block-lsb-heading {
+  .lsb-heading-small {
     color: @color;
 
     a {
       opacity: 1.0;
     }
   }
-  .block-lsb-description .btn {
+  .btn {
     .button-variant(white;  @color; transparent);
   }
 }
@@ -166,10 +140,6 @@
 .block-lsb-books {
   padding: 50px 0;
 
-  .block-lsb-description {
-    background: @gray-lighter;
-  }
-
   .row {
     >div {
       .m-b-md;
@@ -203,19 +173,8 @@
     min-height: 250px;
   }
 
-  .block-lsb-heading {
+  .lsb-heading-small {
     .m-t-0;
-  }
-
-  .block-lsb-description {
-    p:first-child {
-      .h3;
-      .m-t-0;
-    }
-
-    p:not(:first-child) {
-      .lead;
-    }
   }
 
   .block-lsb-selection {

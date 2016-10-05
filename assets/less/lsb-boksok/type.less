@@ -65,3 +65,40 @@
     }
   }
 }
+
+.lsb-description {
+  p:first-child {
+    .lead;
+  }
+}
+
+.lsb-cat-description {
+
+  p:first-child {
+      .h3;
+      .m-t-0;
+    }
+
+  p:not(:first-child) {
+    .lead;
+  }
+
+  a {
+    color: inherit;
+    font-weight: 400;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  h2, h3, h4, h5, h6 {
+    .h5;
+    .m-t-md;
+
+    +p, +div {
+      font-size: @font-size-base !important;
+      width: 50%;
+    }
+  }
+}

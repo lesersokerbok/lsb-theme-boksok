@@ -33,7 +33,9 @@
               <h2 class="lsb-heading-small">
                 <?php _e('Om boka', 'lsb-boksok') ?>
               </h2>
+              <div class="lsb-description">
               <?= get_the_lsb_book_review( $book) ?>
+              </div>
             <? endif; ?>
             <?php if( has_lsb_book_quote( $book ) ) : ?>
               <h2 class="lsb-heading-small m-t-md">
