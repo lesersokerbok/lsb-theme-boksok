@@ -129,16 +129,23 @@ var Roots = {
         });
       });
 
-      $('.library-status select').change(function() {
-        var selectedCounty = $(this).val();
+      $('.library-status').each(function() {
+        $library_status = $(this);
+        $library_select = $library_status.find('select').first();
 
-        $('.library-status .county').addClass('hidden');
-        $('.library-status .county').removeClass('show');
+        $library_select.change(function() {
+          var selectedCounty = $(this).val();
+          console.log("Selected", selectedCounty);
+          if(selectedCounty == 'none') {
+            $library_status.removeClass('open');
+            $library_status.find('.county').removeClass('selected');
+          } else {
+            $library_status.addClass('open');
+            $library_status.find('.county').removeClass('selected');
+            $library_status.find('.county.' + selectedCounty).addClass('selected');
+          }
+        }); 
 
-        if( selectedCounty ) {
-          $('.library-status .county.' + selectedCounty).removeClass('hidden');
-          $('.library-status .county.' + selectedCounty).addClass('show');
-        }
       });
     }
   },

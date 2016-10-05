@@ -9,7 +9,7 @@ body.single .block-lsb-header {
   padding: 20px 0;
 }
 
-article .block-lsb-content:nth-child(odd) {
+article .block:nth-child(odd) {
   background: @gray-lighter;
 }
 
@@ -110,5 +110,22 @@ article .block-lsb-content:nth-child(odd) {
     padding: 1rem;
     padding-left: 2rem;
     overflow: hidden;
+  }
+}
+
+table.library-status {
+  .m-b-0;
+
+  &:not(.open) {
+    thead th {
+      border: none;
+    }
+  }
+
+  .county {
+    display: none;
+    &.selected {
+      display: table-row-group;
+    }
   }
 }

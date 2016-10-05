@@ -10,15 +10,14 @@ $counties = get_post_meta($book->ID, 'lsb_library_status', true);
 ?>
 
 <?php if( $counties ) : ?>
-<div class="content-part library-status">
-  <table class="table">
+  <table class="table library-status">
     <thead>
       <tr>
         <th colspan="2" class="text-xs-center">
           <form class="form-inline">
            <label class="m-r" for="countySelect"><?php _e( 'Lån boka på ditt bibliotek:', 'lsb' ); ?></label>
             <select class="form-control" id="countySelect">
-              <option><?php _e('Velg fylke', 'lsb') ?></option>
+              <option value="none"><?php _e('Velg fylke', 'lsb') ?></option>
               <?php foreach( $counties as $key => $county_libraries ) : ?>
                 <?php if( $key ) : ?>
                 <option value="<?php echo sanitize_title($key) ?>"><?php echo esc_html( $key ); ?></option>
@@ -31,7 +30,7 @@ $counties = get_post_meta($book->ID, 'lsb_library_status', true);
     </thead>
 
   <?php foreach( $counties as $key => $county_libraries ) : ?>
-    <tbody class="hidden county <?php echo sanitize_title( $key ); ?>">
+    <tbody class="county <?php echo sanitize_title( $key ); ?>">
     <?php foreach( $county_libraries as $library ) : ?>
       <tr>
         <td>
@@ -41,7 +40,7 @@ $counties = get_post_meta($book->ID, 'lsb_library_status', true);
           </a>
         </td>
         <td class="text-xs-right">
-          <a target="_blank" href="<?php echo esc_url( $library['book_url'] ) ?>">
+          <a target="_blank" class="no-wrap" href="<?php echo esc_url( $library['book_url'] ) ?>">
             <?php _e('Lån boka', 'lsb'); ?>
           </a>
         </td>
@@ -50,5 +49,4 @@ $counties = get_post_meta($book->ID, 'lsb_library_status', true);
     </tbody>
   <?php endforeach; ?>
   </table>
-</div>
 <?php endif; ?>

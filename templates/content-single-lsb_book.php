@@ -24,7 +24,7 @@
     </div>
   </header>
 
-  <section class="block block-lsb-content">
+  <section class="block p-b-md p-t-md">
     <div class="container">
       <div class="row">
         <div class="col-sm-5">
@@ -57,7 +57,7 @@
     </div>
   </section>
 
-  <aside class="block block-lsb-content">
+  <aside class="block p-b-md p-t-md">
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
@@ -66,5 +66,30 @@
       </div>
     </div>
   </aside>
+
+  <?php if( has_lsb_book_embeds($book)) : ?>
+  <aside class="block p-b-md p-t-md">
+    <div class="container">
+      <?php 
+        $oembeds = get_field('lsb_oembeds');
+        $count = count($oembeds);
+      ?>
+      <div class="row">
+      <?php foreach ( $oembeds as $key => $oembed ) : ?>
+        <?php $margin_class = ( ($key == $count-1) || ($key == $count-2 && $key % 2 == 0 )) ? '' : 'm-b-md'; ?>
+        <?php $column_offset = ( $key % 2 == 0 && $key == $count-1 ) ? 'col-sm-offset-3' : '' ?>
+        <div class="col-sm-6 <?= $margin_class ?> <?= $column_offset ?>">
+          <?php 
+            $lsb_partials_args = [
+              'iframe' => $oembed['lsb_oembed']
+            ];
+            include(locate_template('templates/partials/iframe.php'));
+          ?>
+        </div>
+      <?php endforeach; ?>
+      </div>
+    </div>
+  </aside>
+  <? endif; ?>
 
 </article>

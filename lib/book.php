@@ -103,3 +103,7 @@ function has_lsb_book_quote($book) {
 function get_the_lsb_book_quote($book) {
   return get_field('lsb_quote', $book);
 }
+
+function has_lsb_book_embeds($book) {
+  return have_rows('lsb_oembeds', $book);
+}
