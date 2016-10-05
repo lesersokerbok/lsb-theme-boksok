@@ -15,9 +15,15 @@
   background-color: @gray-lighter;
 }
 
-@media (max-width: @container-lg) {
-  .row >div {
-    width: 100%;
+.lsb-xs-row-valign-center {
+  display: flex;
+  align-items: center;
+}
+
+.lsb-sm-row-align-center {
+  @media (max-width: @container-sm) {
+    display: flex;
+    align-items: center; 
   }
 }
 

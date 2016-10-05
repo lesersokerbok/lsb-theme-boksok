@@ -134,10 +134,10 @@ function get_the_lsb_book_thumbnail_url() {
 }
 
 function get_the_lsb_book_thumbnail($book) {
-  $book_thumbnail_data = wp_get_attachment_image_src( get_post_thumbnail_id( $book->ID ), "thumbnail" );
+  $book_thumbnail_data = wp_get_attachment_image_src( get_post_thumbnail_id( $book->ID ), "medium" );
   $book_thumbnail_url = $book_thumbnail_data[0];
   $book_tumbnail_dimension = ( $book_thumbnail_data[1] > $book_thumbnail_data[2] ) ? 'landscape' : 'portrait';
-  return get_the_post_thumbnail($book, 'thumbnail', ['class' => $book_tumbnail_dimension]);
+  return get_the_post_thumbnail($book, 'medium', ['class' => $book_tumbnail_dimension]);
 }
 
 function get_the_lsb_book_cover($book) {
