@@ -1,9 +1,31 @@
-// Overrides
-aside .block-lsb-cat.lsb-cat-boksok {
-    .row {
-      min-height: 0;
+body.home,
+body.tax-lsb_tax_lsb_cat {
+
+  .block-lsb-cover-grid {
+    @media (max-width: @container-sm) {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      left: 0;
+      right: 0;
     }
   }
+
+  .lsb-col-move-up {
+    @media (max-width: @container-sm) {
+      .m-t-0;
+    }
+  }
+
+  .row >div:not(:last-child) {
+    @media (max-width: @container-sm) {
+      .m-b-lg;
+    }
+  }
+}
+
+
+
 
 // COLOR
 body.home .main .block-lsb-cat:nth-child(even),

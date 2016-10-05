@@ -6,9 +6,9 @@ $block_tax_term = $lsb_block_args['block_tax_term'];
 
 <div class="block block-lsb-cat lsb-cat-<?php echo $block_tax_term->slug ?>">
   <div class="container">
-    <div class="row app-align-center">
+    <div class="row lsb-sm-row-valign-stretch">
 
-      <div class="col-sm-5 lsb-col-move-up hidden-xs">
+      <div class="col-sm-5 lsb-col-move-up">
           <?php
             $lsb_partials_args = [
               'cover_grid_tax_term' => $block_tax_term

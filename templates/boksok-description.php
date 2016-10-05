@@ -4,7 +4,7 @@
 
       <div class="col-sm-6">
         <h1 class="lsb-heading-small"><a href="#">Boksøk</a></h1>
-        <div href="#" class="block-lsb-description">
+        <div href="#" class="lsb-cat-description">
           <p>Bøker til alle!</p>
           <p>Det finnes mange grunner til at bøker
 kan være tunge å lese. Boksøk hjelper deg å finne en bok som passer.

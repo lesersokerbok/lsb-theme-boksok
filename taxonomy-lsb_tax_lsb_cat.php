@@ -1,6 +1,6 @@
  <div class="block block-lsb-search">
   <div class="container">
-    <div class="row app-align-center">
+    <div class="row">
       <div class="col-sm-12 col-md-8 col-md-offset-2">
         <?php get_search_form() ?>
       </div>
@@ -43,8 +43,8 @@
 
 <div class="block block-lsb-cat">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-<?= $section_blocks[0]['col_count'] ?> <?= $section_blocks[0]['classes']; ?> hidden-xs">
+    <div class="row lsb-sm-row-valign-stretch">
+      <div class="col-sm-<?= $section_blocks[0]['col_count'] ?> <?= $section_blocks[0]['classes']; ?>">
         <?php
           $lsb_partials_args = $section_blocks[0];
           include(locate_template('templates/partials/' . $section_blocks[0]['template'] .'.php')); 
@@ -54,7 +54,7 @@
       <div class="col-sm-1 hidden-xs">
       </div>
 
-      <div class="col-sm-<?= $section_blocks[1]['col_count'] ?> <?= $section_blocks[1]['classes']; ?> hidden-xs">
+      <div class="col-sm-<?= $section_blocks[1]['col_count'] ?> <?= $section_blocks[1]['classes']; ?>">
         <?php
           $lsb_partials_args = $section_blocks[1];
           include(locate_template('templates/partials/' . $section_blocks[1]['template'] .'.php')); 
