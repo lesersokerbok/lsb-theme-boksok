@@ -25,10 +25,10 @@
     <nav class="navbar-collapse collapse text-uppercase">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="/index.html">Ressurser</a>
+          <a href="#">Ressurser</a>
         </li>
         <li >
-          <a href="minimal/index.html">Om Boksøk</a>
+          <a href="#">Om Boksøk</a>
         </li>
       </ul>
     </nav><!--/.nav-collapse -->
