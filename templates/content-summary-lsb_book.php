@@ -10,9 +10,9 @@
     </a>
   </div>
   <div class="lsb-book-content">
-    <h1 class="lsb-heading-small"><a href="<?= get_the_permalink($book) ?>"><?= get_the_title($book) ?></a></h1>
+    <h1 class="lsb-heading-medium"><a href="<?= get_the_permalink($book) ?>"><?= get_the_title($book) ?></a></h1>
     <p class="small">
-      <?= make_tags(get_lsb_book_creators(), [ 'tag_class' => 'lsb-tag-bold', 'container_class' => 'no-wrap' ]) ?>
+      <?= make_tags(get_lsb_book_creators(), [ 'tag_class' => 'lsb-tag-bold' ]) ?>
     <p>
     <p class="block-lsb-description">
       <?= get_the_excerpt($book) ?>
