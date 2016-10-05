@@ -1,3 +1,11 @@
+a {
+  text-decoration: underline;
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .no-wrap {
   white-space: nowrap;
   overflow: hidden;
@@ -9,7 +17,6 @@
 }
 
 .lsb-heading {
-  .header-uppercase;
   .h2;
   .m-t-0;
 
@@ -33,6 +40,7 @@
 
 .lsb-heading-small {
   .lsb-heading;
+  .header-uppercase;
   .h6;
 }
 
@@ -76,6 +84,31 @@
 .lsb-description {
   p:first-child {
     .lead;
+  }
+
+  img {
+    .m-t;
+    .m-b;
+  }
+
+  h1 {
+    .h2;
+  }
+
+  h2 {
+    .h3;
+  }
+
+  h3 {
+    .h4;
+  }
+
+  h4 {
+    .h5;
+  }
+
+  h5 {
+    .h6;
   }
 }
 

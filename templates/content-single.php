@@ -1,13 +1,27 @@
-<article <?php post_class(); ?>>
-  <header>
-    <?php get_template_part('templates/page', 'header'); ?>
+<article <?php post_class('full'); ?>>
+
+  <header class="block block-lsb-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <h1 class="lsb-heading">
+            <?php echo roots_title(); ?>
+          </h1>
+        </div>
+      </div>
+    </div>
   </header>
-  <div class="entry-content">
-    <?php the_post_thumbnail('featured-thumb'); ?>
-    <?php the_content(); ?>
-  </div>
-  <footer>
-    <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
-  </footer>
-  <?php comments_template('/templates/comments.php'); ?>
+
+  <section class="block p-b-md p-t-md">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <?php the_post_thumbnail('featured-thumb', ['class' => 'm-b-md']); ?>
+          <div class="lsb-description">
+            <?php the_content(); ?>
+          </div>
+      </div>
+    </div>
+  </section>
+
 </article>
