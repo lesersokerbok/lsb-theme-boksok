@@ -15,6 +15,7 @@ $roots_includes = array(
   'lib/config.php',         // Configuration
   'lib/extras.php',         // Custom functions
   'lib/feed-util.php',      // Custom rss rules
+  'lib/feed-util.php',      // Filters and actions
   'lib/init.php',           // Initial theme setup and constants
   'lib/nav.php',            // Custom nav modifications
   'lib/pagination.php',     // Boostrap pagination
@@ -35,20 +36,3 @@ unset($file, $filepath);
 
 // Initialize custom functionality
 new LsbFeedUtil();
-
-if(!function_exists('_log')){
-  function _log( $message ) {
-    if( WP_DEBUG === true ){
-      if( is_array( $message ) || is_object( $message ) ){
-        error_log( print_r( $message, true ) );
-      } else {
-        error_log( $message );
-      }
-    }
-  }
-}
-
-function capitalize_title( $term_title ) {
-  return ucfirst($term_title);
-}
-add_filter ( 'single_term_title', 'capitalize_title', 0 );
