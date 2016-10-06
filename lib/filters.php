@@ -27,7 +27,7 @@ add_filter('query_vars', 'lsb_add_lsb_cat_filter' );
 add_filter('body_class', 'lsb_append_lsb_cat_filter', 10 );
 add_filter('term_link', 'lsb_append_lsb_cat_filter', 10 );
 add_filter('post_type_link', 'lsb_append_lsb_cat_filter', 10 );
-add_action('pre_get_posts', 'lsb_filter_on_lsb_cat_filter', 10 );
+add_action('pre_get_posts', 'lsb_cat_filter_posts', 10 );
 
 function lsb_add_lsb_cat_filter( $public_query_vars ) {
 	$public_query_vars[] = 'filter';
@@ -35,12 +35,7 @@ function lsb_add_lsb_cat_filter( $public_query_vars ) {
 }
 
 function lsb_append_lsb_cat_filter( $object ) {
-	$lsb_cat_filter = get_query_var( 'filter', 'none' ); 
-
-	if( is_tax('lsb_tax_lsb_cat') ) {
-		$taxonomy = get_queried_object();
-		$lsb_cat_filter = $taxonomy->slug;
-	}
+	$lsb_cat_filter = get_lsb_cat_filter();
 
 	if(is_array($object)) {
 		$object[] = 'filter-' . $lsb_cat_filter;
@@ -51,8 +46,18 @@ function lsb_append_lsb_cat_filter( $object ) {
 	return $object;
 }
 
-function lsb_filter_on_lsb_cat_filter($query) {
+function lsb_cat_filter_posts($query) {
 	
+	$lsb_cat_filter = get_lsb_cat_filter();
+
+	if($lsb_cat_filter !== 'none') {
+		$query->set('lsb_tax_lsb_cat', $lsb_cat_filter);
+	}
+
+	return $query;
+}
+
+function  get_lsb_cat_filter() {
 	$lsb_cat_filter = get_query_var( 'filter', 'none' ); 
 
 	if( is_tax('lsb_tax_lsb_cat') ) {
@@ -60,9 +65,5 @@ function lsb_filter_on_lsb_cat_filter($query) {
 		$lsb_cat_filter = $taxonomy->slug;
 	}
 
-	if($lsb_cat_filter !== 'none') {
-		$query->set('lsb_tax_lsb_cat', $lsb_cat_filter);
-	}
-
-	return $query;
+	return $lsb_cat_filter;
 }
