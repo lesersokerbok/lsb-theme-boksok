@@ -64,7 +64,7 @@
     </div>
   </section>
 
-  <aside class="block p-b-md p-t-md">
+  <aside class="block block-lsb-content">
     <div class="container">
       <div class="row">
         <div class="col-xs-6 col-sm-3">
@@ -90,7 +90,7 @@
   </aside>
 
   <?php if( has_lsb_book_embeds($book)) : ?>
-  <aside class="block p-b-md p-t-md">
+  <aside class="block block-lsb-content">
     <div class="container">
       <?php 
         $oembeds = get_field('lsb_oembeds');
