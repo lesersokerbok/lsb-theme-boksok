@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 lsb-col-center text-xs-center">
-        <h1 class="lsb-heading"><?= lsb_page_title() ?></h1>
+        <h1 class="lsb-heading m-t-0"><?= lsb_page_title() ?></h1>
       </div>
     </div>
   </div>
