@@ -150,6 +150,7 @@
 
 		var getFilter = function(index_name) {
 			if(index_name.indexOf('lsb_book') > -1 && algolia.autocomplete.filter && algolia.autocomplete.filter.hasOwnProperty('taxonomy')) {
+				console.log(algolia.autocomplete.filter);
 				return algolia.autocomplete.filter;
 			}
 		}
@@ -158,7 +159,7 @@
 			var filter = getFilter(index_name);
 
 			if(filter) {
-				return "taxonomies." + filter.taxonomy + ":'" + filter.term_name + "'";
+				return "taxonomies." + filter.taxonomy + ":'" + filter.term + "'";
 			} else {
 				return "";
 			}
@@ -168,7 +169,7 @@
 			var filter = getFilter(index_name);
 
 			if(filter) {
-				return " " + filter.term_name;
+				return " " + filter.term;
 			} else {
 				return "";
 			}

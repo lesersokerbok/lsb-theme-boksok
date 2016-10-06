@@ -3,41 +3,13 @@
   $input_value = get_search_query(); 
   $submit_text = __('Søk', 'lsb_boksok');
   
-  $filter_name = __('Alle kategorier', 'lsb_boksok');
-
-  $filter_selection = [];
-  if ( is_tax( 'lsb_tax_lsb_cat' ) ) {
-    $filter_selection['taxonomy'] =  'lsb_tax_lsb_cat';
-    $filter_selection['taxonomy_name'] =  'hovedkategori';
-    $filter_selection['term_slug'] = get_queried_object()->slug;
-    $filter_selection['term_name'] = get_queried_object()->name;
-    $filter_selection['term_label'] = get_queried_object()->name;
+  $lsb_cat_filter = get_lsb_cat_filter();
+  $lsb_cat_filter_term = get_term_by('slug', $lsb_cat_filter, 'lsb_tax_lsb_cat');
+  $lsb_algolia_filter = [];
+  if($lsb_cat_filter_term) {
+    $lsb_algolia_filter['term'] = $lsb_cat_filter_term->name;
+    $lsb_algolia_filter['taxonomy'] = 'lsb_tax_lsb_cat';
   }
-
-  $filter_options = [];
-  if ( is_front_page() ) {
-    
-    $menu_locations = get_nav_menu_locations(); 
-    $frontpage_sections_menu_id = $menu_locations[ 'frontpage_sections' ]; 
-    $frontpage_sections = wp_get_nav_menu_items( $frontpage_sections_menu_id ); 
-
-    foreach ($frontpage_sections as $frontpage_section) { 
-      if($frontpage_section->type === "taxonomy") {
-        $lsb_cat = get_term( $frontpage_section->object_id, $frontpage_section->object );
-        $lsb_cat->url = $frontpage_section->url;
-        $lsb_cat->taxonomy_name = "hovedkategori";
-        $filter_options[] = [
-          "url" => $frontpage_section->url,
-          "taxonomy" => $lsb_cat->taxonomy,
-          "taxonomy_name" => "hovedkategori",
-          "term_label" => $frontpage_section->post_title,
-          "term_slug" => $lsb_cat->slug,
-          "term_name" => $lsb_cat->name
-        ];
-      }
-    }
-  }
-
 ?>
 
 <form role="search" method="get" class="search-form">
@@ -66,7 +38,5 @@
   </div>
 
   <input id="algolia-filter" class="search-filter" type="hidden" 
-          data-tax-term='<?php echo json_encode($filter_selection); ?>' 
-          value="<?php echo $filter_selection['term_slug']; ?>" 
-          name="<?php echo $filter_selection['taxonomy_name']; ?>" />
+          data-tax-term='<?php echo json_encode($lsb_algolia_filter); ?>' />
 </form>

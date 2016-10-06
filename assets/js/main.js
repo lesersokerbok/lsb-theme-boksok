@@ -30,27 +30,9 @@ var Roots = {
       });
 
       $('.search-form').each(function() {
-        
         var $search_form = $(this);
-        var $button_text = $search_form.find('.dropdown-toggle').first().find('span').first();
-        var $dropdown_menu = $search_form.find('.dropdown-menu').first();
-        var $search_filter = $search_form.find('.search-filter').first();
-        algolia.autocomplete.filter = $search_filter.data('tax-term');
-
-        $dropdown_menu.find('a').attr("href", "#");
-        $dropdown_menu.find('a').click(function() {
-          var filter = $(this).data('tax-term')
-          algolia.autocomplete.filter = filter;
-          if(filter) {
-            $button_text.html(filter.term_label);
-            $search_filter.val(filter.term_slug);
-            $search_filter.attr('name', filter.taxonomy_name);  
-            $search_form.attr('action', filter.url);
-          } else {
-            $button_text.html($(this).html());
-          }
-          
-        });
+        var filter = $(this).data('tax-term')
+        algolia.autocomplete.filter = filter;
       });
 
       // Hide scroll arrows when not needed
