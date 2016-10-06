@@ -41,7 +41,6 @@
     $image_attr['data-width'] = $image_data[1];
     $image_attr['data-height'] = $image_data[2];
     $book->thumbnail = get_the_post_thumbnail( $book, 'medium', $image_attr );
-    $book->permalink = get_permalink( $book->ID );
   }
 ?>
 
@@ -51,7 +50,7 @@
 <div class="block-lsb-cover-grid" data-grid="images">
   <?php foreach($books as $book): ?>
     <?php if( has_post_thumbnail($book) ) : ?>
-    <a href="<?php echo $book->permalink ?>"><?php echo $book->thumbnail ?></a>
+    <a href="<?= get_permalink( $book )?>"><?php echo $book->thumbnail ?></a>
     <?php endif; ?>
   <?php endforeach ?>
 </div>

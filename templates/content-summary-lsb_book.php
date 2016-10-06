@@ -5,12 +5,12 @@
 <article <?php post_class('summary'); ?>>
   <div class="row lsb-xs-row-valign-center">
     <div class="col-xs-5">
-        <a class="lsb-book-thumbail" href="<?= get_the_permalink($book) ?>">
+        <a class="lsb-book-thumbail" href="<?= get_permalink($book) ?>">
           <?= get_the_lsb_book_thumbnail($book) ?>
         </a>
     </div>
     <div class="col-xs-7">
-      <h1 class="lsb-heading-medium"><a href="<?= get_the_permalink($book) ?>"><?= get_the_title($book) ?></a></h1>
+      <h1 class="lsb-heading-medium"><a href="<?= get_permalink($book) ?>"><?= get_the_title($book) ?></a></h1>
       <p class="small">
         <?= make_tags(get_lsb_book_creators($book), [ 'tag_class' => 'lsb-tag-bold' ]) ?>
       <p>
