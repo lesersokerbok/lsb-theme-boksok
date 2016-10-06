@@ -22,7 +22,7 @@ function remove_category_url_refresh_rules() {
 }
 
 /**
- * Removes category base.
+ * Removes tax base.
  *
  * @return void
  */
@@ -32,56 +32,70 @@ function remove_lsb_cat_url_permastruct() {
 }
 
 /**
- * Adds our custom category rewrite rules.
+ * Adds our custom tax rewrite rules.
  *
- * @param  array $category_rewrite Category rewrite rules.
+ * @param  array $tax_rewrite Category rewrite rules.
  *
  * @return array
  */
-function remove_base_lsb_cat_url_rewrite_rules( $lsb_cat_rewrite ) {
+function remove_base_lsb_cat_url_rewrite_rules( $tax_rewrite ) {
 	global $wp_rewrite;
   $taxonomy = get_taxonomy('lsb_tax_lsb_cat');
   $tax_name = $taxonomy->name;
-	$lsb_cat_rewrite = array();
+	$tax_rewrite = array();
 	$lsb_cat_terms = get_terms( array( 'taxonomy' => $tax_name, 'hide_empty' => false ) );
 
 	foreach ( $lsb_cat_terms as $term ) {
 		$term_slug = $term->slug;
 	
-		$lsb_cat_rewrite[ '(' . $term_slug . ')/(?:feed/)?(feed|rdf|rss|rss2|atom)/?$' ] = 'index.php?' . $tax_name . '=$matches[1]&feed=$matches[2]';
-		$lsb_cat_rewrite[ '(' . $term_slug . ')/page/?([0-9]{1,})/?$' ] = 'index.php?' . $tax_name . '=$matches[1]&paged=$matches[2]';
-		$lsb_cat_rewrite[ '(' . $term_slug . ')/?$' ] = 'index.php?' . $tax_name . '=$matches[1]';
+		$tax_rewrite[ '(' . $term_slug . ')/(?:feed/)?(feed|rdf|rss|rss2|atom)/?$' ] = 'index.php?' . $tax_name . '=$matches[1]&feed=$matches[2]';
+		$tax_rewrite[ '(' . $term_slug . ')/page/?([0-9]{1,})/?$' ] = 'index.php?' . $tax_name . '=$matches[1]&paged=$matches[2]';
+		$tax_rewrite[ '(' . $term_slug . ')/?$' ] = 'index.php?' . $tax_name . '=$matches[1]';
 	}
 
 	// Redirect support from Old Tax Base
 	$old_lsb_cat_base = $taxonomy->rewrite['slug'];
   var_dump($old_lsb_cat_base);
 	$old_lsb_cat_base = trim( $old_lsb_cat_base, '/' );
-	$lsb_cat_rewrite[ $old_lsb_cat_base . '/(.*)$' ] = 'index.php?lsb_cat_redirect=$matches[1]';
+	$tax_rewrite[ $old_lsb_cat_base . '/(.*)$' ] = 'index.php?lsb_cat_redirect=$matches[1]';
 
-	return $lsb_cat_rewrite;
+	return $tax_rewrite;
 }
 
 function remove_base_lsb_cat_url_query_vars( $public_query_vars ) {
 	$public_query_vars[] = 'lsb_cat_redirect';
+  $public_query_vars[] = get_taxonomy('lsb_tax_lsb_cat')->rewrite['slug'];
 
 	return $public_query_vars;
 }
 
 /**
- * Handles category redirects.
+ * Handles tax redirects.
  *
  * @param $query_vars Current query vars.
  *
- * @return array $query_vars, or void if category_redirect is present.
+ * @return array $query_vars, or void if lsb_cat_redirect is present.
  */
 function remove_base_lsb_cat_url_request( $query_vars ) {
-	if ( isset( $query_vars['lsb_cat_redirect'] ) ) {
-		$catlink = trailingslashit( get_option( 'home' ) ) . user_trailingslashit( $query_vars['lsb_cat_redirect'], 'lsb_tax_lsb_cat' );
-		status_header( 301 );
-		header( "Location: $catlink" );
-		exit;
-	}
+  $taxonomy = get_taxonomy('lsb_tax_lsb_cat');
+  
+  $redirect_query_vars = array();
+  $redirect_query_vars[] = 'lsb_cat_redirect';
+  $redirect_query_vars[] = $taxonomy->rewrite['slug'];
 
-	return $query_vars;
+  foreach( $redirect_query_vars as $query_var) {
+    if ( isset( $query_vars[ $query_var ] ) ) {
+		  $redirect_base = trailingslashit( get_option( 'home' ) ) . user_trailingslashit( $query_vars[ $query_var ], $taxonomy->name );
+      // Remove redirect query var and add remaining query vars to redirect url
+      // This is needed to be in complience with public boksok plugin sending people to "boksok.no/s=sommer&hovedkategori=litt-a-lese
+      unset($query_vars[ $query_var ]);
+      $redirect_url = add_query_arg( $query_vars, $redirect_base );
+		  
+      status_header( 301 );
+		  header( "Location: $redirect_url" );
+		  exit;
+	  } 
+  }
+
+  return $query_vars;
 }
