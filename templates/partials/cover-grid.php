@@ -1,7 +1,7 @@
 <?php
 
-  $cover_grid_title = $lsb_partials_args['title'];
-  $cover_grid_tax_term = $lsb_partials_args['cover_grid_tax_term'];
+  $cover_grid_title = isset ($lsb_partials_args['title'] ) ? $lsb_partials_args['title'] : '';
+  $cover_grid_tax_term = $lsb_partials_args['tax_term'];
 
   $args = array(
     'posts_per_page' => 6,
@@ -39,7 +39,7 @@
   }
 ?>
 
-<?php if( $cover_grid_title ) : ?>
+<?php if( !empty($cover_grid_title) ) : ?>
 <h1 class="lsb-heading-small"><a href="<?= get_term_link($cover_grid_tax_term) ?>"><?= $cover_grid_title ?></a></h1>
 <?php endif ?>
 <div class="block-lsb-cover-grid" data-grid="images">

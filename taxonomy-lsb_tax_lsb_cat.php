@@ -27,7 +27,7 @@
       }
       
       if( $section_block['template'] == 'cover-grid' ) {
-        $section_block['cover_grid_tax_term'] = $section_block_terms[0];
+        $section_block['tax_term'] = $section_block_terms[0];
         $section_block['classes'] = 'lsb-col-move-up';
       } else if ($section_block['template'] == 'buttons') {
         $section_block['button_terms'] = $section_block_terms;
