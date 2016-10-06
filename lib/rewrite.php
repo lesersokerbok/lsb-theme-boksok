@@ -49,7 +49,7 @@ function remove_base_lsb_cat_url_rewrite_rules( $tax_rewrite ) {
 		$term_slug = $term->slug;
 	
 		$tax_rewrite[ '(' . $term_slug . ')/(?:feed/)?(feed|rdf|rss|rss2|atom)/?$' ] = 'index.php?' . $tax_name . '=$matches[1]&feed=$matches[2]';
-		$tax_rewrite[ '(' . $term_slug . ')/page/?([0-9]{1,})/?$' ] = 'index.php?' . $tax_name . '=$matches[1]&paged=$matches[2]';
+		$tax_rewrite[ '(' . $term_slug . ')/' . $wp_rewrite->pagination_base . '/?([0-9]{1,})/?$' ] = 'index.php?' . $tax_name . '=$matches[1]&paged=$matches[2]';
 		$tax_rewrite[ '(' . $term_slug . ')/?$' ] = 'index.php?' . $tax_name . '=$matches[1]';
 	}
 
