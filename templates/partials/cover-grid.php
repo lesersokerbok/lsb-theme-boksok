@@ -23,16 +23,6 @@
     ]
   );
 
-  if( is_tax() ) {
-    $lsb_page_taxt_term = get_queried_object();
-    $args['tax_query']['relation'] = 'AND';
-    $args['tax_query'][] = [
-      'taxonomy' => $lsb_page_taxt_term->taxonomy,
-      'field' => 'term_id',
-      'terms' => $lsb_page_taxt_term->term_id,
-    ];
-  }
-
   $books = get_posts($args);
 
   foreach($books as $book) {
