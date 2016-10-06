@@ -30,7 +30,7 @@ function roots_scripts() {
   }
 
 	wp_enqueue_style('lsb_boksok_css', get_template_directory_uri() . $assets['css'], false, null);
-	wp_enqueue_script('lsb_boksok_js', get_template_directory_uri() . $assets['js'], array(), null, true);
+	wp_enqueue_script('lsb_boksok_js', get_template_directory_uri() . $assets['js'], array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
