@@ -34,49 +34,6 @@ var Roots = {
         var filter = $(this).data('tax-term')
         algolia.autocomplete.filter = filter;
       });
-
-      // Hide scroll arrows when not needed
-      var toggleScrollButtons = function($bookSectionScroll) {
-
-        var scrollLeftPos = $bookSectionScroll.scrollLeft(),
-            scrollWidth = $bookSectionScroll.get(0).scrollWidth,
-            width = $bookSectionScroll.width();
-
-        if(scrollLeftPos > 0) {
-          $bookSectionScroll.siblings('.book-shelf-left-scroll').show();
-        } else {
-          $bookSectionScroll.siblings('.book-shelf-left-scroll').hide();
-        }
-
-        if(scrollWidth - scrollLeftPos > width) {
-          $bookSectionScroll.siblings('.book-shelf-right-scroll').show();
-        } else {
-          $bookSectionScroll.siblings('.book-shelf-right-scroll').hide();
-        }
-
-      };
-
-      $('.book-shelf-scroll').each(function() {
-        toggleScrollButtons($(this));
-      });
-
-      $('.book-shelf-scroll').scroll(function() {
-        toggleScrollButtons($(this));
-      });
-
-      // Respond to left scroll button click
-      $('.book-shelf .book-shelf-left-scroll').click(function () {
-        $(this).siblings('.book-shelf-scroll').animate({
-          scrollLeft: "-=500px"
-        }, 500);
-      });
-
-      // Respond to right scroll button click
-      $('.book-shelf .book-shelf-right-scroll').click(function () {
-        $(this).siblings('.book-shelf-scroll').animate({
-          scrollLeft: "+=500px"
-        }, 500);
-      });
     }
   },
   // Home page
