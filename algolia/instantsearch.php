@@ -4,6 +4,10 @@ $input_placeholder =  __('Søk etter forfatter, tittel, tema, isbn ...', 'lsb_bo
 $input_value = get_search_query();
 
 $lsb_cat_filter_term = get_lsb_cat_filter_term();
+$url_addon = "";
+if($lsb_cat_filter_term) {
+	$url_addon = '?filter=' . $lsb_cat_filter_term->slug;
+}
 
 ?>
 
@@ -206,6 +210,12 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 					instantsearch.widgets.hits({
 						container: '#algolia-hits',
 						hitsPerPage: 30,
+						transformData: {
+							item: function(data) {
+								data.permalink = data.permalink + "<?= $url_addon ?>";
+								return data;
+							},
+						}, 
 						templates: {
 							empty: wp.template("instantsearch-empty"),
 							item: function(item) {
