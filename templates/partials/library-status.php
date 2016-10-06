@@ -1,10 +1,6 @@
 <?php
 
-$book = $lsb_partials_args['book'];
-if(!$book) {
-  $book = $post;
-}
-
+$book = $post;
 $counties = get_post_meta($book->ID, 'lsb_library_status', true);
 
 ?>
