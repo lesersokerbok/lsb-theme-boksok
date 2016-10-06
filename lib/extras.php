@@ -38,3 +38,29 @@ if(!function_exists('_log')) {
     }
   }
 }
+
+function is_element_empty($element) {
+  $element = trim($element);
+  return !empty($element);
+}
+
+function lsb_capitalize_title( $term_title ) {
+  return ucfirst($term_title);
+}
+add_filter ( 'single_term_title', 'lsb_capitalize_title', 0 );
+
+function lsb_taxonomy_template( $template ) {
+  global $wp_query;
+	$paged = get_query_var( 'paged', 1 ); 
+	
+	if ( is_tax( 'lsb_tax_lsb_cat' ) && $paged > 1 ) {
+		$new_template = locate_template( array( 'index.php' ) );
+		if ( '' != $new_template ) {
+			return $new_template ;
+		}
+	}
+
+	return $template;
+}
+add_filter( 'template_include', 'lsb_taxonomy_template', 99 );
+

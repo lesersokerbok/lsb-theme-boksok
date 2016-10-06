@@ -3,8 +3,7 @@
   $input_value = get_search_query(); 
   $submit_text = __('Søk', 'lsb_boksok');
   
-  $lsb_cat_filter = get_lsb_cat_filter();
-  $lsb_cat_filter_term = get_term_by('slug', $lsb_cat_filter, 'lsb_tax_lsb_cat');
+  $lsb_cat_filter_term = get_lsb_cat_filter_term();
   $lsb_algolia_filter = [];
   if($lsb_cat_filter_term) {
     $lsb_algolia_filter['term'] = $lsb_cat_filter_term->name;

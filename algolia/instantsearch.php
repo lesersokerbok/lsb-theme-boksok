@@ -3,8 +3,7 @@
 $input_placeholder =  __('Søk etter forfatter, tittel, tema, isbn ...', 'lsb_boksok');
 $input_value = get_search_query();
 
-$lsb_cat_filter = get_lsb_cat_filter();
-$lsb_cat_filter_term = $term_object = get_term_by('slug', $lsb_cat_filter, 'lsb_tax_lsb_cat');
+$lsb_cat_filter_term = get_lsb_cat_filter_term();
 
 ?>
 

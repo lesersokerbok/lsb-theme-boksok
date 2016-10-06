@@ -15,7 +15,7 @@ $roots_includes = array(
   'lib/config.php',         // Configuration
   'lib/extras.php',         // Custom functions
   'lib/feed-util.php',      // Custom rss rules
-  'lib/filters.php',      // Filters and actions
+  'lib/filter.php',      // Filters and actions
   'lib/init.php',           // Initial theme setup and constants
   'lib/nav.php',            // Custom nav modifications
   'lib/pagination.php',     // Boostrap pagination
