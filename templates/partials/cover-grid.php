@@ -1,6 +1,12 @@
 <?php
 
-  $cover_grid_title = isset ($lsb_partials_args['title'] ) ? $lsb_partials_args['title'] : '';
+  $defaults = array(
+	  'title' => "",
+    'tax_term' => NULL
+  );
+  $lsb_partials_args = wp_parse_args( $lsb_partials_args, $defaults );
+
+  $cover_grid_title = $lsb_partials_args['title'];
   $cover_grid_tax_term = $lsb_partials_args['tax_term'];
 
   $args = array(

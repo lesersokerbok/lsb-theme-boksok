@@ -14,6 +14,14 @@ function get_term_name($term) {
 }
 
 function make_tags($terms, $args) {
+
+  $defaults = array(
+	  'label' => "",
+	  'after' => "",
+    'tag_class' => ""
+  );
+  $args = wp_parse_args( $args, $defaults );
+
   if(empty($terms)) {
     return;
   }
@@ -35,10 +43,18 @@ function make_tags($terms, $args) {
     $tags[] = $tag;
   }
 
-  return '<span class="' . $args['container_class'] . '">' . join( ' ', $tags ) . '</span>' . $args['after'];
+  return '<span>' . join( ' ', $tags ) . '</span>' . $args['after'];
 } 
 
 function make_meta($meta, $args) {
+
+  $defaults = array(
+	  'label' => "",
+	  'after' => "",
+    'container_class'=> ""
+  );
+  $args = wp_parse_args( $args, $defaults );
+
   if( empty($meta) ) {
     return;
   }

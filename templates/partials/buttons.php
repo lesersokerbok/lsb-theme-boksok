@@ -1,5 +1,12 @@
 <?php 
 
+  $defaults = array(
+	  'title' => "",
+	  'description' => "",
+    'button_terms' => array()
+  );
+  $lsb_partials_args = wp_parse_args( $lsb_partials_args, $defaults );
+
   $buttons_title = $lsb_partials_args['title'];
   $buttons_description = $lsb_partials_args['description'];
   $buttons_terms = $lsb_partials_args['button_terms'];
