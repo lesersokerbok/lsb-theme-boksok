@@ -12,6 +12,6 @@
 <?= $buttons_description ?>
 <div class="block-lsb-selection">
   <?php foreach( $buttons_terms as $term ) : ?>
-    <a class="btn btn-default" href="<?= get_term_link($term) ?>"><?= $term->name ?></a>
+    <?= make_term_button($term) ?>
   <? endforeach ?>
 </div>

@@ -1,5 +1,18 @@
 <?php
 
+function get_term_name($term) {
+  $make_lowercase = $term->taxonomy !== 'lsb_tax_author'
+    && $term->taxonomy !== 'lsb_tax_illustrator'
+    && $term->taxonomy !== 'lsb_tax_translator'
+    && $term->taxonomy !== 'lsb_tax_publisher';
+
+  if($make_lowercase) {
+    return strtolower($term->name);
+  } else {
+    return $term->name;
+  }
+}
+
 function make_tags($terms, $args) {
   if(empty($terms)) {
     return;
@@ -17,7 +30,7 @@ function make_tags($terms, $args) {
     if($term->taxonomy == 'lsb_tax_author' || $term->taxonomy == 'lsb_tax_illustrator' || $term->taxonomy == 'lsb_tax_translator') {
       $tag .= '<span class="icon icon-user"></span>';
     }
-    $tag .= '<a href="' . esc_url( $link ) . '">' . $term->name . '</a>';
+    $tag .= '<a href="' . esc_url( $link ) . '">' . get_term_name($term) . '</a>';
     $tag .= '</span>';
     $tags[] = $tag;
   }
@@ -26,7 +39,7 @@ function make_tags($terms, $args) {
 } 
 
 function make_meta($meta, $args) {
-  if(empty($meta)) {
+  if( empty($meta) ) {
     return;
   }
 
@@ -38,6 +51,17 @@ function make_meta($meta, $args) {
   $tags[] = '<span class="lsb-tag">' . $meta . '</span>';
 
   return '<span class="' . $args['container_class'] . '">' . join( ' ', $tags ) . '</span>' . $args['after'];
+}
+
+function make_term_button($term) {
+  if ( empty($term) ) {
+    return;
+  }
+
+  $url = get_term_link( $term );
+  $name = get_term_name( $term );
+
+  return '<a class="btn btn-default" href="' . $url . '">' . $name . '</a>';
 }
 
 function get_lsb_book_creators($book) {
