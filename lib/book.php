@@ -105,7 +105,7 @@ function get_lsb_book_topics($book) {
 function get_lsb_book_part_of($book) {
   $terms = [];
   if(get_the_terms($book, 'lsb_tax_series')) {
-    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_serie'));
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_series'));
   }
   if(get_the_terms($book, 'lsb_tax_list')) {
     $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_list'));
