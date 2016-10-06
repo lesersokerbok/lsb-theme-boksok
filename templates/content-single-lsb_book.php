@@ -28,7 +28,7 @@
     </div>
   </header>
 
-  <section class="block p-b-md p-t-md">
+  <section class="block block-lsb-content">
     <div class="container">
       <div class="row lsb-sm-row-valign-stretch">
         <div class="col-sm-5">
