@@ -7,7 +7,7 @@
     'posts_per_page' => 6,
     'post_type' => 'lsb_book',
     'orderby' => 'date',
-    'order' => 'DESC',
+    'order' => 'DESC', // Newest books
     'tax_query' => [
       [
         'taxonomy' => $cover_grid_tax_term->taxonomy,
