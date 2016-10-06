@@ -13,8 +13,14 @@
   $blocks = get_field('lsb_blocks', get_queried_object());
   
   for($i = 0; $i < count($blocks); $i+=2) :
-    $section_blocks = [ $blocks[$i], $blocks[$i+1] ];
+    $section_blocks = [];
+    $section_blocks[] = $blocks[$i];
     
+    if(($i+1) < count($blocks)) {
+      $section_blocks[] = $blocks[$i+1];
+    }
+
+
     foreach ( $section_blocks as $key => &$section_block ) {
       $section_block['col_count'] = (($i+$key) % 4 == 0 || ($i+$key) % 4 == 3) ? '5' : '6';
       $section_block['template'] = ($section_block['acf_fc_layout'] == 'lsb_tax_block_books') ? 'cover-grid' : 'buttons';
@@ -35,9 +41,11 @@
       }
     }
 
-    if( $section_blocks[0]['classes'] == 'lsb-col-move-up' && $section_blocks[1]['classes'] == 'lsb-col-move-up' ) {
+    if( $section_blocks[0]['classes'] == 'lsb-col-move-up' && isset($section_blocks[1]) && $section_blocks[1]['classes'] == 'lsb-col-move-up' ) {
       $section_blocks[0]['classes'] = (($i+0) % 4 == 0 || ($i+0) % 4 == 3) ? 'lsb-col-move-up' : '';
-      $section_blocks[1]['classes'] = (($i+1) % 4 == 0 || ($i+1) % 4 == 3) ? 'lsb-col-move-up' : '';
+      if(isset($section_blocks[1])) {
+        $section_blocks[1]['classes'] = (($i+1) % 4 == 0 || ($i+1) % 4 == 3) ? 'lsb-col-move-up' : '';
+      }
     }
 ?>
 
@@ -56,8 +64,10 @@
 
       <div class="col-sm-<?= $section_blocks[1]['col_count'] ?> <?= $section_blocks[1]['classes']; ?>">
         <?php
-          $lsb_partials_args = $section_blocks[1];
-          include(locate_template('templates/partials/' . $section_blocks[1]['template'] .'.php')); 
+          if(isset($section_blocks[1])) {
+            $lsb_partials_args = $section_blocks[1];
+            include(locate_template('templates/partials/' . $section_blocks[1]['template'] .'.php'));
+          } 
         ?>
       </div>
     </div>
