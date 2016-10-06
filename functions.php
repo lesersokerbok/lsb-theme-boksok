@@ -10,24 +10,18 @@
  * @link https://github.com/roots/roots/pull/1042
  */
 $roots_includes = array(
-  'lib/utils.php',          // Utility functions
-  'lib/init.php',           // Initial theme setup and constants
-  'lib/wrapper.php',        // Theme wrapper class
-  'lib/sidebar.php',        // Sidebar class
+  'lib/algolia.php',        // Algolia customization
+  'lib/book.php',           // Book helper functions
   'lib/config.php',         // Configuration
-  'lib/activation.php',     // Theme activation
-  'lib/titles.php',         // Page titles
-  'lib/nav.php',            // Custom nav modifications
-  'lib/gallery.php',        // Custom [gallery] modifications
-  'lib/comments.php',       // Custom comments modifications
-  'lib/scripts.php',        // Scripts and stylesheets
   'lib/extras.php',         // Custom functions
-  'lib/pagination.php',     // Boostrap pagination
-  'lib/lsb-mime-types.php', // Custom upload mime types
-  'lib/rewrite.php',        // Custom rewrite rules
   'lib/feed-util.php',      // Custom rss rules
-  'lib/algolia.php',         // Algolia customization
-  'lib/book.php'         // Algolia customization
+  'lib/init.php',           // Initial theme setup and constants
+  'lib/nav.php',            // Custom nav modifications
+  'lib/pagination.php',     // Boostrap pagination
+  'lib/rewrite.php',        // Custom rewrite rules
+  'lib/scripts.php',        // Scripts and stylesheets
+  'lib/titles.php',         // Page titles
+  'lib/wrapper.php',        // Theme wrapper class
 );
 
 foreach ($roots_includes as $file) {
@@ -53,8 +47,6 @@ if(!function_exists('_log')){
     }
   }
 }
-
-new LsbMimeTypes();
 
 function capitalize_title( $term_title ) {
   return ucfirst($term_title);

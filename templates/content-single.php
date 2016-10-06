@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <h1 class="lsb-heading">
-            <?php echo roots_title(); ?>
+            <?php echo lsb_page_title(); ?>
           </h1>
         </div>
       </div>
