@@ -23,29 +23,38 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
   </div>
 </div>
 
-<div class="container">
+<div class="block block-lsb-books">
+	<div class="container">
+		<div class="row ais-wrapper">
 
-	<div id="ais-wrapper">
-		<main id="ais-main">
-			<div id="algolia-refined-values"></div>
-			<div id="algolia-hits" style="margin-top: 5rem"></div>
-		</main>
-		<aside id="ais-facets">
-			<section class="ais-facets" id="facet-category"></section>
-			<section class="ais-facets" id="facet-language"></section>
-			<section class="ais-facets" id="facet-age"></section>
-			<section class="ais-facets" id="facet-authors"></section>
-			<section class="ais-facets" id="facet-illustrators"></section>
-			<section class="ais-facets" id="facet-topic"></section>
-		</aside>
-	</div>
+				<div class="col-md-8">
+					<div id="algolia-hits">
+						<div class="row">
+							<div class="col-md-7 col-md-offset-5">
+								<div class="lsb-heading-medium"><?php _e('Søker ...', 'lsb-theme-boksok') ?></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<aside class="col-md-3 col-md-offset-1">
+					<section id="algolia-refined-values"></section>
+					<section class="ais-facets" id="facet-category"></section>
+					<section class="ais-facets" id="facet-topic"></section>
+					<section class="ais-facets" id="facet-age"></section>
+					<section class="ais-facets" id="facet-language"></section>
+					<section class="ais-facets" id="facet-authors"></section>
+					<section class="ais-facets" id="facet-illustrators"></section>
+				</aside>
+			</div>
 
-	<div class="row">
-		<div class="col-12 text-align-center">
-			<div id="algolia-pagination" class="text-xs-center"></div>
+			<div class="row">
+				<div class="col-12 text-align-center">
+					<div id="algolia-pagination" class="text-xs-center"></div>
+				</div>
+			</div>
+
 		</div>
 	</div>
-
 </div>
 
 	<script type="text/html" id="tmpl-instantsearch-hit">
@@ -53,81 +62,92 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 	</script>
 
 	<script type="text/html" id="tmpl-instantsearch-lsb_book-hit">
-		<article itemtype="http://schema.org/Article">
-			<# if ( data.images.thumbnail ) { #>
-			<div class="ais-hits--thumbnail">
-				<a href="{{ data.permalink }}" title="{{ data.post_title }}">
-					<img src="{{ data.images.thumbnail.url }}" alt="{{ data.post_title }}" title="{{ data.post_title }}" itemprop="image" />
-				</a>
-			</div>
-			<# } #>
+		<article class="summary lsb_book">
+			<div class="row lsb-xs-row-valign-center">
+				<div class="col-xs-5">
+						<a class="lsb-book-thumbail" href="{{ data.permalink }}" title="{{ data.post_title }}">
+							<# if(data.images.medium) { #>
+							<img src="{{ data.images.medium.url }}" alt="{{ data.post_title }}" title="{{ data.post_title }}" itemprop="image" />
+							<# } #>
+						</a>
+				</div>
+				<div class="col-xs-7">
+					<div class="lsb-heading-medium"><a href="{{ data.permalink }}">{{ data.post_title }}</a></div>
+					<div class="ais-hits--tags">
 
-			<div class="ais-hits--content">
-				<h2 itemprop="name headline" style="margin-bottom: 0.3em"><a href="{{ data.permalink }}" title="{{ data.post_title }}" itemprop="url">{{{ data._highlightResult.post_title.value }}}</a></h2>
-				<div class="ais-hits--tags">
-					<#
-					
-						var creators = [];
-						var terms = [];
+						<#
+						
+							var creators = [];
+							var terms = [];
 
-						for ( var tax_key in data._highlightResult.taxonomies ) {	
-							var tax_terms = data._highlightResult.taxonomies[tax_key];
-							for ( var term_index in tax_terms ) {
-								var tax_term = tax_terms[term_index];					
-								if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator' || tax_key === 'lsb_tax_translator') {
-									creators.push(tax_term.value);
-								} else {
-									terms.push(tax_term.value);
+							for ( var tax_key in data._highlightResult.taxonomies ) {	
+								var tax_terms = data._highlightResult.taxonomies[tax_key];
+								for ( var term_index in tax_terms ) {
+									var tax_term = tax_terms[term_index];					
+									if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator' || tax_key === 'lsb_tax_translator') {
+										creators.push(tax_term.value);
+									} else {
+										terms.push(tax_term.value);
+									}
 								}
 							}
-						}
 
-						creators = jQuery.unique(creators);
-						terms = jQuery.unique(terms);
+							creators = jQuery.unique(creators);
+							terms = jQuery.unique(terms);
 
-					#>
+						#>
+						
 
-					<# for ( var creator_index in creators ) { #>
-						<span class="ais-hits--tag">
-							<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span>
-							{{{ creators[creator_index] }}}
-						</span>
-					<# } #>
-					<# if (  data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) { #>
-						<span class="ais-hits--tag">
-							<span style="color: black; opacity: 0.3; font-size: 90%">isbn</span>
-							{{{ data._highlightResult.lsb_isbn.value }}}
-						</span>
-					<# } #>
-					<# for ( var term_index in terms ) { #>
-						<span class="ais-hits--tag">
-							{{{ terms[term_index] }}}
-						</span>
-					<# } #>
-				</div>
-				<div class="excerpt">
-					<#
+						<# for ( var creator_index in creators ) { #>
+							<span class="ais-hits--tag">
+								<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span>
+								{{{ creators[creator_index] }}}
+							</span>
+						<# } #>
+						<# if (  data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) { #>
+							<span class="ais-hits--tag">
+								<span style="color: black; opacity: 0.3; font-size: 90%">isbn</span>
+								{{{ data._highlightResult.lsb_isbn.value }}}
+							</span>
+						<# } #>
+						<# for ( var term_index in terms ) { #>
+							<span class="ais-hits--tag">
+								{{{ terms[term_index] }}}
+							</span>
+						<# } #>
+					</div>
+					<p class="block-lsb-description">
+						<#
 
-						var relevant_content = '';
+							var relevant_content = '';
 
-						for ( var snippet_index in data._snippetResult ) {
-							var snippet = data._snippetResult[snippet_index];
-							if( snippet.matchLevel !== 'none') {
-								relevant_content = snippet.value;
-								break;
+							for ( var snippet_index in data._snippetResult ) {
+								var snippet = data._snippetResult[snippet_index];
+								if( snippet.matchLevel !== 'none') {
+									relevant_content = snippet.value;
+									break;
+								}
 							}
-						}
 
-						if( relevant_content === '' && data._snippetResult.lsb_review ) {
-							relevant_content = data._snippetResult.lsb_review.value;
-						}
+							if( relevant_content === '' && data._snippetResult.lsb_review ) {
+								relevant_content = data._snippetResult.lsb_review.value;
+							}
 
-					#>
-					<p>{{{ relevant_content }}}</p>
+						#>
+
+						{{{ relevant_content }}}
+					</p>
 				</div>
 			</div>
-			<div class="ais-clearfix"></div>
 		</article>
+	</script>
+
+	<script type="text/html" id="tmpl-instantsearch-empty">
+			<div class="row lsb-xs-row-valign-center">
+				<div class="col-sm-7 col-sm-offset-5">
+					<h1 class="lsb-heading-medium"><?php _e('Ingen resultater for', 'lsb_theme_boksok') ?> <em>{{data.query}}</em></h1>
+				</div>
+			</div>
 	</script>
 
 
@@ -187,7 +207,7 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 						container: '#algolia-hits',
 						hitsPerPage: 30,
 						templates: {
-							empty: 'No results were found for "<strong>{{query}}</strong>".',
+							empty: wp.template("instantsearch-empty"),
 							item: function(item) {
 								var template = wp.template('instantsearch-hit');
 								if(item.hasOwnProperty('post_type') && item['post_type'] === 'lsb_book') {
@@ -209,13 +229,19 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 					})
 				);
 
+				// Currently refined
+
 				search.addWidget(
 					instantsearch.widgets.currentRefinedValues({
 						container: '#algolia-refined-values',
 						clearAll: 'after',
 						templates: {
-      				clearAll: 'Nullstill'
-    				}
+							header: '<h3 class="lsb-heading-small"><?php _e("Valgt", "lsb-theme-boksok") ?></h3>',
+      				clearAll: '<?php _e("Nullstill", "lsb-theme-boksok") ?>'	
+    				},
+						cssClasses: {
+							clearAll: 'btn btn-primary btn-sm' 
+						}
 					})
 				);
 
@@ -227,8 +253,11 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 						sortBy: ['count:desc', 'name:asc'],
 						limit: 10,
 						templates: {
-							header: '<h3 class="widgettitle">Kategori</h3>'
+							header: '<h3 class="lsb-heading-small">Kategori</h3>'
 						},
+						cssClasses: {
+							count: 'label label-default'
+						} 
 					})
 				);
 
@@ -240,8 +269,11 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 						sortBy: ['count:desc', 'name:asc'],
 						limit: 10,
 						templates: {
-							header: '<h3 class="widgettitle">Språk</h3>'
+							header: '<h3 class="lsb-heading-small">Språk</h3>'
 						},
+						cssClasses: {
+							count: 'label label-default'
+						} 
 					})
 				);
 
@@ -253,8 +285,11 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 						sortBy: ['count:desc', 'name:asc'],
 						limit: 10,
 						templates: {
-							header: '<h3 class="widgettitle">Forfatter</h3>'
+							header: '<h3 class="lsb-heading-small">Forfatter</h3>'
 						},
+						cssClasses: {
+							count: 'label label-default'
+						} 
 					})
 				);
 
@@ -266,8 +301,11 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 						sortBy: ['count:desc', 'name:asc'],
 						limit: 10,
 						templates: {
-							header: '<h3 class="widgettitle">Illustratør</h3>'
+							header: '<h3 class="lsb-heading-small">Illustratør</h3>'
 						},
+						cssClasses: {
+							count: 'label label-default'
+						} 
 					})
 				);
 
@@ -279,8 +317,11 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 						sortBy: ['count'],
 						attributes: ['taxonomies_hierarchical.lsb_tax_age.lvl0', 'taxonomies_hierarchical.lsb_tax_age.lvl1', 'taxonomies_hierarchical.lsb_tax_age.lvl2'],
 						templates: {
-							header: '<h3 class="widgettitle">Alder</h3>'
-						}
+							header: '<h3 class="lsb-heading-small">Alder</h3>'
+						},
+						cssClasses: {
+							count: 'label label-default'
+						} 
 					})
 				);
 
@@ -294,8 +335,12 @@ $lsb_cat_filter_term = get_lsb_cat_filter_term();
 						showMore: true,
 						sortBy: ['count:desc', 'name:asc'],
 						templates: {
-							header: '<h3 class="widgettitle">Emne</h3>'
-						}
+							header: '<h3 class="lsb-heading-small">Emne</h3>'
+						},
+						cssClasses: {
+							item: 'checkbox',
+							count: 'label label-default'
+						} 
 					})
 				);
 
