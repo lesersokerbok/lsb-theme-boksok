@@ -36,7 +36,7 @@
     </div>
 
     <nav class="navbar-collapse collapse text-uppercase">
-      <?php if (is_home() || is_tax('lsb_tax_lsb_cat') || is_page() ) : ?>
+      <?php if (is_front_page() || is_search() || is_tax('lsb_tax_lsb_cat') || is_page() ) : ?>
       <?php
         if (has_nav_menu('primary_navigation')) :
           wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav navbar-right'));
