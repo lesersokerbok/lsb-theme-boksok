@@ -13,6 +13,18 @@ function has_intro() {
   return get_intro_text() || get_intro_choices();
 }
 
+function lsb_excerpt($excerpt) {
+  if( empty(trim($excerpt)) ) {
+    if( get_post_type() == 'lsb_book') {
+      global $post;
+      $excerpt = wp_strip_all_tags( get_the_lsb_book_review($post), true );
+      return wp_trim_words($excerpt, 40);
+    }
+  }
+  return $excerpt; 
+}
+add_filter( 'get_the_excerpt', 'lsb_excerpt' );
+
 function get_intro_text() {
   if( is_tax() ) {
     $tax_term = get_queried_object();
