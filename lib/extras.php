@@ -1,5 +1,14 @@
 <?php
 
+function lsb_wp_title($title) {
+  if (is_feed()) {
+    return $title;
+  }  
+  $title .= get_bloginfo('name');
+  return $title;
+}
+add_filter('wp_title', 'lsb_wp_title', 10);
+
 function has_intro() {
   return get_intro_text() || get_intro_choices();
 }

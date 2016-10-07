@@ -1,20 +1,21 @@
 <?php
 
+/* actions */
+add_action( 'init',             'remove_lsb_cat_base_permastruct' );
+add_action( 'init',             'lsb_rewrite_bases');
+
+/* filters */
+add_filter( 'lsb_tax_lsb_cat_rewrite_rules', 'remove_lsb_cat_base_rewrite_rules' );
+add_filter( 'query_vars',                    'remove_lsb_cat_base_query_vars' );    // Adds 'category_redirect' query variable
+add_filter( 'request',                       'remove_lsb_cat_base_request' );       // Redirects if 'category_redirect' is set
+add_filter( 'wp_title', 										 'remove_lsb_cat_base_title', 10, 3 );
+
 function lsb_rewrite_bases() {
   $GLOBALS['wp_rewrite']->author_base        = __('skribent', 'lsb');
   $GLOBALS['wp_rewrite']->search_base        = __('sok', 'lsb');
   $GLOBALS['wp_rewrite']->comments_base      = __('kommentarer', 'lsb');
   $GLOBALS['wp_rewrite']->pagination_base    = __('side', 'lsb');
 }
-
-/* actions */
-add_action( 'init',             'remove_lsb_cat_url_permastruct' );
-add_action( 'init',             'lsb_rewrite_bases');
-
-/* filters */
-add_filter( 'lsb_tax_lsb_cat_rewrite_rules', 'remove_base_lsb_cat_url_rewrite_rules' );
-add_filter( 'query_vars',                    'remove_base_lsb_cat_url_query_vars' );    // Adds 'category_redirect' query variable
-add_filter( 'request',                       'remove_base_lsb_cat_url_request' );       // Redirects if 'category_redirect' is set
 
 function remove_category_url_refresh_rules() {
 	global $wp_rewrite;
@@ -26,7 +27,7 @@ function remove_category_url_refresh_rules() {
  *
  * @return void
  */
-function remove_lsb_cat_url_permastruct() {
+function remove_lsb_cat_base_permastruct() {
 	global $wp_rewrite, $wp_version;
   $wp_rewrite->extra_permastructs['lsb_tax_lsb_cat']['struct'] = '%lsb_tax_lsb_cat%';
 }
@@ -38,7 +39,7 @@ function remove_lsb_cat_url_permastruct() {
  *
  * @return array
  */
-function remove_base_lsb_cat_url_rewrite_rules( $tax_rewrite ) {
+function remove_lsb_cat_base_rewrite_rules( $tax_rewrite ) {
 	global $wp_rewrite;
   $taxonomy = get_taxonomy('lsb_tax_lsb_cat');
   $tax_name = $taxonomy->name;
@@ -62,7 +63,7 @@ function remove_base_lsb_cat_url_rewrite_rules( $tax_rewrite ) {
 	return $tax_rewrite;
 }
 
-function remove_base_lsb_cat_url_query_vars( $public_query_vars ) {
+function remove_lsb_cat_base_query_vars( $public_query_vars ) {
 	$public_query_vars[] = 'lsb_cat_redirect';
   $public_query_vars[] = get_taxonomy('lsb_tax_lsb_cat')->rewrite['slug'];
 
@@ -76,7 +77,7 @@ function remove_base_lsb_cat_url_query_vars( $public_query_vars ) {
  *
  * @return array $query_vars, or void if lsb_cat_redirect is present.
  */
-function remove_base_lsb_cat_url_request( $query_vars ) {
+function remove_lsb_cat_base_request( $query_vars ) {
   $taxonomy = get_taxonomy('lsb_tax_lsb_cat');
   
   $redirect_query_vars = array();
@@ -98,4 +99,10 @@ function remove_base_lsb_cat_url_request( $query_vars ) {
   }
 
   return $query_vars;
+}
+
+function remove_lsb_cat_base_title($title, $sep, $seplocation) {
+	$taxonomy = get_taxonomy('lsb_tax_lsb_cat');
+	$title = str_replace(" " . $taxonomy->labels->name . " " . $sep , "", $title);
+  return $title;
 }
