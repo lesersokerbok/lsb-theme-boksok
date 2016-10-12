@@ -80,9 +80,9 @@ function make_term_button($term) {
   $style = '';
 
   if( !empty($icon) ) {
-    $bg_url = esc_url($icon['sizes']['thumbnail']);
-    $bg_width = $icon['sizes'][ 'thumbnail-width' ];
-	  $bg_height = $icon['sizes'][ 'thumbnail-height' ];
+    $bg_url = esc_url($icon['sizes']['medium']);
+    $bg_width = $icon['sizes'][ 'medium-width' ];
+	  $bg_height = $icon['sizes'][ 'medium-height' ];
 
     $bg_size = 'auto 40px';
     $bg_width = 40/$bg_height*$bg_width;
