@@ -84,14 +84,8 @@ function make_term_button($term) {
     $bg_width = $icon['sizes'][ 'thumbnail-width' ];
 	  $bg_height = $icon['sizes'][ 'thumbnail-height' ];
 
-    $bg_size = '30px auto';
-
-    if($bg_height > $bg_width) {
-      $bg_size = 'auto 40px';
-      $bg_width = 40/$bg_height*$bg_width;
-    } else {
-      $bg_width = '30';
-    }
+    $bg_size = 'auto 40px';
+    $bg_width = 40/$bg_height*$bg_width;
 
     $style = 'background-image: url(' . $bg_url . ');';
     $style .= 'background-size: ' . $bg_size . ';';
