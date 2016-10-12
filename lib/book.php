@@ -78,13 +78,13 @@ function make_term_button($term) {
   $name = get_term_name( $term );
   $icon = get_field('lsb_acf_tax_term_icon', $term );
   $style = '';
-  
-  echo "medium";
 
   if( !empty($icon) ) {
     $bg_url = esc_url($icon['sizes']['medium']);
     $bg_width = $icon['sizes'][ 'medium-width' ];
 	  $bg_height = $icon['sizes'][ 'medium-height' ];
+    
+    echo $bg_width . " " . $bg_height;
 
     $bg_size = 'auto 40px';
     $bg_width = 40/$bg_height*$bg_width;
