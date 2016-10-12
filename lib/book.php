@@ -77,16 +77,31 @@ function make_term_button($term) {
   $url = get_term_link( $term );
   $name = get_term_name( $term );
   $icon = get_field('lsb_acf_tax_term_icon', $term );
-  $icon_class = "";
+  $style = '';
 
   if( !empty($icon) ) {
-    $icon = esc_url($icon['sizes']['thumbnail']);
-    $icon_class = 'lsb-btn-icon';
-  } else {
-    $icon = '';
+    $bg_url = esc_url($icon['sizes']['thumbnail']);
+    $bg_width = $icon['sizes'][ 'thumbnail-width' ];
+	  $bg_height = $icon['sizes'][ 'thumbnail-height' ];
+
+    $bg_size = '30px auto';
+
+    if($bg_height > $bg_width) {
+      $bg_size = 'auto 40px';
+      $bg_width = 40/$bg_height*$bg_width;
+    } else {
+      $bg_width = '30';
+    }
+
+    $style = 'background-image: url(' . $bg_url . ');';
+    $style .= 'background-size: ' . $bg_size . ';';
+    $style .= 'padding-left: ' . ($bg_width + 15) . 'px;';
+    $style .= 'background-repeat: no-repeat;';
+    $style .= 'background-position: 10px 3px;';
   }
 
-  return '<a class="btn btn-default ' . $icon_class . '" style="background-image: url(' . $icon . ')" href="' . $url . '">' . $name . '</a>';
+  return '<a class="btn btn-default" style="' . $style . '" href="' . $url . '">' . $name . '</a>';
+
 }
 
 function get_lsb_book_creators($book) {
