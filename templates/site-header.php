@@ -1,8 +1,34 @@
+<div class="stage-shelf stage-shelf-right">
+  <ul class="nav nav-bordered nav-stacked">
+    <li class="<?= is_front_page() ? 'active' : '' ?>">
+      <a href="<?= home_url() ?>"><?php _e('Forside', 'lsb_boksok') ?></a>
+    </li>
+  </ul>
+  <ul class="nav nav-bordered nav-stacked">
+    <li class="nav-divider"></li>
+    <li class="nav-header"><?php _e('Kategorier', 'lsb_boksok') ?></li>
+  </ul>
+  <?php
+    if (has_nav_menu('frontpage_sections')) :
+      wp_nav_menu(array('theme_location' => 'frontpage_sections', 'menu_class' => 'nav nav-bordered nav-stacked'));
+    endif;
+  ?>
+  <ul class="nav nav-bordered nav-stacked">
+    <li class="nav-divider"></li>
+  </ul>
+  <?php
+    if (has_nav_menu('primary_navigation')) :
+      wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav nav-bordered nav-stacked'));
+    endif;
+  ?>
+</div>
+
 <header class="banner navbar" role="banner">
   <div class="container">
 
     <div class="navbar-header">
-      <button type="button" class="btn btn-default navbar-btn navbar-toggle collapsed" data-target="#stage" data-toggle="stage" data-distance="-250">
+      <button type="button" class="navbar-toggle text-uppercase collapsed" data-target="#stage" data-toggle="stage" data-distance="-250">
+        <span class="icon icon-menu"></span>
         <?php esc_html_e( 'Meny', 'lsb' ); ?>
       </button>
 
@@ -11,17 +37,17 @@
       </a>
 
       <ul class="nav navbar-nav">
-        <li class="text-uppercase hidden-xs">
-          <a class="p-l-0 p-r-0" href="<?php echo home_url(); ?>">Boksøk</a>
+        <li class="text-uppercase <?= get_lsb_cat_filter_term() ? 'hidden-xs' : ''?>">
+          <a class="p-l-0" href="<?php echo home_url(); ?>"><?= get_bloginfo() ?></a>
         </li>
         <?php if(get_lsb_cat_filter_term()) : ?>
         <li>
-          <a href="<?= get_term_link(get_lsb_cat_filter_term()) ?>">
+          <a class="p-l-0" href="<?= get_term_link(get_lsb_cat_filter_term()) ?>">
             <?= lsb_capitalize_title(get_lsb_cat_filter_term()->name) ?>
           </a>
         </li>
         <?php else : ?>
-        <li class="dropdown">
+        <li class="dropdown hidden-xs hidden-sm">
           <a href="#" dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <?php _e('Velg kategori', 'lsb-theme-boksok'); ?>
           <span class="caret"></span></a>
@@ -40,7 +66,7 @@
       <ul id="menu-test" class="nav navbar-nav navbar-right">
         <li class="<?= (is_front_page() || is_search() || is_tax('lsb_tax_lsb_cat')) ? 'active' : '' ?> menu-ressurser">
           <a href="<?= get_lsb_cat_filter_term() ? get_term_link(get_lsb_cat_filter_term()) : home_url() ?>">
-            <span class="icon icon-magnifying-glass"></span> Søk
+            <span class="icon icon-magnifying-glass"></span> <?php _e('Søk', 'lsb_boksok') ?>
           </a>
         </li>
       </ul>
