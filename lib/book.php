@@ -83,11 +83,15 @@ function make_term_button($term) {
     $bg_url = esc_url($icon['sizes']['medium']);
     $bg_width = $icon['sizes'][ 'medium-width' ];
 	  $bg_height = $icon['sizes'][ 'medium-height' ];
-    
-    echo $bg_width . " " . $bg_height;
 
-    $bg_size = 'auto 40px';
-    $bg_width = 40/$bg_height*$bg_width;
+    $bg_size = '30px auto';
+
+    if($bg_height > $bg_width) {
+      $bg_size = 'auto 40px';
+      $bg_width = 40/$bg_height*$bg_width;
+    } else {
+      $bg_width = '30';
+    }
 
     $style = 'background-image: url(' . $bg_url . ');';
     $style .= 'background-size: ' . $bg_size . ';';
