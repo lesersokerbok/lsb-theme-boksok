@@ -76,8 +76,17 @@ function make_term_button($term) {
 
   $url = get_term_link( $term );
   $name = get_term_name( $term );
+  $icon = get_field('lsb_acf_tax_term_icon', $term );
+  $icon_class = "";
 
-  return '<a class="btn btn-default" href="' . $url . '">' . $name . '</a>';
+  if( !empty($icon) ) {
+    $icon = esc_url($icon['sizes']['thumbnail']);
+    $icon_class = 'lsb-btn-icon';
+  } else {
+    $icon = '';
+  }
+
+  return '<a class="btn btn-default ' . $icon_class . '" style="background-image: url(' . $icon . ')" href="' . $url . '">' . $name . '</a>';
 }
 
 function get_lsb_book_creators($book) {
