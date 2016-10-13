@@ -183,6 +183,7 @@ if($lsb_cat_filter_term) {
 						<?php endif; ?>
 					},
 					searchFunction: function(helper) {
+            var savedPage = helper.state.page;
 						if (search.helper.state.query === '') {
 							search.helper.setQueryParameter('distinct', false);
 							search.helper.setQueryParameter('filters', 'record_index=0');
@@ -190,7 +191,7 @@ if($lsb_cat_filter_term) {
 							search.helper.setQueryParameter('distinct', true);
 							search.helper.setQueryParameter('filters', '');
 						}
-
+						search.helper.setPage(savedPage);
 						helper.search();
 					}
 				});
