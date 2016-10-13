@@ -4,38 +4,22 @@
 
 <article <?php post_class('full'); ?>>
 
-  <header class="block block-lsb-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="lsb-heading">
-            <?php echo lsb_page_title(); ?>
-          </h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-sm-5">
-          <p class="m-t">
-            <?= make_tags(get_lsb_book_creators($book), [ 'tag_class' => 'lsb-tag-bold' ]) ?>
-          </p>
-          <p class="m-t">
-            <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-            <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-            <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-          </p>
-        </div>
-      </div>
-    </div>
-  </header>
-
   <section class="block block-lsb-content">
     <div class="container">
       <div class="row lsb-sm-row-valign-stretch">
-        <div class="col-sm-5">
-          <div class="visible-xs-block lsb-book-cover m-b-md">
-            <?= get_the_lsb_book_cover($book) ?>
-          </div>
+        <div class="col-sm-6 col-sm-5">
           <div class="lsb-book-content">
+            <h1 class="lsb-heading">
+              <?php echo lsb_page_title(); ?>
+            </h1>
+            <p class="m-t">
+              <?= make_term_buttons(get_lsb_book_creators($book)) ?>
+            </p>
+            <p class="m-t m-b">
+              <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
+              <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
+              <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
+            </p>
             <?php if( has_lsb_book_review( $book ) ) : ?>
               <h2 class="lsb-heading-small">
                 <?php _e('Om boka', 'lsb-boksok') ?>
@@ -55,8 +39,8 @@
             </div>
           </div>
         </div>
-        <div class="hidden-xs col-sm-6 col-sm-offset-1">
-          <div class="lsb-book-cover">
+        <div class="col-sm-6 col-sm-offset-1">
+          <div class="lsb-book-cover m-b-md">
             <?= get_the_lsb_book_cover($book) ?>
           </div>
         </div>
