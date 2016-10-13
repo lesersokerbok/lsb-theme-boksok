@@ -24,7 +24,7 @@
         </li>
         <?php else : ?>
         <li class="dropdown hidden-xs hidden-sm">
-          <a href="#" dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <a class="p-l-0" href="#" dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <?php _e('Velg kategori', 'lsb-theme-boksok'); ?>
           <span class="caret"></span></a>
           <?php
@@ -48,7 +48,7 @@
       <ul class="nav navbar-nav">
         <li class="<?= (is_front_page() || is_search() || is_tax('lsb_tax_lsb_cat')) ? 'active' : '' ?>">
           <a href="<?= get_lsb_cat_filter_term() ? get_term_link(get_lsb_cat_filter_term()) : home_url() ?>">
-            <span class="icon icon-magnifying-glass"></span> <?php _e('Søk', 'lsb_boksok') ?>
+            <span class="icon icon-magnifying-glass"> </span><?php _e('Søk', 'lsb_boksok') ?>
           </a>
         </li>
       </ul>
