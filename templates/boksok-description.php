@@ -13,7 +13,7 @@ I den store jungelen av bøker på markedet,
 har vi valgt ut titler som på en eller annen måte
 er mer tilgjengelige enn vanlig.</p>
         
-          <a href="#" class="btn btn-lg m-t-md">
+          <a href="#" class="btn btn-lg btn-spacious m-t-md">
             Les mer om <strong>Boksøk</strong>
           </a>
         </div>
