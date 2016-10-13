@@ -293,10 +293,7 @@ if($lsb_cat_filter_term) {
 						limit: 10,
 						templates: {
 							header: '<h3 class="lsb-heading-small">Kategori</h3>'
-						},
-						cssClasses: {
-							count: 'label label-default'
-						} 
+						}
 					})
 				);
 				<?php endif; ?>
@@ -310,10 +307,7 @@ if($lsb_cat_filter_term) {
 						limit: 10,
 						templates: {
 							header: '<h3 class="lsb-heading-small">Språk</h3>'
-						},
-						cssClasses: {
-							count: 'label label-default'
-						} 
+						}
 					})
 				);
 
@@ -326,10 +320,7 @@ if($lsb_cat_filter_term) {
 						limit: 10,
 						templates: {
 							header: '<h3 class="lsb-heading-small">Forfatter</h3>'
-						},
-						cssClasses: {
-							count: 'label label-default'
-						} 
+						}
 					})
 				);
 
@@ -342,10 +333,7 @@ if($lsb_cat_filter_term) {
 						limit: 10,
 						templates: {
 							header: '<h3 class="lsb-heading-small">Illustratør</h3>'
-						},
-						cssClasses: {
-							count: 'label label-default'
-						} 
+						}
 					})
 				);
 
@@ -358,10 +346,7 @@ if($lsb_cat_filter_term) {
 						attributes: ['taxonomies_hierarchical.lsb_tax_age.lvl0', 'taxonomies_hierarchical.lsb_tax_age.lvl1', 'taxonomies_hierarchical.lsb_tax_age.lvl2'],
 						templates: {
 							header: '<h3 class="lsb-heading-small">Alder</h3>'
-						},
-						cssClasses: {
-							count: 'label label-default'
-						} 
+						}
 					})
 				);
 
@@ -378,8 +363,7 @@ if($lsb_cat_filter_term) {
 							header: '<h3 class="lsb-heading-small">Emne</h3>'
 						},
 						cssClasses: {
-							item: 'checkbox',
-							count: 'label label-default'
+							item: 'checkbox'
 						} 
 					})
 				);
