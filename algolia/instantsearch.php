@@ -11,63 +11,62 @@ if($lsb_cat_filter_term) {
 
 ?>
 
-<div class="block block-lsb-search">
-  <div class="container">
+  <div class="block block-lsb-search">
+    <div class="container">
       <div class="row app-align-center">
         <div class="col-sm-12 col-md-8 col-md-offset-2">
-					<div class="input-group input-group-lg">
-						<input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
-						<span class="input-group-btn">
-      				<button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
-    				</span>
-					</div>
+          <div class="input-group input-group-lg">
+            <input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
+            </span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="block block-lsb-books">
-	<div class="container">
-		<div class="row ais-wrapper">
+  <div class="block block-lsb-books">
+    <div class="container">
+      <div class="row ais-wrapper">
 
-				<div class="col-md-8">
-					<div id="algolia-hits">
-						<div class="row">
-							<div class="col-md-7 col-md-offset-5">
-								<div class="lsb-heading-medium"><?php _e('Søker ...', 'lsb-theme-boksok') ?></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<aside class="col-md-3 col-md-offset-1">
-					<section id="algolia-refined-values"></section>
-					<?php if( !$lsb_cat_filter_term ) : ?>
-					<section class="ais-facets" id="facet-category"></section>
-					<?php endif; ?>
-					<section class="ais-facets" id="facet-topic"></section>
-					<section class="ais-facets" id="facet-age"></section>
-					<section class="ais-facets" id="facet-language"></section>
-					<section class="ais-facets" id="facet-authors"></section>
-					<section class="ais-facets" id="facet-illustrators"></section>
-				</aside>
-			</div>
+        <div class="col-md-8">
+          <div id="algolia-hits">
+            <div class="row">
+              <div class="col-md-7 col-md-offset-5">
+                <div class="lsb-heading-medium"><?php _e('Søker ...', 'lsb-theme-boksok') ?></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="col-md-3 col-md-offset-1">
+          <section id="algolia-refined-values"></section>
+          <?php if( !$lsb_cat_filter_term ) : ?>
+          <section class="ais-facets" id="facet-category"></section>
+          <?php endif; ?>
+          <section class="ais-facets" id="facet-topic"></section>
+          <section class="ais-facets" id="facet-age"></section>
+          <section class="ais-facets" id="facet-language"></section>
+          <section class="ais-facets" id="facet-authors"></section>
+          <section class="ais-facets" id="facet-illustrators"></section>
+        </aside>
+      </div>
 
-			<div class="row">
-				<div class="col-12 text-align-center">
-					<div id="algolia-pagination" class="text-xs-center"></div>
-				</div>
-			</div>
+      <div class="row">
+        <div class="col-12 text-align-center">
+          <div id="algolia-pagination" class="text-xs-center"></div>
+        </div>
+      </div>
 
-		</div>
-	</div>
-</div>
+    </div>
+  </div>
 
 	<script type="text/html" id="tmpl-instantsearch-hit">
 		<!-- Should not be used, but if it does it will not fail -->	
 	</script>
 
 	<script type="text/html" id="tmpl-instantsearch-lsb_book-hit">
+    <# console.log(data); #>
 		<article class="summary lsb_book">
 			<div class="row lsb-xs-row-valign-center">
 				<div class="col-xs-5">
@@ -78,7 +77,7 @@ if($lsb_cat_filter_term) {
 						</a>
 				</div>
 				<div class="col-xs-7">
-					<div class="lsb-heading-medium"><a href="{{ data.permalink }}">{{ data.post_title }}</a></div>
+					<div class="lsb-heading-medium"><a href="{{ data.permalink }}">{{{ data._highlightResult.post_title.value }}}</a></div>
 					<div class="ais-hits--tags">
 
 						<#
