@@ -44,9 +44,6 @@
 .block-lsb(@color) {
   border-color: @color;
 
-  .lsb-heading-small {
-    opacity: 0.8;
-  }
   .lsb-cat-description {
     .btn {
     .button-variant(@text-color;  @block-bg; @color);
@@ -110,6 +107,8 @@
 .block-lsb-books {
   .p-t;
   .p-b-md;
+
+  border-bottom: 4px solid;
 }
 
 // Content block 
@@ -118,9 +117,7 @@
   .p-t-md;
   .p-b-md;
 
-  &:nth-child(odd) {
-    background: @gray-lighter;
-  }
+  border-bottom: 4px solid;
 }
 
 // Category blocks
