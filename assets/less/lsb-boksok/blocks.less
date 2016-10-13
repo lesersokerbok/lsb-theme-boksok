@@ -90,15 +90,14 @@
 // Blocks with color details
 
 .block-lsb(@color) {
-  .lsb-heading-small {
-    color: @color;
+  border-bottom: 4px solid @color;
 
-    a {
-      opacity: 1.0;
-    }
+  .lsb-heading-small {
+    opacity: 0.8;
   }
   .btn {
-    .button-variant(white;  @color; transparent);
+    .button-variant(@text-color;  @block-bg; @color);
+    border-width: 2px;
   }
 }
 
