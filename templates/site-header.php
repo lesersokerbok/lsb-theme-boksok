@@ -36,9 +36,15 @@
       </ul>
     </div>
 
-    <nav class="navbar-collapse collapse text-uppercase">
+    <nav class="navbar-collapse collapse text-uppercase navbar-right">
 
-      <ul id="menu-test" class="nav navbar-nav navbar-right">
+      <?php
+        if (has_nav_menu('primary_navigation')) :
+          wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav'));
+        endif;
+      ?>
+
+      <ul id="menu-test" class="nav navbar-nav">
         <li class="<?= (is_front_page() || is_search() || is_tax('lsb_tax_lsb_cat')) ? 'active' : '' ?> menu-ressurser">
           <a href="<?= get_lsb_cat_filter_term() ? get_term_link(get_lsb_cat_filter_term()) : home_url() ?>">
             <span class="icon icon-magnifying-glass"></span> <?php _e('Søk', 'lsb_boksok') ?>
@@ -46,11 +52,6 @@
         </li>
       </ul>
 
-      <?php
-        if (has_nav_menu('primary_navigation')) :
-          wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav navbar-right'));
-        endif;
-      ?>
     </nav><!--/.nav-collapse -->
 
   </div>
