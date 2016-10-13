@@ -39,54 +39,6 @@
   }
 }
 
-// Solid blocks
-
-.block-lsb-solid(@color) {
-  .lsb-heading-small {
-    opacity: 0.6;
-  }
-  background-color: @color;
-
-  .btn:not(.btn-default){
-    .button-variant(@color; white; transparent);
-  }
-}
-
-.block-lsb-solid-primary {
-  .block-inverse;
-  .block-lsb-solid(@brand-primary);
-}
-
-.block-lsb-solid-purple {
-  .block-inverse;
-  .block-lsb-solid(@brand-purple);
-}
-
-.block-lsb-solid-green {
-  .block-inverse;
-  .block-lsb-solid(@brand-green);
-}
-
-.block-lsb-solid-yellow {
-  .block-lsb-solid(@brand-yellow);
-  .btn {
-    color: @text-color;
-  }
-}
-
-.block-lsb-solid-orange {
-  .block-lsb-solid(@brand-orange);
-}
-
-.block-lsb-solid-red {
-  .block-inverse;
-  .block-lsb-solid(@brand-red);
-}
-
-.block-lsb-solid-blue {
-  .block-lsb-solid(@brand-blue);
-}
-
 // Blocks with color details
 
 .block-lsb(@color) {
@@ -98,6 +50,12 @@
   .btn {
     .button-variant(@text-color;  @block-bg; @color);
     border-width: 2px;
+  }
+  button[type="submit"] {
+    .button-variant(white;  @color; @color);
+  }
+  .form-control:focus {
+    border-color: @color;
   }
 }
 
@@ -142,7 +100,7 @@
 
 .block-lsb-search {
   .p-t-lg;
-  .p-b-lg;
+  .p-b;
 }
 
 // Content block 

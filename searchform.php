@@ -19,10 +19,9 @@
 <form role="search" method="get" class="search-form" action="<?= $action ?>">
   <label class="hidden" for="algolia-auto-search"><?= $input_placeholder ?></label>
   <div class="input-group input-group-lg">
-    <span class="input-group-addon" id="basic-addon1"><span class="icon icon-magnifying-glass"></span></span>
     <input id="algolia-auto-search" class="form-control" name="s" value="<?php echo $input_value ?>" placeholder="<?= $input_placeholder ?>">
     <span class="input-group-btn">
-      <button class="btn btn-default" type="submit"><?php echo $submit_text ?></button>
+      <button class="btn" type="submit"><span class="icon icon-magnifying-glass"></span></button>
     </span>
   </div>
 </form>
