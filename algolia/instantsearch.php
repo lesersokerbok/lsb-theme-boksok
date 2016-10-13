@@ -250,7 +250,7 @@ if($lsb_cat_filter_term) {
       				clearAll: '<?php _e("Nullstill", "lsb-theme-boksok") ?>'	
     				},
 						cssClasses: {
-							clearAll: 'btn btn-primary btn-sm' 
+							clearAll: 'btn btn-default btn-sm'
 						}
 					})
 				);
@@ -342,7 +342,7 @@ if($lsb_cat_filter_term) {
 					instantsearch.widgets.refinementList({
 						container: '#facet-topic',
 						attributeName: 'taxonomies.lsb_tax_topic',
-						operator: 'or',
+						operator: 'and',
 						limit: 10,
 						showMore: true,
 						sortBy: ['count:desc', 'name:asc'],
