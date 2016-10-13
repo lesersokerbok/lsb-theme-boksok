@@ -26,6 +26,16 @@ function lsb_book_post_attributes( array $attributes, WP_Post $post ) {
     }
     $attributes['lsb_published_year'] = intval(get_field( 'lsb_acf_published_year', $post->ID ));
 
+    // Push all taxonomies by default, including custom ones.
+		$taxonomy_objects = get_object_taxonomies( $post->post_type, 'objects' );
+
+    $attributes['taxonomies_permalinks'] = array();
+		foreach ( $taxonomy_objects as $taxonomy ) {
+			$terms = get_the_terms( $post->ID, $taxonomy->name );
+			$terms = is_array( $terms ) ? $terms : array();
+      $attributes['taxonomies_permalinks'][ $taxonomy->name ] = array_map( 'get_term_link', $terms );
+		}
+
     return $attributes;
 }
 
