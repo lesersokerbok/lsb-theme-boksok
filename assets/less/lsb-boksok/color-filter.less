@@ -29,6 +29,38 @@
   }
 }
 
+.stage-shelf {
+  border-top: 4px solid;
+
+  body.filter-none & {
+    border-color: lighten(@brand-primary, 15%);
+  }
+
+  body.filter-litt-a-lese & {
+    border-color: lighten(@brand-purple, 15%);
+  }
+
+  body.filter-enkelt-innhold & {
+    border-color: lighten(@brand-green, 10%);
+  }
+
+  body.filter-storskrift & {
+    border-color: lighten(@brand-yellow, 15%);
+  }
+
+  body.filter-punktskrift-folebilder & {
+    border-color: lighten(@brand-orange, 10%);
+  }
+
+  body.filter-tegnsprak-nmt & {
+    border-color: lighten(@brand-red, 15%);
+  }
+
+  body.filter-bliss-piktogram & {
+    border-color: lighten(@brand-blue, 10%);
+  }
+}
+
 .block-lsb-books,
 .block-lsb-content,
 .block-lsb-header,
