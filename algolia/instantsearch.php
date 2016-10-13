@@ -90,9 +90,9 @@ if($lsb_cat_filter_term) {
 								for ( var term_index in tax_terms ) {
 									var tax_term = tax_terms[term_index];					
 									if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator' || tax_key === 'lsb_tax_translator') {
-										creators.push(tax_term.value);
+										creators.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
 									} else {
-										terms.push(tax_term.value);
+										terms.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
 									}
 								}
 							}
@@ -106,7 +106,7 @@ if($lsb_cat_filter_term) {
 						<# for ( var creator_index in creators ) { #>
 							<span class="ais-hits--tag">
 								<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span>
-								{{{ creators[creator_index] }}}
+								<a href="{{{ creators[creator_index].permalink }}}">{{{ creators[creator_index].value }}}</a>
 							</span>
 						<# } #>
 						<# if (  data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) { #>
@@ -117,7 +117,7 @@ if($lsb_cat_filter_term) {
 						<# } #>
 						<# for ( var term_index in terms ) { #>
 							<span class="ais-hits--tag">
-								{{{ terms[term_index] }}}
+								<a href="{{{ terms[term_index].permalink }}}">{{{ terms[term_index].value }}}</a>
 							</span>
 						<# } #>
 					</div>
