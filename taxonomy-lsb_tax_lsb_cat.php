@@ -20,9 +20,7 @@
       $section_blocks[] = $blocks[$i+1];
     }
 
-
     foreach ( $section_blocks as $key => &$section_block ) {
-      $section_block['col_count'] = (($i+$key) % 4 == 0 || ($i+$key) % 4 == 3) ? '5' : '6';
       $section_block['template'] = ($section_block['acf_fc_layout'] == 'lsb_tax_block_books') ? 'cover-grid' : 'buttons';
       $section_block['title'] = $section_block['lsb_tax_block_title'];
 
@@ -34,17 +32,12 @@
       
       if( $section_block['template'] == 'cover-grid' ) {
         $section_block['tax_term'] = $section_block_terms[0];
-        $section_block['classes'] = 'lsb-col-move-up';
+        if( $key % 2 == 0 ) {
+          $section_block['classes'] = 'lsb-col-move-up';
+        }
       } else if ($section_block['template'] == 'buttons') {
         $section_block['button_terms'] = $section_block_terms;
         $section_block['classes'] = 'lsb-col-center';
-      }
-    }
-
-    if( $section_blocks[0]['classes'] == 'lsb-col-move-up' && isset($section_blocks[1]) && $section_blocks[1]['classes'] == 'lsb-col-move-up' ) {
-      $section_blocks[0]['classes'] = (($i+0) % 4 == 0 || ($i+0) % 4 == 3) ? 'lsb-col-move-up' : '';
-      if(isset($section_blocks[1])) {
-        $section_blocks[1]['classes'] = (($i+1) % 4 == 0 || ($i+1) % 4 == 3) ? 'lsb-col-move-up' : '';
       }
     }
 ?>
@@ -52,7 +45,7 @@
 <div class="block block-lsb-cat">
   <div class="container">
     <div class="row lsb-sm-row-valign-stretch">
-      <div class="col-sm-<?= $section_blocks[0]['col_count'] ?> <?= $section_blocks[0]['classes']; ?>">
+      <div class="col-sm-5 <?= $section_blocks[0]['classes'] ?>">
         <?php
           $lsb_partials_args = $section_blocks[0];
           include(locate_template('templates/partials/' . $section_blocks[0]['template'] .'.php')); 
@@ -62,7 +55,7 @@
       <div class="col-sm-1 hidden-xs">
       </div>
 
-      <div class="col-sm-<?= $section_blocks[1]['col_count'] ?> <?= $section_blocks[1]['classes']; ?>">
+      <div class="col-sm-6 <?= $section_blocks[1]['classes'] ?>">
         <?php
           if(isset($section_blocks[1])) {
             $lsb_partials_args = $section_blocks[1];
