@@ -1,3 +1,54 @@
+body.search {
+  @media (max-width: @screen-sm-max) {
+    .row.ais-wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+
+      section {
+        width: 45%;
+
+        .lsb-heading-small {
+          .m-t-0;
+        }
+      }
+
+      .ais-current-refined-values {
+        .ais-current-refined-values--list {
+          div {
+            display: inline-block;
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .lsb-facets-heading {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .lsb-facets.open {
+        display: flex !important;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .m-b-md;
+
+        .ais-facets {
+          width: 45%;
+
+          &:nth-child(odd) {
+            margin-left: 2%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
 .algolia-autocomplete {
   .form-control {
     .input-group-lg & {

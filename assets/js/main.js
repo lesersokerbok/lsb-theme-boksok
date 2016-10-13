@@ -89,6 +89,27 @@ var Roots = {
     }
   },
 
+  search: {
+    init: function() {
+      $('.lsb-facets-toggle').each(function() {
+        var $button = $(this);
+        var $facets = $('.lsb-facets').first();
+        var $closed_text = $button.html();
+        var $opned_text = $button.data('open-text');
+        $button.click(function() {
+          $facets.toggleClass('open');
+          $button.blur();
+
+          if($facets.hasClass('open')) {
+            $button.html($opned_text);
+          } else {
+            $button.html($closed_text);
+          }
+        });
+      });
+    }
+  },
+
   // About us page, note the change from about-us to about_us.
   about_us: {
     init: function() {

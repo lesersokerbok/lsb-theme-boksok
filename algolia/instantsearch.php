@@ -39,16 +39,22 @@ if($lsb_cat_filter_term) {
             </div>
           </div>
         </div>
+
         <aside class="col-md-3 col-md-offset-1">
-          <section id="algolia-refined-values"></section>
-          <?php if( !$lsb_cat_filter_term ) : ?>
-          <section class="ais-facets" id="facet-category"></section>
-          <?php endif; ?>
-          <section class="ais-facets" id="facet-topic"></section>
-          <section class="ais-facets" id="facet-age"></section>
-          <section class="ais-facets" id="facet-language"></section>
-          <section class="ais-facets" id="facet-authors"></section>
-          <section class="ais-facets" id="facet-illustrators"></section>
+          <div class="lsb-facets-heading m-t-0 m-b-md">
+            <a class="btn btn-default lsb-facets-toggle hidden-md hidden-lg" data-open-text="<?php _e('Lukk filter', 'lsb-theme-boksok') ?>" href="#"><?php _e('Vis filter', 'lsb-theme-boksok') ?></a>
+            <section id="algolia-refined-values"></section>
+          </div>
+          <div class="lsb-facets hidden-xs hidden-sm">
+            <?php if( !$lsb_cat_filter_term ) : ?>
+              <section class="ais-facets" id="facet-category"></section>
+            <?php endif; ?>
+            <section class="ais-facets" id="facet-topic"></section>
+            <section class="ais-facets" id="facet-age"></section>
+            <section class="ais-facets" id="facet-language"></section>
+            <section class="ais-facets" id="facet-authors"></section>
+            <section class="ais-facets" id="facet-illustrators"></section>
+          </div>
         </aside>
       </div>
 
@@ -268,7 +274,7 @@ if($lsb_cat_filter_term) {
 						container: '#algolia-refined-values',
 						clearAll: 'after',
 						templates: {
-							header: '<h3 class="lsb-heading-small"><?php _e("Valgt", "lsb-theme-boksok") ?></h3>',
+							header: '<h3 class="lsb-heading-small"><?php _e("Filter", "lsb-theme-boksok") ?></h3>',
       				clearAll: '<?php _e("Nullstill", "lsb-theme-boksok") ?>'	
     				},
 						cssClasses: {
