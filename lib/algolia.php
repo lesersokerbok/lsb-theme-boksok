@@ -56,6 +56,8 @@ function lsb_book_posts_index_settings( array $settings ) {
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_series)';
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_list)';
     $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_topic)';
+    $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_age)';
+    $settings['attributesToIndex'][] = 'unordered(taxonomies.lsb_tax_audience)';
 
     $settings['attributesToIndex'][] = 'unordered(lsb_review)';
     $settings['attributesToIndex'][] = 'unordered(lsb_quote)';

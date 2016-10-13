@@ -19,7 +19,9 @@
 			
 			var creators = [];
 			var relevant_creators = [];
-			var relevant_taxonomies = [];
+			var relevant_topic = [];
+      var relevant_partof = [];
+      var relevant_audience = [];
 
 			for ( var tax_key in data._highlightResult.taxonomies ) {	
 				var terms = data._highlightResult.taxonomies[tax_key];
@@ -31,21 +33,29 @@
 							relevant_creators.push(term.value);
 						} 
 					} else if ( term.matchedWords.length > 0 ) {
-						relevant_taxonomies.push(term.value);
+            if( tax_key === 'lsb_tax_audience' || tax_key === 'lsb_tax_age' ) {
+              relevant_audience.push(term.value);
+            } else if( tax_key === 'lsb_tax_list' || tax_key === 'lsb_tax_series' ) {
+              relevant_partof.push(term.value);
+            } else if( tax_key === 'lsb_tax_lsb_cat' ) {
+              relevant_topic.push(term.value);
+            }
 					}
 				}
 			}
 
 			if ( data._highlightResult.post_title.matchedWords.length > 0 || relevant_creators.length > 0 ) {
-				creators = jQuery.unique(creators);
 				if(creators.length > 1) {
 					relevant_content = '<span class="icon icon-users" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
 				} else {
 					relevant_content = '<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span> ' + creators.join(", ");
 				}
-			} else if ( relevant_taxonomies.length > 0 ) {
-				relevant_taxonomies = jQuery.unique(relevant_taxonomies);
-				relevant_content = '<span style="color: black; opacity: 0.3">tema</span> ' + relevant_taxonomies.join(", ");
+			} else if ( relevant_audience.length > 0 ) {
+				relevant_content = '<span style="color: black; opacity: 0.3">passer for</span> ' + relevant_audience.join(", ");
+      } else if ( relevant_partof.length > 0 ) {
+				relevant_content = '<span style="color: black; opacity: 0.3">del av</span> ' + relevant_partof.join(", ");
+      } else if ( relevant_topic.length > 0 ) {
+				relevant_content = '<span style="color: black; opacity: 0.3">tema</span> ' + relevant_topic.join(", ");
 			} else if ( data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) {
 				relevant_content = '<span style="color: black; opacity: 0.3">isbn</span> ' + data._highlightResult.lsb_isbn.value;
 			} else {
