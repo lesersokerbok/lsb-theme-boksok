@@ -30,6 +30,7 @@
     $image_attr = [];
     $image_attr['data-width'] = $image_data[1];
     $image_attr['data-height'] = $image_data[2];
+    $image_attr['alt'] = get_the_title($book);
     $book->thumbnail = get_the_post_thumbnail( $book, 'medium', $image_attr );
   }
 ?>
