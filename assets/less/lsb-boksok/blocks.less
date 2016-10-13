@@ -42,7 +42,7 @@
 // Blocks with color details
 
 .block-lsb(@color) {
-  border-bottom: 4px solid @color;
+  border-color: @color;
 
   .lsb-heading-small {
     opacity: 0.8;
@@ -92,17 +92,24 @@
   .block-lsb(@brand-blue);
 }
 
-// Books blocks 
-.block-lsb-books {
-  .p-t-lg;
-  .p-b-md;
-}
-
 // Search block
 
 .block-lsb-search {
   .p-t-lg;
   .p-b;
+}
+
+// Header blockquote
+
+.block-lsb-header {
+  .p-t-md;
+  .p-b;
+}
+
+// Books blocks
+.block-lsb-books {
+  .p-t;
+  .p-b-md;
 }
 
 // Content block 
@@ -116,17 +123,10 @@
   }
 }
 
-// Header blockquote
-
-.block-lsb-header {
-  .p-t-md;
-  .p-b-md;
-}
-
 // Category blocks
 
 .block-lsb-cat {
-
+  border-bottom: 4px solid;
   padding-bottom: @spacer*3;
   overflow: hidden;
 

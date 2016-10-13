@@ -17,8 +17,7 @@ function make_tags($terms, $args) {
 
   $defaults = array(
 	  'label' => "",
-	  'after' => "",
-    'tag_class' => ""
+	  'after' => ""
   );
   $args = wp_parse_args( $args, $defaults );
 
@@ -34,7 +33,7 @@ function make_tags($terms, $args) {
 
   foreach ( $terms as $term ) {
     $link = get_term_link( $term, $term->taxonomy );
-    $tag = '<span class="lsb-tag ' . $args['tag_class'] . '">';
+    $tag = '<span class="lsb-tag">';
     if($term->taxonomy == 'lsb_tax_author' || $term->taxonomy == 'lsb_tax_illustrator' || $term->taxonomy == 'lsb_tax_translator') {
       $tag .= '<span class="icon icon-user"></span>';
     }
@@ -100,10 +99,26 @@ function make_term_button($term) {
     $style .= 'padding-left: ' . ($bg_width + 17) . 'px;';
     $style .= 'background-repeat: no-repeat;';
 
+    return '<a class="btn btn-default" style="' . $style . '" href="' . $url . '">' . $name . '</a>';
+
+  } else if($term->taxonomy == 'lsb_tax_author' || $term->taxonomy == 'lsb_tax_illustrator' || $term->taxonomy == 'lsb_tax_translator') {
+    return '<a class="btn btn-default" href="' . $url . '"><span class="icon icon-user"></span>' . $name . '</a>';
   }
 
-  return '<a class="btn btn-default" style="' . $style . '" href="' . $url . '">' . $name . '</a>';
+  return '<a class="btn btn-default" href="' . $url . '">' . $name . '</a>';
 
+}
+
+function make_term_buttons($terms) {
+  if(empty($terms)) {
+    return;
+  }
+
+  $buttons = [];
+  foreach ( $terms as $term ) {
+    $buttons[] = make_term_button($term);
+  }
+  return join( ' ', $buttons );
 }
 
 function get_lsb_book_creators($book) {

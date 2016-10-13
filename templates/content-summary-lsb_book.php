@@ -11,10 +11,10 @@
     </div>
     <div class="col-xs-7">
       <h1 class="lsb-heading-medium"><a href="<?= get_permalink($book) ?>"><?= get_the_title($book) ?></a></h1>
-      <p class="small">
-        <?= make_tags(get_lsb_book_creators($book), [ 'tag_class' => 'lsb-tag-bold' ]) ?>
       <p>
-      <p class="block-lsb-description">
+        <?= make_term_buttons(get_lsb_book_creators($book)) ?>
+      <p>
+      <p>
         <?= get_the_excerpt($book) ?>
       </p>
       <p class="small">

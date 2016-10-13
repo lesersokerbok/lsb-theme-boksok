@@ -1,8 +1,20 @@
-article.lsb_book.full {
+article.lsb_book {
+  p .btn {
+    margin-bottom: 3px;
+    .btn-sm;
 
-  .lsb-tag-bold {
-    background-color: white;
+    .icon {
+      opacity: 0.8;
+
+      &:after {
+        content: "\0000a0";
+        display: inline-block;
+      }
+    }
   }
+}
+
+article.lsb_book.full {
 
   .lsb-book-cover {
     width: 100%;
@@ -40,5 +52,29 @@ article.lsb_book.full {
     @media (max-width: @container-sm) {
       .m-t-md;
     }
+  }
+}
+
+article.lsb_book.summary {
+  .m-b;
+
+  .lsb-book-thumbail {
+    text-align: center;
+    display: block;
+    img {
+      max-width: 100%;
+      height: auto;
+      display: inline-block;
+
+      @media (min-width: @container-sm) {
+        .p-r;
+      }
+    }
+  }
+
+  .lsb-book-content {
+    padding: 1rem;
+    padding-left: 2rem;
+    overflow: hidden;
   }
 }
