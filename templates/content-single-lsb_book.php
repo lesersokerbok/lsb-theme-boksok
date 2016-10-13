@@ -16,9 +16,9 @@
               <?= make_term_buttons(get_lsb_book_creators($book)) ?>
             </p>
             <p class="m-t m-b">
-              <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-              <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-              <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
+              <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books') ]) ?>
+              <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books') ]) ?>
+              <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books') ]) ?>
             </p>
             <?php if( has_lsb_book_review( $book ) ) : ?>
               <h2 class="lsb-heading-small">
@@ -53,17 +53,17 @@
       <div class="row">
         <div class="col-xs-6 col-sm-3">
           <div class="small">
-          <?= make_tags(get_lsb_book_publishers($book), [ 'label' => __('forlag', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-          <?= make_tags(get_lsb_book_genres($book), [ 'label' => __('sjanger', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-          <?= make_tags(get_lsb_book_categories($book), [ 'label' => __('kategori', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
-          <?= make_tags(get_lsb_book_language($book), [ 'label' => __('språk', 'lsb-theme-books'), 'after' => '<br/>' ]) ?>
+          <?= make_tags(get_lsb_book_publishers($book), [ 'label' => __('forlag', 'lsb-theme-books') ]) ?>
+          <?= make_tags(get_lsb_book_genres($book), [ 'label' => __('sjanger', 'lsb-theme-books') ]) ?>
+          <?= make_tags(get_lsb_book_categories($book), [ 'label' => __('kategori', 'lsb-theme-books') ]) ?>
+          <?= make_tags(get_lsb_book_language($book), [ 'label' => __('språk', 'lsb-theme-books') ]) ?>
           </div>
         </div>
         <div class="col-xs-6 col-sm-3">
           <div class="small">
-            <?= make_meta(get_lsb_book_isbn($book), [ 'label' => __('isbn: ', 'lsb-theme-boksok'), 'after' => '<br/>' ]) ?>
-            <?= make_meta(get_lsb_book_pages($book), [ 'label' => __('antall sider: ', 'lsb-theme-boksok'), 'after' => '<br/>' ]) ?>
-            <?= make_meta(get_lsb_book_year($book), [ 'label' => __('utgitt: ', 'lsb-theme-boksok'), 'after' => '<br/>' ]) ?>
+            <?= make_meta(get_lsb_book_isbn($book), [ 'label' => __('isbn: ', 'lsb-theme-boksok') ]) ?>
+            <?= make_meta(get_lsb_book_pages($book), [ 'label' => __('antall sider: ', 'lsb-theme-boksok') ]) ?>
+            <?= make_meta(get_lsb_book_year($book), [ 'label' => __('utgitt: ', 'lsb-theme-boksok') ]) ?>
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">

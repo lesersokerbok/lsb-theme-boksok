@@ -17,7 +17,7 @@ function make_tags($terms, $args) {
 
   $defaults = array(
 	  'label' => "",
-	  'after' => ""
+    'container_class' => "lsb-tags"
   );
   $args = wp_parse_args( $args, $defaults );
 
@@ -42,15 +42,14 @@ function make_tags($terms, $args) {
     $tags[] = $tag;
   }
 
-  return '<span>' . join( ' ', $tags ) . '</span>' . $args['after'];
+  return '<span class="' . $args['container_class'] . '">'  . join( ' ', $tags ) . '</span>';
 } 
 
 function make_meta($meta, $args) {
 
   $defaults = array(
 	  'label' => "",
-	  'after' => "",
-    'container_class'=> ""
+    'container_class' => "lsb-tags"
   );
   $args = wp_parse_args( $args, $defaults );
 
@@ -65,7 +64,7 @@ function make_meta($meta, $args) {
   }
   $tags[] = '<span class="lsb-tag">' . $meta . '</span>';
 
-  return '<span class="' . $args['container_class'] . '">' . join( ' ', $tags ) . '</span>' . $args['after'];
+  return '<span class="' . $args['container_class'] . '">' . join( ' ', $tags ) . '</span>';
 }
 
 function make_term_button($term) {

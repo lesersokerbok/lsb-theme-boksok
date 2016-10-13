@@ -18,9 +18,9 @@
         <?= get_the_excerpt($book) ?>
       </p>
       <p class="small">
-        <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books'), 'container_class' => 'no-wrap', 'after' => '<br/>' ]) ?>
-        <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books'), 'container_class' => 'no-wrap', 'after' => '<br/>' ]) ?>
-        <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books'), 'container_class' => 'no-wrap', 'after' => '<br/>' ]) ?>
+        <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books') ]) ?>
       </p>
     </div>
   </div>

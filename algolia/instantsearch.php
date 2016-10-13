@@ -66,7 +66,47 @@ if($lsb_cat_filter_term) {
 	</script>
 
 	<script type="text/html" id="tmpl-instantsearch-lsb_book-hit">
-    <# console.log(data); #>
+    <#
+
+      console.log(data);
+
+      var creators = [];
+      var topics = [];
+      var partof = [];
+      var audience = [];
+
+      for ( var tax_key in data._highlightResult.taxonomies ) {
+        var tax_terms = data._highlightResult.taxonomies[tax_key];
+        for ( var term_index in tax_terms ) {
+          var tax_term = tax_terms[term_index];
+          if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator' || tax_key === 'lsb_tax_translator') {
+            creators.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
+          } else if( tax_key === 'lsb_tax_topic') {
+            topics.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
+          } else if( tax_key === 'lsb_tax_series' || tax_key === 'lsb_tax_list' ) {
+            partof.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
+          } else if( tax_key === 'lsb_tax_age' || tax_key === 'lsb_tax_audience' ) {
+            audience.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
+          }
+        }
+      }
+
+
+      var relevant_content = '';
+
+      for ( var snippet_index in data._snippetResult ) {
+        var snippet = data._snippetResult[snippet_index];
+        if( snippet.matchLevel !== 'none') {
+          relevant_content = snippet.value;
+          break;
+        }
+      }
+
+      if( relevant_content === '' && data._snippetResult.lsb_review ) {
+        relevant_content = data._snippetResult.lsb_review.value;
+      }
+
+    #>
 		<article class="summary lsb_book">
 			<div class="row lsb-xs-row-valign-center">
 				<div class="col-xs-5">
@@ -77,71 +117,53 @@ if($lsb_cat_filter_term) {
 						</a>
 				</div>
 				<div class="col-xs-7">
-					<div class="lsb-heading-medium"><a href="{{ data.permalink }}">{{{ data._highlightResult.post_title.value }}}</a></div>
-					<div class="ais-hits--tags">
-
-						<#
-						
-							var creators = [];
-							var terms = [];
-
-							for ( var tax_key in data._highlightResult.taxonomies ) {	
-								var tax_terms = data._highlightResult.taxonomies[tax_key];
-								for ( var term_index in tax_terms ) {
-									var tax_term = tax_terms[term_index];					
-									if( tax_key === 'lsb_tax_author' || tax_key === 'lsb_tax_illustrator' || tax_key === 'lsb_tax_translator') {
-										creators.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
-									} else {
-										terms.push({value: tax_term.value, permalink: data.taxonomies_permalinks[tax_key][term_index]});
-									}
-								}
-							}
-
-							creators = jQuery.unique(creators);
-							terms = jQuery.unique(terms);
-
-						#>
-						
-
+					<h1 class="lsb-heading-medium"><a href="{{ data.permalink }}">{{{ data._highlightResult.post_title.value }}}</a></h1>
+					<p>
 						<# for ( var creator_index in creators ) { #>
-							<span class="ais-hits--tag">
-								<span class="icon icon-user" aria-hidden="true" style="color: black; opacity: 0.3"></span>
+							<span class="btn btn-default btn-sm">
+								<span class="icon icon-user"></span>
 								<a href="{{{ creators[creator_index].permalink }}}">{{{ creators[creator_index].value }}}</a>
 							</span>
 						<# } #>
-						<# if (  data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) { #>
-							<span class="ais-hits--tag">
-								<span style="color: black; opacity: 0.3; font-size: 90%">isbn</span>
-								{{{ data._highlightResult.lsb_isbn.value }}}
-							</span>
-						<# } #>
-						<# for ( var term_index in terms ) { #>
-							<span class="ais-hits--tag">
-								<a href="{{{ terms[term_index].permalink }}}">{{{ terms[term_index].value }}}</a>
-							</span>
-						<# } #>
-					</div>
-					<p class="block-lsb-description">
-						<#
-
-							var relevant_content = '';
-
-							for ( var snippet_index in data._snippetResult ) {
-								var snippet = data._snippetResult[snippet_index];
-								if( snippet.matchLevel !== 'none') {
-									relevant_content = snippet.value;
-									break;
-								}
-							}
-
-							if( relevant_content === '' && data._snippetResult.lsb_review ) {
-								relevant_content = data._snippetResult.lsb_review.value;
-							}
-
-						#>
-
+					</p>
+					<p>
 						{{{ relevant_content }}}
 					</p>
+          <p class="small">
+            <span class="lsb-tags">
+            <# if ( data._highlightResult.lsb_isbn && data._highlightResult.lsb_isbn.matchedWords.length > 0 ) { #>
+              <span class="lsb-tag lsb-tag-label">isbn</span>
+              <span class="lsb-tag">{{{ data._highlightResult.lsb_isbn.value }}}</span>
+						<# } #>
+            </span>
+
+            <span class="lsb-tags">
+            <# if ( topics.length > 0 ) { #>
+              <span class="lsb-tag lsb-tag-label">tema</span>
+						<# } #>
+						<# for ( var term_index in topics ) { #>
+              <span class="lsb-tag"><a href="{{{ topics[term_index].permalink }}}">{{{ topics[term_index].value }}}</a></span>
+						<# } #>
+            </span>
+
+            <span class="lsb-tags">
+            <# if ( partof.length > 0 ) { #>
+              <span class="lsb-tag lsb-tag-label">del av</span>
+						<# } #>
+						<# for ( var term_index in partof ) { #>
+              <span class="lsb-tag"><a href="{{{ partof[term_index].permalink }}}">{{{ partof[term_index].value }}}</a></span>
+						<# } #>
+            </span>
+
+            <span class="lsb-tags">
+            <# if ( audience.length > 0 ) { #>
+              <span class="lsb-tag lsb-tag-label">passer for</span>
+						<# } #>
+						<# for ( var term_index in audience ) { #>
+              <span class="lsb-tag"><a href="{{{ audience[term_index].permalink }}}">{{{ audience[term_index].value }}}</a></span>
+						<# } #>
+            </span>
+          </p>
 				</div>
 			</div>
 		</article>

@@ -43,15 +43,18 @@ a {
   .h6;
 }
 
-.lsb-tag {
-  &:not(:last-child):after {
-    content: ",";
-  }
+.lsb-tags {
+  display: block;
+  .lsb-tag {
+    &:not(:last-child):after {
+      content: ",";
+    }
 
-  &.lsb-tag-label {
-    opacity: 0.6;
-    &:after {
-      content: "";
+    &.lsb-tag-label {
+      opacity: 0.6;
+      &:after {
+        content: "";
+      }
     }
   }
 }
