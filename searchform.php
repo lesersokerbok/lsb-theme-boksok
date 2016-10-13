@@ -17,9 +17,10 @@
             data-tax-term='<?php echo json_encode($lsb_algolia_filter); ?>' />
 
 <form role="search" method="get" class="search-form" action="<?= $action ?>">
+  <label class="hidden" for="algolia-auto-search"><?= $input_placeholder ?></label>
   <div class="input-group input-group-lg">
     <span class="input-group-addon" id="basic-addon1"><span class="icon icon-magnifying-glass"></span></span>
-    <input id="algolia-auto-search" class="form-control" name="s" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+    <input id="algolia-auto-search" class="form-control" name="s" value="<?php echo $input_value ?>" placeholder="<?= $input_placeholder ?>">
     <span class="input-group-btn">
       <button class="btn btn-default" type="submit"><?php echo $submit_text ?></button>
     </span>

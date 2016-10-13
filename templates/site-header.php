@@ -8,6 +8,7 @@
       </button>
 
       <a class="navbar-brand" href="<?php echo home_url(); ?>">
+        <span class="hidden"><?= get_bloginfo() ?></span>
 			  <?php get_template_part('templates/logo'); ?>
       </a>
 
@@ -44,8 +45,8 @@
         endif;
       ?>
 
-      <ul id="menu-test" class="nav navbar-nav">
-        <li class="<?= (is_front_page() || is_search() || is_tax('lsb_tax_lsb_cat')) ? 'active' : '' ?> menu-ressurser">
+      <ul class="nav navbar-nav">
+        <li class="<?= (is_front_page() || is_search() || is_tax('lsb_tax_lsb_cat')) ? 'active' : '' ?>">
           <a href="<?= get_lsb_cat_filter_term() ? get_term_link(get_lsb_cat_filter_term()) : home_url() ?>">
             <span class="icon icon-magnifying-glass"></span> <?php _e('Søk', 'lsb_boksok') ?>
           </a>
