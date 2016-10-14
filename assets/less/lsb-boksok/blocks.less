@@ -16,6 +16,15 @@
     height: 0;
     width: 0;
   }
+
+  @media (max-width: @screen-sm-max) {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    .m-b-lg;
+  }
 }
 
 .block-lsb-selection {
@@ -36,6 +45,10 @@
 
   .lsb-col-move-up {
     margin-top: -40px;
+
+    @media (max-width: @screen-sm-max) {
+      .m-t-0;
+    }
   }
 }
 
