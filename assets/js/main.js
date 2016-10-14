@@ -51,21 +51,27 @@ var Roots = {
 
       $('.read-more').each(function() {
         var $read_more= $(this);
-        var $parent = $read_more.parent();
+        var $container = $read_more.parent();
+        var $content = $container.find('.lsb-book-content').first();
         var $button = $read_more.find('.btn').first();
         var $closed_text = $button.html();
         var $opned_text = $button.data('open-text');
         $button.click(function() {
-          $parent.toggleClass('open');
+          $container.toggleClass('open');
           $read_more.toggleClass('open');
           $button.blur();
 
-          if($parent.hasClass('open')) {
+          if($container.hasClass('open')) {
             $button.html($opned_text);
           } else {
             $button.html($closed_text);
           }
         });
+
+        if($container.height() >= $content.height()) {
+          $button.addClass('hidden');
+        }
+
       });
 
       $('.lsb-library-status').each(function() {

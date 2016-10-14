@@ -8,7 +8,8 @@
     <div class="container">
       <div class="row lsb-sm-row-valign-stretch">
         <div class="col-sm-6 col-sm-5">
-          <div class="lsb-book-content">
+          <div class="lsb-book-content-container">
+            <div class="lsb-book-content">
             <h1 class="lsb-heading">
               <?php echo lsb_page_title(); ?>
             </h1>
@@ -35,6 +36,7 @@
               </h2>
               <?= get_the_lsb_book_quote( $book) ?>
             <? endif; ?>
+            </div>
             <div class="read-more">
               <button class="btn btn-default btn-small" data-open-text="<?php _e('Trekk sammen', 'lsb-boksok') ?>"><?php _e('Les mer', 'lsb-boksok') ?></button>
             </div>
