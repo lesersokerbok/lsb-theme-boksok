@@ -1,3 +1,16 @@
+.search-form {
+  @media (max-width: @screen-sm-max) {
+    .input-group {
+      width: 100%;
+    }
+
+    .input-group-btn {
+      display: none;
+    }
+  }
+}
+
+
 body.search {
   @media (max-width: @screen-sm-max) {
     .row.ais-wrapper {
@@ -33,10 +46,12 @@ body.search {
         flex-direction: row;
         flex-wrap: wrap;
 
-        .m-b-md;
+        .m-b;
 
         .ais-facets {
           width: 45%;
+          .m-t-0;
+          .m-b;
 
           &:nth-child(odd) {
             margin-left: 2%;

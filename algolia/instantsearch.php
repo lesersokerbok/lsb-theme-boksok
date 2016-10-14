@@ -15,11 +15,13 @@ if($lsb_cat_filter_term) {
     <div class="container">
       <div class="row app-align-center">
         <div class="col-sm-12 col-md-8 col-md-offset-2">
-          <div class="input-group input-group-lg">
-            <input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
-            </span>
+          <div class="search-form">
+            <div class="input-group input-group-lg">
+              <input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
+              </span>
+            </div>
           </div>
         </div>
       </div>
