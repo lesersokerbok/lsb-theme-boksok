@@ -46,9 +46,7 @@ if($lsb_cat_filter_term) {
             <section id="algolia-refined-values"></section>
           </div>
           <div class="lsb-facets hidden-xs hidden-sm">
-            <?php if( !$lsb_cat_filter_term ) : ?>
-              <section class="ais-facets" id="facet-category"></section>
-            <?php endif; ?>
+            <section class="ais-facets" id="facet-category"></section>
             <section class="ais-facets" id="facet-topic"></section>
             <section class="ais-facets" id="facet-age"></section>
             <section class="ais-facets" id="facet-language"></section>
@@ -203,9 +201,10 @@ if($lsb_cat_filter_term) {
 							'lsb_quote:40'
 						],
 						<?php if($lsb_cat_filter_term) : ?>
-						facetFilters: [
-    					'taxonomies.lsb_tax_lsb_cat:<?= $lsb_cat_filter_term->name ?>'
-  					],
+            facets: ['taxonomies.lsb_tax_lsb_cat'],
+						facetsRefinements: {
+    					'taxonomies.lsb_tax_lsb_cat': ['<?= $lsb_cat_filter_term->name ?>']
+            },
 						<?php endif; ?>
 					},
 					searchFunction: function(helper) {
@@ -281,7 +280,6 @@ if($lsb_cat_filter_term) {
 					})
 				);
 
-				<?php if( !$lsb_cat_filter_term ) : ?>
 				// Facet widget: lsb_tax_lsb_cat
 				search.addWidget(
 					instantsearch.widgets.hierarchicalMenu({
@@ -294,7 +292,6 @@ if($lsb_cat_filter_term) {
 						}
 					})
 				);
-				<?php endif; ?>
 
 				// Facet widget: lsb_tax_language
 				search.addWidget(
