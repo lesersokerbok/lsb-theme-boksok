@@ -55,7 +55,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-6 col-sm-3">
-          <div class="small">
+          <div>
           <?= make_tags(get_lsb_book_publishers($book), [ 'label' => __('forlag', 'lsb-theme-books') ]) ?>
           <?= make_tags(get_lsb_book_genres($book), [ 'label' => __('sjanger', 'lsb-theme-books') ]) ?>
           <?= make_tags(get_lsb_book_categories($book), [ 'label' => __('kategori', 'lsb-theme-books') ]) ?>
@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="col-xs-6 col-sm-3">
-          <div class="small">
+          <div>
             <?= make_meta(get_lsb_book_isbn($book), [ 'label' => __('isbn: ', 'lsb-theme-boksok') ]) ?>
             <?= make_meta(get_lsb_book_pages($book), [ 'label' => __('antall sider: ', 'lsb-theme-boksok') ]) ?>
             <?= make_meta(get_lsb_book_year($book), [ 'label' => __('utgitt: ', 'lsb-theme-boksok') ]) ?>
