@@ -7,6 +7,7 @@
           <h1 class="lsb-heading">
             <?php echo lsb_page_title(); ?>
           </h1>
+          <hr/>
         </div>
       </div>
     </div>
@@ -20,6 +21,7 @@
           <div class="lsb-description">
             <?php the_content(); ?>
           </div>
+        </div>
       </div>
     </div>
   </section>

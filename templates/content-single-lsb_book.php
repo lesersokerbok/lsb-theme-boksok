@@ -12,10 +12,11 @@
             <h1 class="lsb-heading">
               <?php echo lsb_page_title(); ?>
             </h1>
-            <p class="m-t">
+            <hr class="m-b-md" />
+            <p class="m-b-sm">
               <?= make_term_buttons(get_lsb_book_creators($book)) ?>
             </p>
-            <p class="m-t m-b">
+            <p class="m-b-md">
               <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books') ]) ?>
               <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books') ]) ?>
               <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books') ]) ?>
