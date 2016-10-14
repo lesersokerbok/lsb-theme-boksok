@@ -46,8 +46,8 @@
       ?>
 
       <ul class="nav navbar-nav">
-        <li class="<?= (is_front_page() || is_search() || is_tax('lsb_tax_lsb_cat')) ? 'active' : '' ?>">
-          <a href="<?= get_lsb_cat_filter_term() ? get_term_link(get_lsb_cat_filter_term()) : home_url() ?>">
+        <li class="<?= is_search() ? 'active' : '' ?>">
+          <a href="<?= get_lsb_cat_filter_term() ? get_term_link(get_lsb_cat_filter_term()) : home_url() ?>?s=">
             <span class="icon icon-magnifying-glass"> </span><?php _e('Søk', 'lsb_boksok') ?>
           </a>
         </li>

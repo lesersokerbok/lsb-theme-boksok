@@ -31,7 +31,7 @@ function lsb_append_lsb_cat_filter( $object ) {
 
 	if(is_array($object)) {
 		$object[] = 'filter-' . $lsb_cat_filter;
-	} else if(is_string($object) && $lsb_cat_filter !== 'none') {
+	} else if(is_string($object) && $lsb_cat_filter !== 'none' && strpos($object, $lsb_cat_filter) === false) {
 		$object = add_query_arg( array('filter' => $lsb_cat_filter), $object );
 	}
 
