@@ -23,6 +23,17 @@
   }
 }
 
+.btn {
+  .icon:not(:last-child) {
+    color: lighten(@text-color, 30%);
+
+    &:after {
+      content: "\0000a0";
+      display: inline-block;
+    }
+  }
+}
+
 .nav-bordered.nav-stacked a {
   text-decoration: none;
 }

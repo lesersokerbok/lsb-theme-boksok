@@ -101,7 +101,7 @@ function make_term_button($term) {
     return '<a class="btn btn-default" style="' . $style . '" href="' . $url . '">' . $name . '</a>';
 
   } else if($term->taxonomy == 'lsb_tax_author' || $term->taxonomy == 'lsb_tax_illustrator' || $term->taxonomy == 'lsb_tax_translator') {
-    return '<a class="btn btn-default" href="' . $url . '"><span class="icon icon-user"></span>' . $name . '</a>';
+    return '<a class="btn btn-default" href="' . $url . '"><span class="icon icon-user"></span><span>' . $name . '<span></a>';
   }
 
   return '<a class="btn btn-default" href="' . $url . '">' . $name . '</a>';
