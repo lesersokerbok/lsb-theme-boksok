@@ -42,7 +42,7 @@
     }
 ?>
 
-<div class="block block-lsb-cat">
+<div class="block block-lsb-cat-section">
   <div class="container">
     <div class="row lsb-sm-row-valign-stretch">
       <div class="col-sm-5 <?= $section_blocks[0]['classes'] ?>">
