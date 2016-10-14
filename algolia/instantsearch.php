@@ -203,7 +203,7 @@ if($lsb_cat_filter_term) {
 						<?php if($lsb_cat_filter_term) : ?>
             facets: ['taxonomies.lsb_tax_lsb_cat'],
 						facetsRefinements: {
-    					'taxonomies.lsb_tax_lsb_cat': ['<?= $lsb_cat_filter_term->name ?>']
+    					'taxonomies.lsb_tax_lsb_cat': ["<?= htmlspecialchars_decode($lsb_cat_filter_term->name) ?>"]
             },
 						<?php endif; ?>
 					},
