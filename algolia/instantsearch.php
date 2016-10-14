@@ -238,6 +238,11 @@ if($lsb_cat_filter_term) {
 						transformData: {
 							item: function(data) {
 								data.permalink = data.permalink + "<?= $url_addon ?>";
+                for ( var tax_key in data.taxonomies_permalinks ) {
+                  for ( var term_index in data.taxonomies_permalinks[tax_key] ) {
+                    data.taxonomies_permalinks[tax_key][term_index] = data.taxonomies_permalinks[tax_key][term_index] + "<?= $url_addon ?>";
+                  }
+                }
 								return data;
 							},
 						}, 
