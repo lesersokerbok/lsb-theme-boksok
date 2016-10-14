@@ -74,8 +74,6 @@ if($lsb_cat_filter_term) {
 	<script type="text/html" id="tmpl-instantsearch-lsb_book-hit">
     <#
 
-      console.log(data);
-
       var creators = [];
       var topics = [];
       var partof = [];
