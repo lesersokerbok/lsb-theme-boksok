@@ -68,7 +68,7 @@ var Roots = {
           }
         });
 
-        if($container.height() >= $content.height()) {
+        if($container.height() >= $content.height() + $read_more.height()) {
           $button.addClass('hidden');
         }
 
