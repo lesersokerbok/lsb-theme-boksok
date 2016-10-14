@@ -3,6 +3,11 @@
     <li class="<?= is_front_page() ? 'active' : '' ?>">
       <a href="<?= home_url() ?>"><?php _e('Forside', 'lsb_boksok') ?></a>
     </li>
+    <li class="<?= is_search() ? 'active' : '' ?>">
+      <a href="<?= get_lsb_cat_filter_term() ? get_term_link(get_lsb_cat_filter_term()) : home_url() ?>?s=">
+        <span class="icon icon-magnifying-glass"> </span><?php _e('Søk', 'lsb_boksok') ?>
+      </a>
+    </li>
   </ul>
   <ul class="nav nav-bordered nav-stacked">
     <li class="nav-divider"></li>
