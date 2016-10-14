@@ -19,9 +19,9 @@
     <aside>
 
       <?php 
-        if(is_tax( 'lsb_tax_lsb_cat')) {
+        if(get_lsb_cat_filter() !== 'none') {
           $lsb_block_args = [
-            'block_tax_term' => get_queried_object()
+            'block_tax_term' => get_lsb_cat_filter_term()
           ];
           include(locate_template('templates/lsb-block-tax-descriptive.php'));
         }

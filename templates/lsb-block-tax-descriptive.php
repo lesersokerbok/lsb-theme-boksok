@@ -29,9 +29,15 @@ $block_tax_term = $lsb_block_args['block_tax_term'];
             <p><?= $block_tax_term->description ?></p>
           <?php endif; ?>
 
-          <a href="<?= get_term_link($block_tax_term) ?>" class="btn btn-lg btn-spacious m-t-md">
-            <?php _e('Velg', 'lsb-boksok') ?> <strong><?php echo $block_tax_term->name ?></strong>
-          </a>
+          <?php if( is_tax('lsb_tax_lsb_cat') && get_query_var( 'paged', 0 ) == 0) : ?>
+            <a href="<?= get_term_link($block_tax_term) ?>side/2" class="btn btn-lg btn-spacious m-t-md">
+              <?php _e('Bla gjennom', 'lsb-boksok') ?> <strong><?php echo $block_tax_term->name ?></strong>
+            </a>
+          <?php else : ?>
+            <a href="<?= get_term_link($block_tax_term) ?>" class="btn btn-lg btn-spacious m-t-md">
+              <?php _e('Velg', 'lsb-boksok') ?> <strong><?php echo $block_tax_term->name ?></strong>
+            </a>
+          <?php endif; ?>
         </div>
       </div>
     </div>

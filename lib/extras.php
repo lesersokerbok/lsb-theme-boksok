@@ -87,3 +87,36 @@ function lsb_taxonomy_template( $template ) {
 }
 add_filter( 'template_include', 'lsb_taxonomy_template', 99 );
 
+function lsb_taxonomy_offset(&$query) {
+
+  //Before anything else, make sure this is the right query...
+  if ( ! $query->is_tax('lsb_tax_lsb_cat') || count(get_field('lsb_blocks', get_queried_object())) == 0 ) {
+    return;
+  }
+
+  $ppp = get_option('posts_per_page');
+
+  //Next, detect and handle pagination...
+  if ( $query->is_paged ) {
+
+    $page_offset = ($query->query_vars['paged']-2) * $ppp;
+
+    //Apply adjust page offset
+    $query->set('offset', $page_offset );
+
+  }
+}
+add_action('pre_get_posts', 'lsb_taxonomy_offset', 1 );
+
+function lsb_taxonomy_offset_pagination($found_posts, $query) {
+
+    //Before anything else, make sure this is the right query...
+    if ( ! $query->is_tax('lsb_tax_lsb_cat') || count(get_field('lsb_blocks', get_queried_object())) == 0 ) {
+      return $found_posts;
+    }
+
+    $ppp = get_option('posts_per_page');
+    return $found_posts + $ppp;
+}
+add_filter('found_posts', 'lsb_taxonomy_offset_pagination', 1, 2 );
+
