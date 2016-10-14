@@ -199,8 +199,8 @@ if($lsb_cat_filter_term) {
 					searchParameters: {
 						facetingAfterDistinct: true,
 						attributesToSnippet: [
-							'lsb_review:40',
-							'lsb_quote:40'
+							'lsb_review:20',
+							'lsb_quote:20'
 						],
 						<?php if($lsb_cat_filter_term) : ?>
             facets: ['taxonomies.lsb_tax_lsb_cat'],
