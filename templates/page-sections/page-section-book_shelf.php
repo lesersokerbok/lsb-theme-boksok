@@ -11,6 +11,7 @@
         <small>| <a href="<?php echo LsbPageSectionsUtil::get_link_for_book_shelf(); ?>"><?php the_sub_field('lsb_page_section_sub_title'); ?></a></small>
       <?php endif; ?>
     </h1>
+    <a href="<?php echo LsbPageSectionsUtil::get_link_for_book_shelf(); ?>">Se alle</a>
   </div>
 
   <div class="book-shelf-body loop">

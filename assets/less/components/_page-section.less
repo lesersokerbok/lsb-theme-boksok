@@ -1,3 +1,27 @@
+.page-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  h1 {
+    font-size: @font-size-h4;
+
+    small {
+      font-size: 85%;
+      text-transform: none;
+    }
+  }
+
+  >a {
+    text-decoration: underline;
+    flex: 0 0 auto;
+  }
+
+  border-bottom: 1px solid @thumbnail-border;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 .page-section {
 	.clearfix;
 
