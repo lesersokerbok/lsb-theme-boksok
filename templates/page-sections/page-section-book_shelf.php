@@ -13,16 +13,11 @@
     </h1>
   </div>
 
-  <div class="book-shelf-body">
+  <div class="book-shelf-body loop">
 
-    <span aria-hidden="true" class="book-shelf-left-scroll hidden-xs glyphicon glyphicon-chevron-left"></span>
-    <span aria-hidden="true" class="book-shelf-right-scroll hidden-xs glyphicon glyphicon-chevron-right"></span>
-
-    <div class="book-shelf-scroll loop">
-      <?php while ( $books->have_posts() ) : $books->the_post(); ?>
-        <?php get_template_part('templates/content-summary', 'lsb_book'); ?>
-      <?php endwhile; ?>
-    </div>
+    <?php while ( $books->have_posts() ) : $books->the_post(); ?>
+      <?php get_template_part('templates/content-summary', 'lsb_book'); ?>
+    <?php endwhile; ?>
 
   </div>
 </section>

@@ -4,39 +4,9 @@
 
 .book-shelf {
 
-  .book-shelf-body {
-    transform-style: preserve-3d;
-
-    .book-shelf-scroll.loop {
-      flex-wrap: nowrap;
-      overflow: hidden;
-    }
-
-    .book-shelf-left-scroll,
-    .book-shelf-right-scroll  {
-      color: @link-color;
-      position: absolute;
-      top: 30%;
-      font-size: @font-size-h1;
-      opacity: 0.5;
-      cursor: pointer;
-
-      display: none;
-
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-
-    .book-shelf-left-scroll {
-      transform: translateX(-110%);
-      left: -10px;
-    }
-
-    .book-shelf-right-scroll {
-      transform: translateX(110%);
-      right: -10px;
-    }
+  .book-shelf-body.loop {
+    flex-wrap: nowrap;
+    overflow: hidden;
   }
 }
 
