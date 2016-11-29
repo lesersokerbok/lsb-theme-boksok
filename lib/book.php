@@ -34,9 +34,6 @@ function make_tags($terms, $args) {
   foreach ( $terms as $term ) {
     $link = get_term_link( $term, $term->taxonomy );
     $tag = '<span class="lsb-tag">';
-    if($term->taxonomy == 'lsb_tax_author' || $term->taxonomy == 'lsb_tax_illustrator' || $term->taxonomy == 'lsb_tax_translator') {
-      $tag .= '<span class="icon icon-user"></span>';
-    }
     $tag .= '<a href="' . esc_url( $link ) . '">' . get_term_name($term) . '</a>';
     $tag .= '</span>';
     $tags[] = $tag;

@@ -11,11 +11,9 @@
 
 <div class="block block-lsb-books">
   <div class="container">
-    <div class="row">
+    <div class="lsb-book-collection">
       <?php while (have_posts()) : the_post(); ?>
-        <div class="col-md-8 col-md-offset-2">
-          <?php get_template_part('templates/content-summary', get_post_type()); ?>
-        </div>
+        <?php get_template_part('templates/content-summary', get_post_type()); ?>
       <?php endwhile; ?>
     </div>
     <?php if ($wp_query->max_num_pages > 1) : ?>
