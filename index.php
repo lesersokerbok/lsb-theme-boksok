@@ -1,4 +1,4 @@
-<div class="block block-lsb-header">
+<div class="lsb-page-header">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 lsb-col-center text-xs-center">

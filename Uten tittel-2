@@ -1,0 +1,27 @@
+$section_blocks = [];
+    $section_blocks[] = $blocks[$i];
+    
+    if(($i+1) < count($blocks)) {
+      $section_blocks[] = $blocks[$i+1];
+    }
+
+    foreach ( $section_blocks as $key => &$section_block ) {
+      $section_block['template'] = ($section_block['acf_fc_layout'] == 'lsb_tax_block_books') ? 'cover-grid' : 'buttons';
+      $section_block['title'] = $section_block['lsb_tax_block_title'];
+
+      $section_block_terms = [];
+
+      foreach($section_block['lsb_tax_block_filters'] as $block_filter) {
+        $section_block_terms = array_merge($section_block_terms, $block_filter[$block_filter['acf_fc_layout'] . '_terms']);
+      }
+      
+      if( $section_block['template'] == 'cover-grid' ) {
+        $section_block['tax_term'] = $section_block_terms[0];
+        if( $key % 2 == 0 ) {
+          $section_block['classes'] = 'lsb-col-move-up';
+        }
+      } else if ($section_block['template'] == 'buttons') {
+        $section_block['button_terms'] = $section_block_terms;
+        $section_block['classes'] = 'lsb-col-center';
+      }
+    }
