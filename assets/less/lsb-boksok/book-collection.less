@@ -4,7 +4,11 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: center;
+
+  &.ais-hits__empty,
+  &.ais-searching {
+    justify-content: center;
+  }
 
   margin: -@line-height-computed;
 
@@ -33,9 +37,19 @@
 
     .lsb-book-collection-item-title {
       font-size: @font-size-base;
+      margin-bottom: 0.2rem;
+    }
+
+    .lsb-book-collection-item-content {
+      margin: 0.5rem 0;
+    }
+
+    .lsb-book-collection-item-meta {
+      margin-bottom: 0;
     }
 
     .lsb-book-collection-item-title,
+    .lsb-book-collection-item-content,
     .lsb-book-collection-item-meta {
       padding: 0 0.5rem;
 

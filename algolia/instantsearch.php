@@ -31,7 +31,7 @@ if($lsb_cat_filter_term) {
   <div class="block block-lsb-books">
     <div class="container">
       <div id="algolia-hits">
-        <div class="ais-hits">
+        <div class="ais-hits ais-searching">
           <p class="lsb-heading-medium"><?php _e('Søker ...', 'lsb-theme-boksok') ?></p>
         </div>
       </div>
@@ -131,7 +131,7 @@ if($lsb_cat_filter_term) {
         </h1>
 
         <# if(relevant_content && use_relevant_content) { #>
-          <p class="lsb-book-collection-item-meta">
+          <p class="lsb-book-collection-item-content">
             {{{ relevant_content }}}
           </p>
         <# } #>
