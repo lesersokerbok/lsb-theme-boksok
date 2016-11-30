@@ -4,6 +4,8 @@
     <div class="container">
       <?php if('lsb_tax_block_books' === get_sub_field('acf_fc_layout')) : ?>
 		    <?php get_template_part('templates/components/book-collection' ); ?>
+      <?php elseif('lsb_tax_block_buttons' === get_sub_field('acf_fc_layout')) : ?>
+		    <?php get_template_part('templates/components/button-collection' ); ?>
       <?php endif; ?>
     </div>
   </section>
