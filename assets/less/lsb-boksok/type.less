@@ -37,12 +37,26 @@ a {
     margin-left: 0;
     text-align: left;
 
-    .text-xs-center &,
-    .text-sm-center &,
-    .text-md-center &,
-    .text-lg-center & {
-      margin-left: auto;
-      text-align: inherit;
+    .text-xs-center & {
+      margin: 0 auto;
+    }
+
+    @media (min-width: @screen-sm-min) {
+      .text-sm-center & {
+        margin: 0 auto;
+      }
+    }
+
+    @media (min-width: @screen-md-min) {
+      .text-md-center & {
+        margin: 0 auto;
+      }
+    }
+
+    @media (min-width: @screen-lg-min) {
+      .text-lg-center & {
+        margin: 0 auto;
+      }
     }
   }
 }
