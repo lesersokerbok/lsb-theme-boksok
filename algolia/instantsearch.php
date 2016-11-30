@@ -108,10 +108,15 @@ if($lsb_cat_filter_term) {
     #>
 
       <article class="lsb-book-collection-item">
-        <a class="lsb-book-collection-item-cover" title="" alt="" href="">
+        <a class="lsb-book-collection-item-cover"
+          title="{{ book.post_title }}"
+          alt="<?= __('Omslag - ', 'lsb-theme-books') ?>{{ book.post_title }}"
+          href="{{ book.permalink }}">
+
           <# if(book.images.medium) { #>
             <img src="{{ book.images.medium.url }}" alt="{{ book.post_title }}" title="{{ book.post_title }}" itemprop="image" />
           <# } #>
+
         </a>
         <h1 class="lsb-book-collection-item-title">
           <a href="{{ book.permalink }}">{{{ book._highlightResult.post_title.value }}}</a>
