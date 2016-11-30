@@ -117,6 +117,30 @@ function make_term_buttons($terms) {
   return join( ' ', $buttons );
 }
 
+function get_lsb_book_authors($book) {
+  $terms = [];
+  if(get_the_terms($book, 'lsb_tax_author')) {
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_author'));
+  }
+  return $terms;
+}
+
+function get_lsb_book_illustrators($book) {
+  $terms = [];
+  if(get_the_terms($book, 'lsb_tax_illustrator')) {
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_illustrator'));
+  }
+  return $terms;
+}
+
+function get_lsb_book_translators($book) {
+  $terms = [];
+  if(get_the_terms($book, 'lsb_tax_translator')) {
+    $terms = array_merge($terms, get_the_terms($book, 'lsb_tax_translator'));
+  }
+  return $terms;
+}
+
 function get_lsb_book_creators($book) {
   $terms = [];
   if(get_the_terms($book, 'lsb_tax_author')) {

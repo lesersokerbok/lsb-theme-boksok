@@ -15,8 +15,6 @@
     </a>
   </h1>
   <p class="lsb-book-collection-item-meta">
-    <?= make_tags(get_lsb_book_creators($book), [ 'label' => __('av', 'lsb-theme-books') ]) ?>
-    <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books') ]) ?>
-    <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books') ]) ?>
+    <?= make_tags(get_lsb_book_authors($book), [ 'label' => __('av', 'lsb-theme-books') ]) ?>
   </p>
 </article>
