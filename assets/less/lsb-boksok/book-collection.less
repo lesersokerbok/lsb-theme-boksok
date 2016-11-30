@@ -1,4 +1,5 @@
-.lsb-book-collection {
+.lsb-book-collection,
+#algolia-hits .ais-hits {
 
   display: flex;
   flex-wrap: wrap;
@@ -34,12 +35,16 @@
     }
 
     .lsb-book-collection-item-title,
-    .lsb-book-collection-item-meta .lsb-tags {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
+    .lsb-book-collection-item-meta {
       padding: 0 0.5rem;
+
+      em {
+        background: rgba(69,142,225,.3);
+        color: @text-color;
+        font-style: normal;
+        padding: 0 0 1px;
+        border-radius: 2px;
+      }
     }
 
     .lsb-book-collection-item-cover {
@@ -51,5 +56,15 @@
       }
     }
   }
-
 }
+
+.lsb-book-collection {
+  .lsb-book-collection-item-title,
+  .lsb-book-collection-item-meta .lsb-tags {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
