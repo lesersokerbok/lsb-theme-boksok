@@ -31,7 +31,9 @@ if($lsb_cat_filter_term) {
   <div class="block block-lsb-books">
     <div class="container">
       <div id="algolia-hits">
-        <div class="lsb-heading-medium"><?php _e('Søker ...', 'lsb-theme-boksok') ?></div>
+        <div class="ais-hits">
+          <p class="lsb-heading-medium"><?php _e('Søker ...', 'lsb-theme-boksok') ?></p>
+        </div>
       </div>
 
       <nav class="post-nav text-xs-center">
@@ -155,11 +157,7 @@ if($lsb_cat_filter_term) {
 	</script>
 
 	<script type="text/html" id="tmpl-instantsearch-empty">
-			<div class="row lsb-xs-row-valign-center">
-				<div class="col-sm-7 col-sm-offset-5">
-					<h1 class="lsb-heading-medium"><?php _e('Ingen resultater for', 'lsb_theme_boksok') ?> <em>{{data.query}}</em></h1>
-				</div>
-			</div>
+		<p class="lsb-heading-medium"><?php _e('Ingen resultater for', 'lsb_theme_boksok') ?> <em>{{data.query}}</em></p>
 	</script>
 
 
