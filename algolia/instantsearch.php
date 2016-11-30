@@ -51,8 +51,9 @@ if($lsb_cat_filter_term) {
         console.log(book);
 
         var relevant_content = null;
+        var use_relevant_content = true;
+
         var relevant_meta = {};
-        var relevant_mata_full_match = false;
 
         relevant_meta.creators = {
           terms: [],
@@ -74,6 +75,11 @@ if($lsb_cat_filter_term) {
           label: '<?= __('passer for', 'lsb-theme-books') ?>'
         };
 
+        if(book._highlightResult.post_title.matchLevel === 'full') {
+          use_relevant_content = false;
+        }
+
+
         for ( var tax_key in book._highlightResult.taxonomies ) {
           var tax_terms = book._highlightResult.taxonomies[tax_key];
           for ( var term_index in tax_terms ) {
@@ -91,7 +97,7 @@ if($lsb_cat_filter_term) {
             }
 
             if(tax_term.matchLevel === 'full') {
-              relevant_mata_full_match = true;
+              use_relevant_content = false;
             }
           }
         }
@@ -122,7 +128,7 @@ if($lsb_cat_filter_term) {
           <a href="{{ book.permalink }}">{{{ book._highlightResult.post_title.value }}}</a>
         </h1>
 
-        <# if(relevant_content && !relevant_mata_full_match) { #>
+        <# if(relevant_content && use_relevant_content) { #>
           <p class="lsb-book-collection-item-meta">
             {{{ relevant_content }}}
           </p>
