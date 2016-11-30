@@ -22,11 +22,11 @@
   $books = new WP_Query($args);
 ?>
 
-<div class="lsb-block-header text-sm-center">
-  <h1 class="lsb-heading m-t-0"><?= get_sub_field('lsb_tax_block_title') ?></h1>
-  <hr>
-</div>
 <div class="lsb-book-collection">
+  <div class="lsb-book-collection-header text-sm-center">
+    <h1 class="lsb-heading m-t-0"><?= get_sub_field('lsb_tax_block_title') ?></h1>
+    <hr>
+  </div>
   <?php while ( $books->have_posts() ) : $books->the_post(); ?>
     <?php get_template_part('templates/content-summary', 'lsb_book'); ?>
   <?php endwhile; ?>
