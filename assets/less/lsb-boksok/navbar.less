@@ -1,8 +1,51 @@
 .navbar {
+  color: inherit;
+  font-weight: 500;
+  letter-spacing: .05em;
+
+  .m-b-0;
+  .p-y;
+
   a {
-    text-decoration: none;
+    text-decoration: inherit;
+  }
+
+  .navbar-header {
+
+    .lsb-brand {
+      position: relative;
+      display: flex;
+      .p-l-0;
+
+      svg {
+        height: 40px;
+        width: auto;
+        position: absolute;
+        top: 5px;
+        left: -7px;
+
+        + span {
+          padding-left: 40px;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu > .active > a,
+  .dropdown-menu > li > a:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  .dropdown-menu > .active > a {
+    font-weight: 500;
+  }
+
+  .dropdown-menu > li > a:hover {
+    text-decoration: underline;
   }
 }
+
 
 // Transparent navbar
 .navbar-lsb-colored(@color:@brand-primary) {
@@ -10,11 +53,8 @@
   border-top-width: 4px;
   border-color: @color;
 
-  .navbar-brand {
-    color: @color;
+  .navbar-header {
     svg {
-      height: 50px;
-      margin-top: -15px;
       .fill {
         fill: @color;
       }
@@ -26,145 +66,6 @@
       background-color: transparent;
     }
   }
-
-//  .navbar-text {
-//    color: @navbar-color;
-//    opacity: 0.8;
-//  }
-
-//  .navbar-nav {
-//    > li > a {
-//      color: @navbar-color;
-//
-//      &:hover,
-//      &:focus {
-//        color: @navbar-color;
-//        opacity: 0.6;
-//        background-color: transparent;
-//      }
-//    }
-//    > .active > a {
-//      &,
-//      &:hover,
-//      &:focus {
-//        color: @navbar-color;
-//        opacity: 0.6;
-//        background-color: transparent;
-//      }
-//    }
-//    > .disabled > a {
-//      &,
-//      &:hover,
-//      &:focus {
-//        color: @navbar-color;
-//        opacity: 0.6;
-//        background-color: transparent;
-//      }
-//    }
-//  }
-
-  .navbar-toggle {
-    background-color: rgba(0, 0, 0, 0.1);
-    &:hover,
-    &:focus {
-      opacity: 0.6;
-    }
-  }
-
-  .navbar-collapse,
-  .navbar-form {
-    border-color: transparent;
-  }
-
-//  // Dropdown menu itemss
-//  .navbar-nav {
-//    // Remove background color from open dropdown
-//    > .open {
-//      > a {
-//        &,
-//        &:hover,
-//        &:focus {
-//          background-color: transparent;
-//          color: @navbar-color;
-//          opacity: 0.6;
-//        }
-//      }
-//      .dropdown-menu {
-//        border-radius: @border-radius-base;
-//        > li > a {
-//          color: @text-color;
-//          &:hover,
-//          &:focus {
-//            background-color: transparent;
-//            opacity: 0.6;
-//            text-decoration: underline;
-//          }
-//        }
-//      }
-//    }
-//
-//    @media (max-width: @grid-float-breakpoint-max) {
-//      // Dropdowns get custom display when collapsed
-//      .open .dropdown-menu {
-//        > li > a {
-//          color: @navbar-color;
-//          &:hover,
-//          &:focus {
-//            color: @navbar-color;
-//            background-color: transparent;
-//            opacity: 0.6;
-//          }
-//        }
-//        > .active > a {
-//          &,
-//          &:hover,
-//          &:focus {
-//            color: @navbar-color;
-//            background-color: transparent;
-//            opacity: 0.6;
-//          }
-//        }
-//        > .disabled > a {
-//          &,
-//          &:hover,
-//          &:focus {
-//            color: @navbar-color;
-//            background-color: transparent;
-//            opacity: 0.6;
-//          }
-//        }
-//      }
-//    }
-//  }
-
-
-  // Links in navbars
-  //
-  // Add a class to ensure links outside the navbar nav are colored correctly.
-
-//  .navbar-link {
-//    color: @navbar-color;
-//    &:hover {
-//      color: @navbar-color;
-//      opacity: 0.6;
-//    }
-//  }
-//
-//  .btn-link {
-//    color: @navbar-color;
-//    &:hover,
-//    &:focus {
-//      color: @navbar-color;
-//      opacity: 0.6;
-//    }
-//    &[disabled],
-//    fieldset[disabled] & {
-//      &:hover,
-//      &:focus {
-//        color: @navbar-color;
-//      }
-//    }
-//  }
 }
 
 // Colored clean navbars
@@ -195,34 +96,4 @@
 
 .navbar-blue {
   .navbar-lsb-colored(@brand-blue);
-}
-
-.navbar {
-  font-weight: 500;
-  letter-spacing: .05em;
-
-  .m-b-0;
-
-  padding-top: @spacer-y;
-  padding-bottom: @spacer-y;
-
-  .navbar-header {
-    .navbar-nav > li {
-      display: inline-block;
-    }
-
-    .navbar-nav .active {
-      display: none;
-    }
-  }
-
-  .navbar-brand {
-    svg {
-      height: 50px;
-      margin-top: -15px;
-      .fill {
-        fill: white;
-      }
-    }
-  }
 }
