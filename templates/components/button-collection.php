@@ -9,10 +9,10 @@
 
 ?>
 
+<div class="lsb-header text-sm-center">
+  <h1 class="lsb-heading-small m-t-0"><?= get_sub_field('lsb_tax_block_title') ?></h1>
+</div>
 <div class="lsb-button-collection">
-  <div class="lsb-button-collection-header text-sm-center">
-    <h1 class="lsb-heading-small m-t-0"><?= get_sub_field('lsb_tax_block_title') ?></h1>
-  </div>
   <?php foreach( $terms as $term ) : ?>
     <?= make_term_button($term) ?>
   <? endforeach ?>

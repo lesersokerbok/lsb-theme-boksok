@@ -10,10 +10,12 @@
         <div class="col-sm-6 col-sm-5">
           <div class="lsb-book-content-container">
             <div class="lsb-book-content">
-            <h1 class="lsb-heading">
+            <header class="lsb-header m-b-md">
+              <h1 class="lsb-heading">
               <?php echo lsb_page_title(); ?>
-            </h1>
-            <hr class="m-b-md" />
+              </h1>
+              <hr />
+            </header>
             <p class="m-b-sm">
               <?= make_term_buttons(get_lsb_book_creators($book)) ?>
             </p>

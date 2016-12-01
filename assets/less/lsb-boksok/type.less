@@ -18,6 +18,7 @@ a {
 
 .lsb-heading {
   .h2;
+  .m-t-0;
 
   a {
     color: inherit;
@@ -27,36 +28,6 @@ a {
     &:active,
     &:focus {    
       text-decoration: none;
-    }
-  }
-
-  +hr {
-    width: 40px;
-    border: 2px solid;
-    border-radius: 2px;
-    margin-left: 0;
-    text-align: left;
-
-    .text-xs-center & {
-      margin: 0 auto;
-    }
-
-    @media (min-width: @screen-sm-min) {
-      .text-sm-center & {
-        margin: 0 auto;
-      }
-    }
-
-    @media (min-width: @screen-md-min) {
-      .text-md-center & {
-        margin: 0 auto;
-      }
-    }
-
-    @media (min-width: @screen-lg-min) {
-      .text-lg-center & {
-        margin: 0 auto;
-      }
     }
   }
 }
