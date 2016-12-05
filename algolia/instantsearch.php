@@ -11,8 +11,8 @@ if($lsb_cat_filter_term) {
 
 ?>
 
-<div id="search">
-  <section class="lsb-page-row" id="search-form">
+<div id="search" class="collapse">
+  <section id="search-form" class="lsb-page-row">
     <div class="container">
       <div class="input-group input-group-lg">
         <input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
@@ -26,9 +26,6 @@ if($lsb_cat_filter_term) {
   <main role="main" class="main" id="search-results">
     <div class="container">
       <div id="algolia-hits">
-        <div class="ais-hits ais-searching">
-          <p class="lsb-heading-medium"><?php _e('Søker ...', 'lsb-theme-boksok') ?></p>
-        </div>
       </div>
 
       <nav class="post-nav text-xs-center">
@@ -46,7 +43,6 @@ if($lsb_cat_filter_term) {
     <#
 		  for ( var book_index in data.hits ) {
         var book = data.hits[book_index];
-        console.log(book);
 
         var relevant_content = null;
         var use_relevant_content = true;
@@ -159,7 +155,16 @@ if($lsb_cat_filter_term) {
 
 	<script type="text/javascript">
 		jQuery(function() {
-			if(jQuery('#algolia-insta-search').length > 0) {
+
+      jQuery('#search').on('shown.bs.collapse', function () {
+        jQuery('#algolia-insta-search').select();
+      })
+
+      jQuery('#search').on('hide.bs.collapse', function () {
+        jQuery('main:not(#search-results)').show();
+      })
+
+			if(jQuery('#algolia-insta-search')) {
 				// Instantiate instantsearch.js
 				var search = instantsearch({
 					appId: algolia.application_id,
@@ -185,8 +190,9 @@ if($lsb_cat_filter_term) {
 						<?php endif; ?>
 					},
 					searchFunction: function(helper) {
+            console.log("Søk", search.helper.state.query)
             var savedPage = helper.state.page;
-            var mainSections = jQuery('main');
+            var mainSections = jQuery('main:not(#search-results)');
             var searchResults = jQuery('main#search-results');
 						if (search.helper.state.query === '') {
               mainSections.show();
