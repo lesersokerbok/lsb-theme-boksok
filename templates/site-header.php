@@ -8,10 +8,17 @@
       </button>
       <ul class="nav navbar-nav">
         <li>
-          <a class="lsb-brand" href="<?php echo home_url(); ?>">
-            <?php get_template_part('templates/logo'); ?>
-            <span class="text-uppercase"><?= get_bloginfo() ?></span>
-          </a>
+          <?php if(get_lsb_cat_filter_term()) : ?>
+            <a class="lsb-brand" href="<?= get_term_link(get_lsb_cat_filter_term()) ?>">
+              <?php get_template_part('templates/logo'); ?>
+              <span class="text-uppercase"><?= get_bloginfo() ?></span>
+            </a>
+          <?php else : ?>
+            <a class="lsb-brand" href="<?php echo home_url(); ?>">
+              <?php get_template_part('templates/logo'); ?>
+              <span class="text-uppercase"><?= get_bloginfo() ?></span>
+            </a>
+          <?php endif; ?>
         </li>
       </ul>
     </div>
@@ -31,7 +38,7 @@
 
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="caret"></span>
-          <span class="sr-only">Toggle Dropdown</span>
+          <span class="sr-only"><?php _e('Åpne/lukke nedtrekksmeny', 'lsb-theme-boksok'); ?></span>
         </button>
         <?php
             if (has_nav_menu('frontpage_sections')) :
