@@ -55,7 +55,7 @@
           endif;
         ?>
 
-        <button type="button" class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="<?php _e('Åpne/lukke søk', 'lsb_boksok') ?>">
+        <button type="button" class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#search-page" aria-expanded="false" aria-controls="<?php _e('Åpne/lukke søk', 'lsb_boksok') ?>">
           <span class="icon icon-magnifying-glass"> </span><?php _e('Søk', 'lsb_boksok') ?>
         </button>
       </div>

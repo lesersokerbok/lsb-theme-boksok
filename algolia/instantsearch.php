@@ -11,11 +11,11 @@ if($lsb_cat_filter_term) {
 
 ?>
 
-<div id="search" class="collapse">
+<div id="search-page" class="collapse">
   <section id="search-form" class="lsb-page-row">
     <div class="container">
-      <div class="input-group input-group-lg">
-        <input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+      <div class="input-group input-group-lg" id="algolia-insta-search">
+        <input type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
         <span class="input-group-btn">
           <button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
         </span>
@@ -27,11 +27,10 @@ if($lsb_cat_filter_term) {
     <div class="container">
       <div id="algolia-hits">
       </div>
-
-      <nav class="post-nav text-xs-center">
-        <div id="algolia-pagination" class="text-xs-center"></div>
-      </nav>
     </div>
+    <nav class="post-nav text-xs-center lsb-page-row">
+      <div id="algolia-pagination" class="text-xs-center"></div>
+    </nav>
   </main>
 </div>
 
@@ -156,15 +155,6 @@ if($lsb_cat_filter_term) {
 	<script type="text/javascript">
 		jQuery(function() {
 
-      jQuery('#search').on('shown.bs.collapse', function () {
-        jQuery('#algolia-insta-search').select();
-      })
-
-      jQuery('#search').on('hide.bs.collapse', function () {
-        jQuery('main:not(#search-results)').show();
-      })
-
-			if(jQuery('#algolia-insta-search')) {
 				// Instantiate instantsearch.js
 				var search = instantsearch({
 					appId: algolia.application_id,
@@ -172,7 +162,7 @@ if($lsb_cat_filter_term) {
 					indexName: algolia.indices.posts_lsb_book.name,
 					urlSync: {
 						mapping: {
-							'q': 's'
+							'q': 'sok'
 						},
 						trackedParameters: ['query']
 					},
@@ -211,8 +201,8 @@ if($lsb_cat_filter_term) {
 				// Search box widget
 				search.addWidget(
 					instantsearch.widgets.searchBox({
-						container: '#algolia-insta-search',
-						placeholder: jQuery('#algolia-insta-search').attr('placeholder'),
+						container: '#algolia-insta-search input',
+						placeholder: jQuery('#algolia-insta-search input').attr('placeholder'),
 						wrapInput: false,
 					})
 				);
@@ -282,7 +272,43 @@ if($lsb_cat_filter_term) {
 				// Start
 				search.start();
 
-				jQuery('#algolia-search-box input').attr('type', 'search').select();
-			}
+        $searchPage = jQuery('#search-page');
+        $searchPageToggleButton = jQuery('[data-target="#search-page"]');
+        $searchInput = jQuery('#algolia-insta-search input').attr('type', 'search');
+        $searchButton = jQuery('#algolia-insta-search button').attr('type', 'submit');
+
+        if(search.helper.state.query !== '') {
+          $searchPage.collapse('show');
+          $searchPageToggleButton.addClass('active');
+        }
+
+        $searchPage.on('shown.bs.collapse', function () {
+          console.log("show");
+          $searchPageToggleButton.addClass('active');
+          $searchPageToggleButton.blur();
+          $searchInput.attr('type', 'search').select();
+          if(search.helper.state.query !== '') {
+            jQuery('main:not(#search-results)').hide();
+          }
+        })
+
+        $searchPage.on('hide.bs.collapse', function () {
+          $searchPageToggleButton.removeClass('active');
+          $searchPageToggleButton.blur();
+          jQuery('main:not(#search-results)').show();
+        })
+
+        $searchButton.bind('keyup',function(e) {
+          if (e.key == 'Enter') {
+            jQuery(this).blur();
+          }
+        });
+
+        $searchInput.bind('keyup',function(e) {
+          if (e.key == 'Enter') {
+            jQuery(this).blur();
+          }
+        });
+
 		});
 	</script>
