@@ -11,6 +11,8 @@
       do_action('get_header');
       get_template_part('templates/site-header');
     ?>
+
+    <?php get_template_part('algolia/instantsearch'); ?>
         
     <main class="main" role="main">
       <?php include roots_template_path(); ?>

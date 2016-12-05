@@ -28,12 +28,6 @@ var Roots = {
         $(this).closest('.page-header').find('.description')
           .toggleClass('sr-only');
       });
-
-      $('.search-form').each(function() {
-        var $search_form = $(this);
-        var filter = $(this).data('tax-term')
-        algolia.autocomplete.filter = filter;
-      });
     }
   },
   // Home page

@@ -25,7 +25,7 @@ function lsb_setup() {
 
   // Add HTML5 markup for captions
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
-  add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+  add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'gallery', 'caption' ) );
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/assets/css/editor-style.css');

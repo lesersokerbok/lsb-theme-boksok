@@ -11,24 +11,19 @@ if($lsb_cat_filter_term) {
 
 ?>
 
-  <div class="block block-lsb-search">
+<div id="search">
+  <section class="lsb-page-row" id="search-form">
     <div class="container">
-      <div class="row app-align-center">
-        <div class="col-sm-12 col-md-8 col-md-offset-2">
-          <div class="search-form">
-            <div class="input-group input-group-lg">
-              <input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
-              </span>
-            </div>
-          </div>
-        </div>
+      <div class="input-group input-group-lg">
+        <input id="algolia-insta-search" type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
+        </span>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="block block-lsb-books">
+  <main role="main" class="main" id="search-results">
     <div class="container">
       <div id="algolia-hits">
         <div class="ais-hits ais-searching">
@@ -40,7 +35,8 @@ if($lsb_cat_filter_term) {
         <div id="algolia-pagination" class="text-xs-center"></div>
       </nav>
     </div>
-  </div>
+  </main>
+</div>
 
 	<script type="text/html" id="tmpl-instantsearch-hit">
 		<!-- Should not be used, but if it does it will not fail -->	
@@ -190,15 +186,19 @@ if($lsb_cat_filter_term) {
 					},
 					searchFunction: function(helper) {
             var savedPage = helper.state.page;
+            var mainSections = jQuery('main');
+            var searchResults = jQuery('main#search-results');
 						if (search.helper.state.query === '') {
-							search.helper.setQueryParameter('distinct', false);
-							search.helper.setQueryParameter('filters', 'record_index=0');
-						} else {
-							search.helper.setQueryParameter('distinct', true);
-							search.helper.setQueryParameter('filters', '');
+              mainSections.show();
+              searchResults.hide();
+						  return;
 						}
+            search.helper.setQueryParameter('distinct', true);
+						search.helper.setQueryParameter('filters', '');
 						search.helper.setPage(savedPage);
 						helper.search();
+            mainSections.hide();
+            searchResults.show();
 					}
 				});
 

@@ -29,6 +29,10 @@ function roots_scripts() {
 
   }
 
+  wp_enqueue_script( 'jquery' );
+  wp_enqueue_script( 'wp-util' );
+  wp_enqueue_script( 'algolia-instantsearch' );
+
 	wp_enqueue_style('lsb_boksok_css', get_template_directory_uri() . $assets['css'], false, null);
 	wp_enqueue_script('lsb_boksok_js', get_template_directory_uri() . $assets['js'], array('jquery'), null, true);
 }
