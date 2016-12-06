@@ -26,6 +26,9 @@ if($lsb_cat_filter_term) {
   <main role="main" class="main" id="search-results">
     <div class="container">
       <div id="algolia-hits">
+        <div class="loader">
+          <?php _e('Søker', 'lsb_boksok'); ?>
+        </div>
       </div>
     </div>
     <nav class="post-nav text-xs-center lsb-page-row">
