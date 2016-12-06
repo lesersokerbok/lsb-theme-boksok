@@ -40,6 +40,12 @@
 //@input-bg:                #fdfde4;
 @input-group-addon-bg:    darken(#fdfde4, 5%);
 
+// Nav
+@nav-link-padding: 10px 10px;
+
+// Navbar
+@navbar-height:                    50px;
+@navbar-margin-bottom:             0;
 @navbar-border-radius:             0;
 @navbar-default-color:             @text-color;
 @navbar-default-bg:                transparent;
@@ -47,7 +53,7 @@
 
 // Navbar links
 @navbar-default-link-color:                @text-color;
-@navbar-default-link-hover-color:          average(#fdfde4, @text-color);
+@navbar-default-link-hover-color:          @navbar-default-link-color;
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         average(#fdfde4, @text-color);
 @navbar-default-link-active-bg:            transparent;
@@ -56,7 +62,7 @@
 
 // Navbar brand label
 @navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-color:         @navbar-default-link-color;
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle

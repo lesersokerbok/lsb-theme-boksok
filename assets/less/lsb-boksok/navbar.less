@@ -2,30 +2,46 @@
   color: inherit;
   font-weight: 500;
   letter-spacing: .05em;
-
-  .m-b-0;
   .p-y;
 
   a {
     text-decoration: inherit;
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+
+  .navbar-nav > li.active {
+    display: none;
   }
 
   .navbar-header {
 
-    .lsb-brand {
-      position: relative;
+    .navbar-brand,
+    .navbar-brand a {
+      font-size: inherit;
       display: flex;
-      .p-l-0;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .navbar-brand {
+
+      .lsb-filter {
+        margin-left: @spacer-x/2;
+      }
 
       svg {
         height: 40px;
         width: auto;
-        position: absolute;
-        top: 5px;
-        left: -7px;
+        margin-right: @spacer-x/2;
+      }
+    }
 
-        + span {
-          padding-left: 40px;
+    .navbar-brand a:hover {
+      svg {
+        .fill {
+          fill: @brand-primary;
         }
       }
     }
@@ -47,7 +63,7 @@
 }
 
 
-// Transparent navbar
+// Transparent navbar with color details
 .navbar-lsb-colored(@color:@brand-primary) {
   border-width: 0;
   border-top-width: 4px;
