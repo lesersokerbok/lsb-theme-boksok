@@ -12,7 +12,7 @@ if($lsb_cat_filter_term) {
 ?>
 
 <div id="search-page" class="collapse">
-  <section id="search-form" class="lsb-page-row">
+  <section id="search-form">
     <div class="container">
       <div class="input-group input-group-lg" id="algolia-insta-search">
         <input type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
@@ -23,7 +23,7 @@ if($lsb_cat_filter_term) {
     </div>
   </section>
 
-  <main role="main" class="main" id="search-results">
+  <main role="main" id="search-results">
     <div class="container">
       <div id="algolia-hits">
         <div class="loader">
