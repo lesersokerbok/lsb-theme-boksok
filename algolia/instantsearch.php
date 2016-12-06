@@ -216,11 +216,14 @@ if($lsb_cat_filter_term) {
 						container: '#algolia-hits',
 						hitsPerPage: 30,
 						transformData: {
-							item: function(data) {
-								data.permalink = data.permalink + "<?= $url_addon ?>";
-                for ( var tax_key in data.taxonomies_permalinks ) {
-                  for ( var term_index in data.taxonomies_permalinks[tax_key] ) {
-                    data.taxonomies_permalinks[tax_key][term_index] = data.taxonomies_permalinks[tax_key][term_index] + "<?= $url_addon ?>";
+							allItems: function(data) {
+                for (var book_key in data.hits) {
+                  var book = data.hits[book_key];
+                  book.permalink = book.permalink + "<?= $url_addon ?>";
+                  for ( var tax_key in book.taxonomies_permalinks ) {
+                    for ( var term_index in book.taxonomies_permalinks[tax_key] ) {
+                      book.taxonomies_permalinks[tax_key][term_index] = book.taxonomies_permalinks[tax_key][term_index] + "<?= $url_addon ?>";
+                    }
                   }
                 }
 								return data;
