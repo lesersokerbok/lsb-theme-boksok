@@ -23,18 +23,19 @@ function roots_scripts() {
   );
 
   if (WP_ENV !== 'development') {
-
 		$assets['css'] = '/dist/main.min.css';
 		$assets['js'] = '/dist/main.min.js';
-
   }
+
+  $assets['css_version'] = filemtime(get_stylesheet_directory() . $assets['css']);
+  $assets['js_version'] = filemtime(get_stylesheet_directory() . $assets['js']);
 
   wp_enqueue_script( 'jquery' );
   wp_enqueue_script( 'wp-util' );
   wp_enqueue_script( 'algolia-instantsearch' );
 
-	wp_enqueue_style('lsb_boksok_css', get_template_directory_uri() . $assets['css'], false, null);
-	wp_enqueue_script('lsb_boksok_js', get_template_directory_uri() . $assets['js'], array('jquery'), null, true);
+	wp_enqueue_style('lsb_boksok_css', get_template_directory_uri() . $assets['css'], $assets['css_version'], null);
+	wp_enqueue_script('lsb_boksok_js', get_template_directory_uri() . $assets['js'], array('jquery'), $assets['js_version'], true);
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
