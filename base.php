@@ -4,22 +4,19 @@
 <?php get_template_part('templates/head'); ?>
 
 <body <?php body_class(); ?>>
-  <?php get_template_part('templates/site-shelf'); ?>
-  <div class="stage" id="stage">
 
-    <?php
-      do_action('get_header');
-      get_template_part('templates/site-header');
-    ?>
+  <?php
+    do_action('get_header');
+    get_template_part('templates/site-header');
+  ?>
 
-    <?php get_template_part('algolia/instantsearch'); ?>
+  <?php get_template_part('algolia/instantsearch'); ?>
         
-    <main class="main" role="main">
-      <?php include roots_template_path(); ?>
-    </main><!-- /.main -->
+  <main class="main" role="main">
+    <?php include roots_template_path(); ?>
+  </main><!-- /.main -->
 
-    <?php get_template_part('templates/site-footer'); ?>
-  </div><!-- /#stage -->
+  <?php get_template_part('templates/site-footer'); ?>
 
   <?php wp_footer(); ?>
 
