@@ -3,7 +3,7 @@
 ?>
 
 <article <?php post_class('lsb-book-collection-item'); ?>>
-  <a class="lsb-book-collection-item-cover"
+  <a class="lsb-book-collection-item-cover thumbnail"
      title="<?= get_the_title($book) ?>"
      alt="<?= sprintf(__('Omslag - %s', 'lsb-theme-books'), get_the_title($book)) ?>"
      href="<?= get_permalink($book) ?>">

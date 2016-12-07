@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="col-sm-6 col-sm-offset-1">
-          <div class="lsb-book-cover m-b-md">
+          <div class="lsb-book-cover thumbnail m-b-md">
             <?= get_the_lsb_book_cover($book) ?>
           </div>
         </div>

@@ -38,7 +38,7 @@
 @body-bg:                 #fdfde4;
 //@btn-default-bg:          #fdfde4;
 //@input-bg:                #fdfde4;
-@input-group-addon-bg:    darken(#fdfde4, 5%);
+@input-group-addon-bg:    darken(@body-bg, 5%);
 
 // Nav
 @nav-link-padding: 10px 10px;
@@ -70,9 +70,11 @@
 @navbar-default-toggle-icon-bar-bg:        #888;
 @navbar-default-toggle-border-color:       #ddd;
 
-@dropdown-bg:             #fdfde4;
-@dropdown-link-hover-bg:  darken(#fdfde4, 5%);
+// Dropdown
+@dropdown-bg:             @body-bg;
+@dropdown-link-hover-bg:  darken(@body-bg, 5%);
 
+// Input
 @input-color:                    @text-color;
 @input-border-radius:            2px;
 @input-border-radius-large:      2px;
@@ -80,13 +82,15 @@
 @input-border-focus:             @brand-primary;
 @input-color-placeholder:        lighten(@text-color, 20%);
 
+// Thumbnail
+@thumbnail-bg: white;
+
 /* Bootstrap marketing theme */
 
 @import "./bootstrap-theme/variables.less";
 
-@stage-bg:                 #fdfde4;
-@block-bg:                 #fdfde4;
-
+@stage-bg:                 @body-bg;
+@block-bg:                 @body-bg;
 @block-bg-inverted:        @brand-primary;
 @block-vertical-padding:   @spacer*5;
 @letter-spacing-base:      normal;
