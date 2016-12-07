@@ -29,6 +29,37 @@
   }
 }
 
+#search-form {
+
+  body.filter-none & {
+    .search-form-primary;
+  }
+
+  body.filter-litt-a-lese & {
+    .search-form-purple;
+  }
+
+  body.filter-enkelt-innhold & {
+    .search-form-green;
+  }
+
+  body.filter-storskrift & {
+    .search-form-yellow;
+  }
+
+  body.filter-punktskrift-folebilder & {
+    .search-form-orange;
+  }
+
+  body.filter-tegnsprak-nmt & {
+    .search-form-red;
+  }
+
+  body.filter-bliss-piktogram & {
+    .search-form-blue;
+  }
+}
+
 .stage-shelf {
   border-top: 4px solid;
 
@@ -61,7 +92,7 @@
   }
 }
 
-.lsb-heading + hr {
+.lsb-header hr {
 
   body.filter-none & {
     border-color: @brand-primary;
@@ -89,71 +120,5 @@
 
   body.filter-bliss-piktogram & {
     border-color: @brand-blue;
-  }
-}
-
-.block-lsb-books,
-.block-lsb-content,
-.block-lsb-header,
-.block-lsb-search,
-.block-lsb-cat-section {
-
-  body.filter-none & {
-    .block-lsb-primary;
-  }
-
-  body.filter-litt-a-lese & {
-    .block-lsb-purple;
-  }
-
-  body.filter-enkelt-innhold & {
-    .block-lsb-green;
-  }
-
-  body.filter-storskrift & {
-    .block-lsb-yellow;
-  }
-
-  body.filter-punktskrift-folebilder & {
-    .block-lsb-orange;
-  }
-
-  body.filter-tegnsprak-nmt & {
-    .block-lsb-red;
-  }
-
-  body.filter-bliss-piktogram & {
-    .block-lsb-blue;
-  }
-}
-
-.block-lsb-cat {
-
-  &.lsb-cat-boksok {
-    .block-lsb-primary;
-  }
-
-  &.lsb-cat-litt-a-lese {
-    .block-lsb-purple;
-  }
-
-  &.lsb-cat-enkelt-innhold {
-    .block-lsb-green;
-  }
-
-  &.lsb-cat-storskrift {
-    .block-lsb-yellow;
-  }
-
-  &.lsb-cat-punktskrift-folebilder {
-    .block-lsb-orange;
-  }
-
-  &.lsb-cat-tegnsprak-nmt {
-    .block-lsb-red;
-  }
-
-  &.lsb-cat-bliss-piktogram {
-    .block-lsb-blue;
   }
 }

@@ -17,7 +17,9 @@ if($lsb_cat_filter_term) {
       <div class="input-group input-group-lg" id="algolia-insta-search">
         <input type="search" class="form-control" value="<?php echo $input_value ?>" placeholder="<?php echo $input_placeholder ?>">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="submit"><?php _e('Søk', 'lsb_boksok'); ?></button>
+          <button class="btn btn-default" type="submit">
+            <span class="icon icon-magnifying-glass"></span>
+          </button>
         </span>
       </div>
     </div>
