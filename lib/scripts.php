@@ -34,7 +34,7 @@ function roots_scripts() {
   wp_enqueue_script( 'wp-util' );
   wp_enqueue_script( 'algolia-instantsearch' );
 
-	wp_enqueue_style('lsb_boksok_css', get_template_directory_uri() . $assets['css'], $assets['css_version'], null);
+	wp_enqueue_style('lsb_boksok_css', get_template_directory_uri() . $assets['css'], false, $assets['css_version']);
 	wp_enqueue_script('lsb_boksok_js', get_template_directory_uri() . $assets['js'], array('jquery'), $assets['js_version'], true);
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
