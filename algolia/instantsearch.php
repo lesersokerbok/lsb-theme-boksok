@@ -112,7 +112,7 @@ if($lsb_cat_filter_term) {
     #>
 
       <article class="lsb-book-collection-item">
-        <a class="lsb-book-collection-item-cover"
+        <a class="lsb-book-collection-item-cover thumbnail"
           title="{{ book.post_title }}"
           alt="<?= __('Omslag - ', 'lsb-theme-books') ?>{{ book.post_title }}"
           href="{{ book.permalink }}">
