@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-4">
         <p>
-          <strong>Leser søker bok</strong><br>
+          <strong><a href="">Leser søker bok</a></strong><br>
           Litteraturhuset<br>
           Wergelandsveien 29<br>
           0167 OSLO
@@ -19,10 +19,8 @@
       </div>
       <div class="col-sm-4 text-sm-right">
         <ul class="list-unstyled">
-          <li><a href="">Ansatte</a></li>
-          <li><a href="">Medlemmer</a></li>
-          <li><a href="">Styret</a></li>
-          <li><a href="">Vedtekter</a></li>
+          <li><a href="">Ressurser</a></li>
+          <li><a href="">Om Boksøk</a></li>
         </ul>
       </div>
     </div>
