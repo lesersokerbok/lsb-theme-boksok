@@ -38,3 +38,5 @@
 
   </div>
 </header>
+
+<?php get_template_part('algolia/instantsearch'); ?>

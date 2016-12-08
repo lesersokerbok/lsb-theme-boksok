@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
-          <?php get_template_part('templates/partials/library-status'); ?>
+          <?php get_template_part('templates/book-partials/library-status'); ?>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
   <?php if( has_lsb_book_embeds($book)) : ?>
   <aside class="block block-lsb-content">
     <div class="container">
-      <?php 
+      <?php
         $oembeds = get_field('lsb_oembeds');
         $count = count($oembeds);
       ?>
@@ -90,11 +90,11 @@
         <?php $margin_class = ( ($key == $count-1) || ($key == $count-2 && $key % 2 == 0 )) ? '' : 'm-b-md'; ?>
         <?php $column_offset = ( $key % 2 == 0 && $key == $count-1 ) ? 'col-sm-offset-3' : '' ?>
         <div class="col-sm-6 <?= $margin_class ?> <?= $column_offset ?>">
-          <?php 
+          <?php
             $lsb_partials_args = [
               'iframe' => $oembed['lsb_oembed']
             ];
-            include(locate_template('templates/partials/iframe.php'));
+            include(locate_template('templates/book-partials/iframe.php'));
           ?>
         </div>
       <?php endforeach; ?>

@@ -1,12 +1,26 @@
-<div class="container">
-  <header class="lsb-header text-sm-center m-b-lg">
-    <h1 class="lsb-heading"><?= lsb_page_title() ?></h1>
-    <hr>
-  </header>
+<!-- is_tax(): All custom taxonomies are related to books, therefore is_tax() will always be a lsb_book archive -->
 
-  <div class="lsb-book-collection">
-    <?php while (have_posts()) : the_post(); ?>
-      <?php get_template_part('templates/content-summary', get_post_type()); ?>
-    <?php endwhile; ?>
-  </div>
+<div class="container">
+  <?php if(is_post_type_archive( 'lsb_book' ) || is_tax()) : ?>
+    <!-- BOOKS -->
+    <?php get_template_part('templates/books/archive'); ?>
+
+  <?php elseif(is_singular( 'lsb_book' )) : ?>
+    <!-- BOOK -->
+    <?php get_template_part('templates/books/single'); ?>
+
+  <?php elseif(is_archive()) : ?>
+    <!-- ARTICLES -->
+  <?php get_template_part('templates/articles/archive'); ?>
+
+  <?php elseif(is_single() || is_page()) : ?>
+    <!-- ARTICLE -->
+    <?php get_template_part('templates/articles/single'); ?>
+
+  <?php else : ?>
+    <!-- Should not happen, show 404 -->
+    <?php get_template_part('404'); ?>
+
+  <?php endif; ?>
 </div>
+

@@ -41,7 +41,7 @@
 </header>
 <div class="lsb-book-collection">
   <?php while ( $books->have_posts() ) : $books->the_post(); ?>
-    <?php get_template_part('templates/content-summary', 'lsb_book'); ?>
+    <?php get_template_part('templates/books/book-summary'); ?>
   <?php endwhile; ?>
 </div>
 <?php if(count($terms) > 0) : ?>
