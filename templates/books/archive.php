@@ -6,7 +6,7 @@
 
   <div class="lsb-book-collection">
     <?php while (have_posts()) : the_post(); ?>
-      <?php get_template_part('templates/books/book-summary'); ?>
+      <?php get_template_part('templates/books/summary'); ?>
     <?php endwhile; ?>
   </div>
 </div>

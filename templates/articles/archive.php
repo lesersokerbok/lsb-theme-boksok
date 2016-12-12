@@ -5,6 +5,6 @@
   </header>
 
   <?php while (have_posts()) : the_post(); ?>
-    <?php get_template_part('templates/articles/article-summary'); ?>
+    <?php get_template_part('templates/articles/summary'); ?>
   <?php endwhile; ?>
 </div>
