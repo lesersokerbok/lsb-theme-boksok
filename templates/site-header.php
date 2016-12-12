@@ -24,11 +24,25 @@
     <nav class="navbar-collapse collapse">
       <?php if(!get_lsb_cat_filter_term()) : ?>
         <?php if (has_nav_menu('frontpage_sections')) : ?>
-          <?php wp_nav_menu(array('theme_location' => 'frontpage_sections', 'menu_class' => 'nav navbar-nav')); ?>
+          <?php wp_nav_menu(array('theme_location' => 'frontpage_sections', 'menu_class' => 'nav navbar-nav lsb-frontpage-sections')); ?>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#" aria-expanded="true">
+                <?php _e('Flere kategorier', 'lsb_boksok') ?> <b class="caret"></b>
+              </a>
+                <?php wp_nav_menu(array('theme_location' => 'frontpage_sections', 'menu_class' => 'dropdown-menu lsb-frontpage-sections-dropdown'));  ?>
+            </li>
+          </ul>
         <?php endif; ?>
       <?php endif; ?>
 
       <div class="navbar-right">
+        <?php if(!get_lsb_cat_filter_term()) : ?>
+          <?php if (has_nav_menu('primary_navigation')) : ?>
+            <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav')); ?>
+          <?php endif; ?>
+        <?php endif; ?>
+
         <button type="button" class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#search-page" aria-expanded="false" aria-controls="<?php _e('Åpne/lukke søk', 'lsb_boksok') ?>">
           <span class="icon icon-magnifying-glass"> </span><?php _e('Søk', 'lsb_boksok') ?>
         </button>
