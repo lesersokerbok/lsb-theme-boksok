@@ -43,31 +43,6 @@ var Roots = {
     init: function() {
       // JavaScript to be fired on a book page
 
-      $('.read-more').each(function() {
-        var $read_more= $(this);
-        var $container = $read_more.parent();
-        var $content = $container.find('.lsb-book-content').first();
-        var $button = $read_more.find('.btn').first();
-        var $closed_text = $button.html();
-        var $opned_text = $button.data('open-text');
-        $button.click(function() {
-          $container.toggleClass('open');
-          $read_more.toggleClass('open');
-          $button.blur();
-
-          if($container.hasClass('open')) {
-            $button.html($opned_text);
-          } else {
-            $button.html($closed_text);
-          }
-        });
-
-        if($container.height() >= $content.height() + $read_more.height()) {
-          $button.addClass('hidden');
-        }
-
-      });
-
       $('.lsb-library-status').each(function() {
         $library_status = $(this);
         $library_select = $library_status.find('select').first();
