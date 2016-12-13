@@ -36,7 +36,18 @@
         </section>
       <? endif; ?>
 
-      <p class="lsb-columns-2 m-t-lg">
+    </div>
+
+    <div class="col-sm-6">
+      <div class="thumbnail hidden-xs m-l-md m-y-md">
+        <?= get_the_lsb_book_cover() ?>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-t-md">
+    <div class="col-sm-6">
+      <p class="lsb-columns-2">
         <?= make_tags(get_lsb_book_publishers(), [ 'label' => __('forlag', 'lsb-theme-books') ]) ?>
         <?= make_tags(get_lsb_book_genres(), [ 'label' => __('sjanger', 'lsb-theme-books') ]) ?>
         <?= make_tags(get_lsb_book_categories(), [ 'label' => __('kategori', 'lsb-theme-books') ]) ?>
@@ -46,16 +57,10 @@
         <?= make_meta(get_lsb_book_year(), [ 'label' => __('utgitt: ', 'lsb-theme-boksok') ]) ?>
       </p>
     </div>
-
     <div class="col-sm-6">
-      <div class="thumbnail hidden-xs m-l-md m-y-md">
-        <?= get_the_lsb_book_cover() ?>
-      </div>
-      <?php if( get_post_meta(get_the_ID(), 'lsb_library_status', true) ) : ?>
-        <aside class="m-y-md">
-          <?php get_template_part('templates/books/book-partials/library-status'); ?>
-        </aside>
-      <?php endif; ?>
+      <aside>
+        <?php get_template_part('templates/books/book-partials/library-status'); ?>
+      </aside>
     </div>
   </div>
 
