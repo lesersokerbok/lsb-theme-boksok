@@ -37,10 +37,9 @@
       <?php endif; ?>
 
       <div class="navbar-right">
-        <?php if(!get_lsb_cat_filter_term()) : ?>
-          <?php if (has_nav_menu('primary_navigation')) : ?>
-            <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'container' => null, 'menu_class' => 'nav navbar-nav')); ?>
-          <?php endif; ?>
+
+        <?php if (has_nav_menu('primary_navigation')) : ?>
+          <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'container' => null, 'menu_class' => 'nav navbar-nav')); ?>
         <?php endif; ?>
 
         <button type="button" class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#search-page" aria-expanded="false" aria-controls="<?php _e('Åpne/lukke søk', 'lsb_boksok') ?>">
