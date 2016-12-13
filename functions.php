@@ -22,6 +22,7 @@ $roots_includes = array(
   'lib/scripts.php',        // Scripts and stylesheets
   'lib/titles.php',         // Page titles
   'lib/wrapper.php',        // Theme wrapper class
+  'lib/nav.php',            // Clean up nav
 );
 
 foreach ($roots_includes as $file) {
