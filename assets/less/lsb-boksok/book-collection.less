@@ -12,6 +12,24 @@
 
   margin: -@line-height-computed;
 
+  .lsb-book-collection-intro {
+    padding: @line-height-computed;
+    align-self: flex-start;
+    width: 100%;
+
+    @media (min-width: @screen-xs-min) {
+      width: 33.33%*2;
+    }
+
+    @media (min-width: @screen-sm-min) {
+      width: 25%*2;
+    }
+
+    @media (min-width: @screen-md-min) {
+      width: 20%*2;
+    }
+  }
+
   .lsb-book-collection-item {
 
     padding: @line-height-computed;
