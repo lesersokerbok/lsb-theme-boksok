@@ -1,85 +1,66 @@
-<?
-  $book = $post;
-?>
+<?php while (have_posts()) : the_post(); ?>
+<article <?php post_class(); ?>>
+  <div class="row">
+    <div class="col-sm-6">
+      <header class="lsb-header m-b-md">
+        <h1 class="lsb-heading"><?= lsb_page_title() ?></h1>
+        <hr>
+      </header>
 
-<article <?php post_class('full'); ?>>
+      <p class="m-b-lg">
+        <?= make_tags(get_lsb_book_creators(), [ 'label' => __('av', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_topics(), [ 'label' => __('tema', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_part_of(), [ 'label' => __('del av', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_audience(), [ 'label' => __('passer for', 'lsb-theme-books') ]) ?>
+      </p>
 
-  <section class="block block-lsb-content">
-    <div class="container">
-      <div class="row lsb-sm-row-valign-stretch">
-        <div class="col-sm-6 col-sm-5">
-          <div class="lsb-book-content-container">
-            <div class="lsb-book-content">
-            <header class="lsb-header m-b-md">
-              <h1 class="lsb-heading">
-              <?php echo lsb_page_title(); ?>
-              </h1>
-              <hr />
-            </header>
-            <p class="m-b-sm">
-              <?= make_term_buttons(get_lsb_book_creators($book)) ?>
-            </p>
-            <p class="m-b-md">
-              <?= make_tags(get_lsb_book_topics($book), [ 'label' => __('tema', 'lsb-theme-books') ]) ?>
-              <?= make_tags(get_lsb_book_part_of($book), [ 'label' => __('del av', 'lsb-theme-books') ]) ?>
-              <?= make_tags(get_lsb_book_audience($book), [ 'label' => __('passer for', 'lsb-theme-books') ]) ?>
-            </p>
-            <?php if( has_lsb_book_review( $book ) ) : ?>
-              <h2 class="lsb-heading-small">
-                <?php _e('Om boka', 'lsb-boksok') ?>
-              </h2>
-              <div class="lsb-description">
-              <?= get_the_lsb_book_review( $book) ?>
-              </div>
-            <? endif; ?>
-            <?php if( has_lsb_book_quote( $book ) ) : ?>
-              <h2 class="lsb-heading-small m-t-md">
-                <?php _e('Utdrag fra boka', 'lsb-boksok') ?>
-              </h2>
-              <?= get_the_lsb_book_quote( $book) ?>
-            <? endif; ?>
-            </div>
-            <div class="read-more">
-              <button class="btn btn-default btn-small" data-open-text="<?php _e('Trekk sammen', 'lsb-boksok') ?>"><?php _e('Les mer', 'lsb-boksok') ?></button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-sm-offset-1">
-          <div class="lsb-book-cover thumbnail m-b-md">
-            <?= get_the_lsb_book_cover($book) ?>
-          </div>
-        </div>
+      <div class="thumbnail visible-xs-block m-y-lg">
+        <?= get_the_lsb_book_cover() ?>
       </div>
-    </div>
-  </section>
 
-  <aside class="block block-lsb-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-sm-3">
-          <div>
-          <?= make_tags(get_lsb_book_publishers($book), [ 'label' => __('forlag', 'lsb-theme-books') ]) ?>
-          <?= make_tags(get_lsb_book_genres($book), [ 'label' => __('sjanger', 'lsb-theme-books') ]) ?>
-          <?= make_tags(get_lsb_book_categories($book), [ 'label' => __('kategori', 'lsb-theme-books') ]) ?>
-          <?= make_tags(get_lsb_book_language($book), [ 'label' => __('språk', 'lsb-theme-books') ]) ?>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <div>
-            <?= make_meta(get_lsb_book_isbn($book), [ 'label' => __('isbn: ', 'lsb-theme-boksok') ]) ?>
-            <?= make_meta(get_lsb_book_pages($book), [ 'label' => __('antall sider: ', 'lsb-theme-boksok') ]) ?>
-            <?= make_meta(get_lsb_book_year($book), [ 'label' => __('utgitt: ', 'lsb-theme-boksok') ]) ?>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <?php get_template_part('templates/book-partials/library-status'); ?>
-        </div>
+      <?php if( has_lsb_book_review() ) : ?>
+        <section class="m-y-md">
+          <h2 class="lsb-heading-small">
+            <?php _e('Om boka', 'lsb-boksok') ?>
+          </h2>
+          <?= get_the_lsb_book_review() ?>
+        </section>
+      <? endif; ?>
+
+      <?php if( has_lsb_book_quote() ) : ?>
+        <section class="m-y-md">
+          <h2 class="lsb-heading-small">
+            <?php _e('Utdrag fra boka', 'lsb-boksok') ?>
+          </h2>
+          <?= get_the_lsb_book_quote() ?>
+        </section>
+      <? endif; ?>
+
+      <p class="lsb-columns-2 m-t-lg">
+        <?= make_tags(get_lsb_book_publishers(), [ 'label' => __('forlag', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_genres(), [ 'label' => __('sjanger', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_categories(), [ 'label' => __('kategori', 'lsb-theme-books') ]) ?>
+        <?= make_tags(get_lsb_book_language(), [ 'label' => __('språk', 'lsb-theme-books') ]) ?>
+        <?= make_meta(get_lsb_book_isbn(), [ 'label' => __('isbn: ', 'lsb-theme-boksok') ]) ?>
+        <?= make_meta(get_lsb_book_pages(), [ 'label' => __('antall sider: ', 'lsb-theme-boksok') ]) ?>
+        <?= make_meta(get_lsb_book_year(), [ 'label' => __('utgitt: ', 'lsb-theme-boksok') ]) ?>
+      </p>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="thumbnail hidden-xs m-l-md m-y-md">
+        <?= get_the_lsb_book_cover() ?>
       </div>
+      <?php if( get_post_meta(get_the_ID(), 'lsb_library_status', true) ) : ?>
+        <aside class="m-y-md">
+          <?php get_template_part('templates/books/book-partials/library-status'); ?>
+        </aside>
+      <?php endif; ?>
     </div>
-  </aside>
+  </div>
 
-  <?php if( has_lsb_book_embeds($book)) : ?>
-  <aside class="block block-lsb-content">
+  <?php if( has_lsb_book_embeds()) : ?>
+  <aside class="m-t-lg">
     <div class="container">
       <?php
         $oembeds = get_field('lsb_oembeds');
@@ -104,3 +85,4 @@
   <? endif; ?>
 
 </article>
+<?php endwhile; ?>

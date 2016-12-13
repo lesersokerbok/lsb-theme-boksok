@@ -1,7 +1,6 @@
 <?php
 
-$book = $post;
-$counties = get_post_meta($book->ID, 'lsb_library_status', true);
+$counties = get_post_meta(get_the_ID(), 'lsb_library_status', true);
 
 ?>
 
