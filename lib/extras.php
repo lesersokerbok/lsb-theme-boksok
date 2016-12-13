@@ -75,7 +75,7 @@ function lsb_taxonomy_template( $template ) {
 	$paged = get_query_var( 'paged', 1 ); 
 	
 	if ( is_tax( 'lsb_tax_lsb_cat' ) && !is_search() &&
-      ( count(get_field('lsb_page_sections', get_queried_object())) == 0 || $paged > 1 ) ) {
+      ( !get_field('lsb_page_sections', get_queried_object()) || count(get_field('lsb_page_sections', get_queried_object())) == 0 || $paged > 1 ) ) {
 
 		$new_template = locate_template( array( 'index.php' ) );
 		if ( '' != $new_template ) {
