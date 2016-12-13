@@ -17,7 +17,6 @@ $roots_includes = array(
   'lib/feed-util.php',      // Custom rss rules
   'lib/filter.php',      // Filters and actions
   'lib/init.php',           // Initial theme setup and constants
-  'lib/nav.php',            // Custom nav modifications
   'lib/pagination.php',     // Boostrap pagination
   'lib/rewrite.php',        // Custom rewrite rules
   'lib/scripts.php',        // Scripts and stylesheets
