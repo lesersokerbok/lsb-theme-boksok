@@ -47,7 +47,7 @@
 <?php if(count($terms) > 0) : ?>
 <p class="text-xs-center m-y">
   <a href="<?= get_term_link($terms[0]) ?>">
-    <?php _e('Gå til ', 'lsb_boksok') ?> <strong><?= get_term_name($terms[0]) ?></strong>
+    <?php _e('Vis alle bøker i ', 'lsb_boksok') ?> <strong><?= get_term_name($terms[0]) ?></strong>
   </a>
 </p>
 <?php endif; ?>
