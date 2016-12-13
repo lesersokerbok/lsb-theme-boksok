@@ -1,4 +1,4 @@
-<?php if(!term_description()): ?>
+<?php if(!term_description() || is_paged()): ?>
 <header class="lsb-header text-sm-center m-b-lg">
   <h1 class="lsb-heading"><?= lsb_page_title() ?></h1>
   <hr>
@@ -6,7 +6,7 @@
 <?php endif; ?>
 
 <div class="lsb-book-collection">
-  <?php if(term_description()): ?>
+  <?php if(term_description() && !is_paged()): ?>
   <aside class="lsb-book-collection-intro">
     <header class="lsb-header">
       <h1 class="lsb-heading"><?= lsb_page_title() ?></h1>
