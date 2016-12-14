@@ -46,10 +46,17 @@
   <?php endwhile; ?>
 </div>
 
-<?php if(count($terms) > 0) : ?>
-<p class="text-xs-center m-y">
-  <a href="<?= get_term_link($terms[0]) ?>" class="btn btn-default btn-sm">
+
+<p class="lsb-book-collection-nav text-xs-center m-t-md m-b-0">
+  <?php if(count($terms) > 0) : ?>
+  <a href="<?= get_term_link($terms[0]) ?>">
     <?php _e('Gå til alle bøker i ', 'lsb_boksok') ?> <strong><?= get_term_name($terms[0]) ?></strong>
   </a>
+  <?php elseif( is_archive() ) : ?>
+    <?= get_next_posts_link(sprintf(__('Gå til alle bøker i <strong>%s</strong>', 'lsb_boksok'),lsb_page_title() )); ?>
+  <?php else : ?>
+    <a href="<?= get_post_type_archive_link( 'lsb_book' ); ?>">
+      <?php _e('Gå til alle bøker i ', 'lsb_boksok') ?> <strong><?= get_bloginfo() ?></strong>
+    </a>
+  <?php endif; ?>
 </p>
-<?php endif; ?>
