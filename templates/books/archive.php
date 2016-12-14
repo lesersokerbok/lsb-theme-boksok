@@ -13,8 +13,10 @@
       <hr>
     </header>
     <?= term_description() ?>
-    <?php previous_posts_link( __("Tilbake", 'lsb_boksok' ) ); ?>
-    <?php next_posts_link( __("Neste side med bøker", 'lsb_boksok' ) ); ?>
+    <nav class="m-t lsb-pagination">
+      <?php previous_posts_link( __("Tilbake", 'lsb_boksok' ) ); ?>
+      <?php next_posts_link( __("Neste side med bøker", 'lsb_boksok' ) ); ?>
+    </nav>
   </aside>
   <?php endif; ?>
   <?php while (have_posts()) : the_post(); ?>
@@ -23,7 +25,8 @@
 </div>
 
 <?php if ($wp_query->max_num_pages > 1) : ?>
-<nav class="post-nav text-xs-center m-t-lg">
-  <?php roots_pagination(); ?>
+<nav class="lsb-pagination text-xs-center m-t-lg">
+  <?php previous_posts_link( __("Tilbake", 'lsb_boksok' ) ); ?>
+  <?php next_posts_link( __("Neste side med bøker", 'lsb_boksok' ) ); ?>
 </nav>
 <?php endif; ?>
