@@ -35,15 +35,17 @@
   $books = new WP_Query($args);
 ?>
 
-<header class="lsb-header text-sm-center m-b-md">
-  <h1 class="lsb-heading"><?= get_sub_field('lsb_page_section_title') ?></h1>
+<header class="lsb-page-section-header">
+  <h1 class="lsb-heading-medium"><?= get_sub_field('lsb_page_section_title') ?></h1>
   <hr>
 </header>
+
 <div class="lsb-book-collection">
   <?php while ( $books->have_posts() ) : $books->the_post(); ?>
     <?php get_template_part('templates/books/summary'); ?>
   <?php endwhile; ?>
 </div>
+
 <?php if(count($terms) > 0) : ?>
 <p class="text-xs-center m-y">
   <a href="<?= get_term_link($terms[0]) ?>" class="btn btn-default btn-sm">

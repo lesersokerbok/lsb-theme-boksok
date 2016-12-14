@@ -16,9 +16,9 @@
 
 ?>
 
-<div class="lsb-header text-sm-center">
-  <h1 class="lsb-heading-small m-t-0"><?= get_sub_field('lsb_page_section_title') ?></h1>
-</div>
+<header class="lsb-header text-sm-center">
+  <h1 class="lsb-heading-small"><?= get_sub_field('lsb_page_section_title') ?></h1>
+</header>
 <div class="lsb-button-collection">
   <?php foreach( $terms as $term ) : ?>
     <?= make_term_button($term) ?>

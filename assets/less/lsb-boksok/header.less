@@ -1,4 +1,11 @@
 .lsb-header {
+
+  .lsb-heading,
+  .lsb-heading-medium,
+  .lsb-heading-small {
+    .m-t-0;
+  }
+
   hr {
     width: 40px;
     border: 2px solid;
@@ -9,14 +16,14 @@
 
   &.text-xs-center {
     hr {
-      margin: 0 auto;
+      margin-left: auto;
     }
   }
 
   @media (min-width: @screen-sm-min) {
     &.text-sm-center {
       hr {
-        margin: 0 auto;
+        margin-left: auto;
       }
     }
   }
@@ -24,7 +31,7 @@
   @media (min-width: @screen-md-min) {
     &.text-md-center {
       hr {
-        margin: 0 auto;
+        margin-left: auto;
       }
     }
   }
@@ -32,7 +39,7 @@
   @media (min-width: @screen-lg-min) {
     &.text-lg-center {
       hr {
-        margin: 0 auto;
+        margin-left: auto;
       }
     }
   }
