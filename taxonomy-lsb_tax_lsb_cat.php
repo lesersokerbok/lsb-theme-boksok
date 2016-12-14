@@ -6,7 +6,7 @@
       <hr>
     </header>
     <?= term_description() ?>
-    <nav class="m-t">
+    <nav class="lsb-pagination m-t">
       <?= get_next_posts_link(sprintf(__('Gå til alle bøker i <strong>%s</strong>', 'lsb_boksok'),lsb_page_title() )); ?>
     </nav>
   </aside>
