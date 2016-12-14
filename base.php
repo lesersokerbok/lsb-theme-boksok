@@ -21,8 +21,11 @@
   ?>
         
   <main class="main" role="main">
-    <?php include roots_template_path(); ?>
+    <div class="container">
+      <?php include roots_template_path(); ?>
+    </div>
   </main><!-- /.main -->
+
   <?php if ($wp_query->max_num_pages > 1) : ?>
   <nav class="post-nav text-xs-center">
     <?php roots_pagination(); ?>
