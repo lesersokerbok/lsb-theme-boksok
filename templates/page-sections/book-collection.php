@@ -33,10 +33,28 @@
   );
 
   $books = new WP_Query($args);
+  $url = get_post_type_archive_link( 'lsb_book' );
+  if(count($terms) > 0) {
+    $url = get_term_link($terms[0]);
+  } else {
+
+  }
 ?>
 
 <header class="lsb-page-section-header">
-  <h1 class="lsb-heading-medium"><?= get_sub_field('lsb_page_section_title') ?></h1>
+  <h1 class="lsb-heading-medium">
+    <?php if(count($terms) > 0) : ?>
+      <a href="<?= get_term_link($terms[0]) ?>">
+        <?= get_sub_field('lsb_page_section_title') ?>
+      </a>
+    <?php elseif( is_archive() ) : ?>
+      <?= get_next_posts_link( get_sub_field('lsb_page_section_title') ); ?>
+    <?php else : ?>
+      <a href="<?= get_post_type_archive_link( 'lsb_book' ); ?>">
+        <?= get_sub_field('lsb_page_section_title') ?>
+      </a>
+    <?php endif; ?>
+  </h1>
   <hr class="m-t-0">
 </header>
 
