@@ -48,34 +48,4 @@ main.main {
       justify-content: center;
     }
   }
-
-  .lsb-book-collection-item {
-    &:nth-child(5),
-    &:nth-child(6) {
-      display: none;
-    }
-
-    @media (min-width: @screen-xs-min) {
-      &:nth-child(5),
-      &:nth-child(6) {
-        display: block;
-      }
-    }
-
-    @media (min-width: @screen-sm-min) {
-      &:nth-child(5),
-      &:nth-child(6) {
-        display: none;
-      }
-    }
-
-    @media (min-width: @screen-md-min) {
-      &:nth-child(5) {
-        display: block;
-      }
-      &:nth-child(6) {
-        display: none;
-      }
-    }
-  }
 }

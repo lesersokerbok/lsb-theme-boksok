@@ -1,4 +1,4 @@
-<div class="lsb-book-collection">
+<div class="lsb-book-collection lsb-book-collection-single-row-has-intro">
 
   <aside class="lsb-book-collection-intro">
     <header class="lsb-header">

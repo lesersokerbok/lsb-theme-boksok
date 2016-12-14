@@ -17,10 +17,6 @@
     align-self: flex-start;
     width: 100%;
 
-    @media (min-width: @screen-xs-min) {
-      width: 33.33%*2;
-    }
-
     @media (min-width: @screen-sm-min) {
       width: 25%*2;
     }
@@ -97,6 +93,65 @@
         display: block;
         width: 100%;
         height: auto;
+      }
+    }
+  }
+
+  &.lsb-book-collection-single-row {
+
+    .lsb-book-collection-item {
+      &:nth-child(5),
+      &:nth-child(6) {
+        display: none;
+      }
+
+      @media (min-width: @screen-xs-min) {
+        &:nth-child(5),
+        &:nth-child(6) {
+          display: block;
+        }
+      }
+
+      @media (min-width: @screen-sm-min) {
+        &:nth-child(5),
+        &:nth-child(6) {
+          display: none;
+        }
+      }
+
+      @media (min-width: @screen-md-min) {
+        &:nth-child(5) {
+          display: block;
+        }
+        &:nth-child(6) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.lsb-book-collection-single-row-has-intro {
+
+    .lsb-book-collection-item {
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        display: none;
+      }
+
+      @media (min-width: @screen-sm-min) {
+        &:nth-child(2),
+        &:nth-child(3) {
+          display: block;
+        }
+      }
+
+      @media (min-width: @screen-md-min) {
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+          display: block;
+        }
       }
     }
   }

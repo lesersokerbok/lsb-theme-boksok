@@ -40,7 +40,7 @@
   <hr>
 </header>
 
-<div class="lsb-book-collection">
+<div class="lsb-book-collection lsb-book-collection-single-row">
   <?php while ( $books->have_posts() ) : $books->the_post(); ?>
     <?php get_template_part('templates/books/summary'); ?>
   <?php endwhile; ?>
