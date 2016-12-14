@@ -37,7 +37,7 @@
 
 <header class="lsb-page-section-header">
   <h1 class="lsb-heading-medium"><?= get_sub_field('lsb_page_section_title') ?></h1>
-  <hr>
+  <hr class="m-t-0">
 </header>
 
 <div class="lsb-book-collection lsb-book-collection-single-row">
