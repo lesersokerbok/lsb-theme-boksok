@@ -26,12 +26,6 @@
     </div>
   </main><!-- /.main -->
 
-  <?php if ($wp_query->max_num_pages > 1) : ?>
-  <nav class="post-nav text-xs-center">
-    <?php roots_pagination(); ?>
-  </nav>
-  <?php endif; ?>
-
   <?php get_template_part('templates/site-footer'); ?>
 
   <?php wp_footer(); ?>
