@@ -104,6 +104,8 @@ function lsb_taxonomy_offset(&$query) {
     //Apply adjust page offset
     $query->set('offset', $page_offset );
 
+  } else {
+    $query->set( 'posts_per_page', 3 );
   }
 }
 add_action('pre_get_posts', 'lsb_taxonomy_offset', 1 );
