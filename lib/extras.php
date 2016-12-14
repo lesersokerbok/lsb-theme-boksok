@@ -90,7 +90,7 @@ add_filter( 'template_include', 'lsb_taxonomy_template', 99 );
 function lsb_taxonomy_offset(&$query) {
 
   //Before anything else, make sure this is the right query...
-  if ( ! $query->is_tax('lsb_tax_lsb_cat') || count(get_field('lsb_page_sections', get_queried_object())) == 0 ) {
+  if ( ! $query->is_tax('lsb_tax_lsb_cat') || !get_field('lsb_page_sections', get_queried_object()) || count(get_field('lsb_page_sections', get_queried_object())) == 0 ) {
     return;
   }
 
@@ -111,7 +111,7 @@ add_action('pre_get_posts', 'lsb_taxonomy_offset', 1 );
 function lsb_taxonomy_offset_pagination($found_posts, $query) {
 
     //Before anything else, make sure this is the right query...
-    if ( ! $query->is_tax('lsb_tax_lsb_cat') || count(get_field('lsb_page_sections', get_queried_object())) == 0 ) {
+    if ( ! $query->is_tax('lsb_tax_lsb_cat') || !get_field('lsb_page_sections', get_queried_object()) || count(get_field('lsb_page_sections', get_queried_object())) == 0 ) {
       return $found_posts;
     }
 
